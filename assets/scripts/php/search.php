@@ -37,7 +37,7 @@ class database {
         }
     }
     function searchByGenre($genre) {
-        $query = "select * from film where genre='thriller'";
+        $query = "select * from film where genre='".$genre."'";
         // search database by genre
         if ($result = $this->connection->query($query)){
             // if results were returned
@@ -95,17 +95,17 @@ if (isset($_POST['submit'])) {
         $genre = $_POST['genre'];
         $genreResult = $databaseConnection->searchByGenre($genre);
 
+        echo "<h2> Results for ".$genre."</h2>";
         echo "<ol>";
         foreach ($genreResult as $row){
             echo "<li>";
             echo "<ul>";
             echo "<li>".$row['title']."</li>";
             echo "<li>".$row['rating']."</li>";
-            echo "<li>".$row['genre']."</li>";
             echo "</ul>";
-            echo "<li>";
+            echo "</li>";
         }
-        echo "<ol>";
+        echo "</ol>";
     
     } else {
         echo "nothing has been selected";
