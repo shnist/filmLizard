@@ -20,6 +20,7 @@
                 <legend>Search by genre </legend>
                 <label for="genre-search"> Search by genre </label>
                 <select name="genre" id="genre-search">
+                    <option value="select"> Select an option </option>
                     <option value="action">Action </option>
                     <option value="romance"> Romance </option>
                     <option value="comedy"> Comedy </option>
