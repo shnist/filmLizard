@@ -19,17 +19,14 @@ class database {
         $this->connection->close();
     }
     function searchByTitle($title) {
-        echo $title;
-        $query = "Select * from film";
-        // where title='".$title."'"
+        $query = "SELECT * FROM film WHERE title='".$title."'";
         // search the database by title
         if ($result = $this->connection->query($query)) {
             // if results were returned          
             if ($result->num_rows !== 0){
-                var_dump($result);
-                //while ($row = $this->connection->fetch_object($result)) { 
-                //    var_dump($row);
-               // }
+                while ($row = $result->fetch_object()) { 
+                    return $row;
+                }
             } else {
                 echo "no results returned!";
             }
@@ -47,16 +44,6 @@ class database {
 if (isset($_POST['submit'])) {
     // start a new connection to the database
     $databaseConnection = new database("localhost", "root", "", "films");
-    
-    // if someone has search by title
-    if($_POST['film-search'] !== ''){
-        $filmTitle = $_POST['film-search'];
-        $databaseConnection->searchByTitle($filmTitle);
-        
-        // close the connection
-        unset($databaseConnection);
-    }
-
 }
 
 ?>
@@ -71,6 +58,21 @@ if (isset($_POST['submit'])) {
 <body>
     <div id="page">
         <h1> Results </h1>
+<?php
+    // if someone has search by title
+    if($_POST['film-search'] !== ''){
+        $filmTitle = $_POST['film-search'];
+        $titleResult = $databaseConnection->searchByTitle($filmTitle);
+        
+        echo "<ul>";
+        echo "<li>Title: ".$titleResult->title."</li>";
+        echo "<li>Rating: ".$titleResult->rating."</li>";
+        echo "</ul>";
+        
+        // close the connection
+        unset($databaseConnection);
+    }
+?>
         <a href="/index.php">Back to search </a>
     </div>
 </body>
