@@ -30,14 +30,31 @@ class database {
             } else {
                 echo "no results returned!";
             }
-            
             // close the query 
             $result->close();
         } else {
             echo "there has been a query error";
         }
     }
-
+    function searchByGenre($genre) {
+        $query = "select * from film where genre='thriller'";
+        // search database by genre
+        if ($result = $this->connection->query($query)){
+            // if results were returned
+            if ($result->num_rows !== 0){
+                while ($row = $result->fetch_assoc()){
+                    $returnedResult[] = $row;
+                }
+                return $returnedResult;
+            } else {
+                echo "no results returned!";
+            }
+            // close query
+            $result->close();
+        } else {
+            echo "query error";
+        }
+    }
 }
 
 // checks if the form has been submitted
@@ -71,6 +88,27 @@ if (isset($_POST['submit'])) {
         
         // close the connection
         unset($databaseConnection);
+    }
+    
+    // if someone searches by genre
+    if($_POST['genre'] !== 'select'){
+        $genre = $_POST['genre'];
+        $genreResult = $databaseConnection->searchByGenre($genre);
+
+        echo "<ol>";
+        foreach ($genreResult as $row){
+            echo "<li>";
+            echo "<ul>";
+            echo "<li>".$row['title']."</li>";
+            echo "<li>".$row['rating']."</li>";
+            echo "<li>".$row['genre']."</li>";
+            echo "</ul>";
+            echo "<li>";
+        }
+        echo "<ol>";
+    
+    } else {
+        echo "nothing has been selected";
     }
 ?>
         <a href="/index.php">Back to search </a>

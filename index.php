@@ -27,6 +27,7 @@
                     <option value="thriller"> Thriller </option>
                     <option value="horror"> Horror </option>
                     <option value="disney"> Disney </option>
+                    <option value="sci-fi"> Sci-Fi </option>
                 </select>
             </fieldset>
             <input type="submit" value="Search" name="submit" class="submit">
