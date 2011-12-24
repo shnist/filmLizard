@@ -9,7 +9,6 @@
 <body>
     <div id="page">
         <h1> Aaron's Film Collection </h1>
-        <h2> Genre </h2>
         <form action="/assets/scripts/php/search.php" method="POST">
             <fieldset>
                 <legend>Search for a film </legend>

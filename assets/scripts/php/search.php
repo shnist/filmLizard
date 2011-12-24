@@ -110,6 +110,9 @@ if (isset($_POST['submit'])) {
     } else {
         echo "nothing has been selected";
     }
+    
+    // close the connection
+    unset($databaseConnection);    
 ?>
         <a href="/index.php">Back to search </a>
     </div>
