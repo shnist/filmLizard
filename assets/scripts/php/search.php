@@ -1,40 +1,65 @@
 <?php
 
 class database {
-    public $connection;
+    public $connection, $host, $userName, $password, $database;
     // constructor
-    function database () {
+    function database ($host, $userName, $password, $database) {
+        $this->host = $host;
+        $this->userName = $userName;
+        $this->password = $password;
+        $this->database = $database;
         // host, username, password, default database
-        $this->connection = new mysqli('localhost','root','','films');
+        $this->connection = new mysqli($this->host,$this->userName,$this->password,$this->database);
         if(mysqli_connect_errno()) {
             die(mysqli_connect_error());
-        } else {
-            echo "success";
         }
     }
-    function searchByTitle() {
-    
+    // destructor
+    function __destruct (){
+        $this->connection->close();
     }
+    function searchByTitle($title) {
+        echo $title;
+        $query = "Select * from film";
+        // where title='".$title."'"
+        // search the database by title
+        if ($result = $this->connection->query($query)) {
+            // if results were returned          
+            if ($result->num_rows !== 0){
+                var_dump($result);
+                //while ($row = $this->connection->fetch_object($result)) { 
+                //    var_dump($row);
+               // }
+            } else {
+                echo "no results returned!";
+            }
+            
+            // close the query 
+            $result->close();
+        } else {
+            echo "there has been a query error";
+        }
+    }
+
 }
 
 // checks if the form has been submitted
 if (isset($_POST['submit'])) {
-    var_dump($_POST['film-search']);
-    
-    $databaseConnection = new database();
+    // start a new connection to the database
+    $databaseConnection = new database("localhost", "root", "", "films");
     
     // if someone has search by title
-    if($_POST['film-search'] === ''){
+    if($_POST['film-search'] !== ''){
+        $filmTitle = $_POST['film-search'];
+        $databaseConnection->searchByTitle($filmTitle);
         
-        
+        // close the connection
+        unset($databaseConnection);
     }
 
 }
 
-
-
-
- ?>
+?>
 
 <!DOCTYPE html>
 <html>
@@ -46,7 +71,7 @@ if (isset($_POST['submit'])) {
 <body>
     <div id="page">
         <h1> Results </h1>
-        <a href="index.php">Back to search </a>
+        <a href="/index.php">Back to search </a>
     </div>
 </body>
 </html>
