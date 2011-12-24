@@ -1,0 +1,38 @@
+/*! Styles for the Film Database */
+
+/* Contents
+    1.0 Common
+    2.0 Structure
+*/
+
+/* 1.0 Common */
+/*
+ * All styles relating to common elements
+*/
+
+body{
+    font-family: verdana, arial, sans-serif;
+    background: #DDD;
+    margin: 0;
+    padding: 0;
+}
+fieldset{
+    margin: 0 0 10px 0;
+}
+
+/* 2.0 Structure */
+/*
+ * All styles relating to the structure of the site
+*/
+
+#page{
+    width: 900px;
+    margin: 0 auto;
+    background: #FFF;
+    padding: 10px;
+    border-radius: 0 0 5px 5px;
+}
+
+
+
+
