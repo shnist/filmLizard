@@ -13,7 +13,7 @@
         <form action="/assets/scripts/php/search.php" method="POST">
             <fieldset>
                 <legend>Search for a film </legend>
-                <label for="film-search">Search for a film </label>
+                <label for="film-search">Search by title</label>
                 <input type="text" name="film-search" id="film-search"> 
             </fieldset>
             <fieldset>
