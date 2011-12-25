@@ -1,6 +1,6 @@
 <?php
     // include the database class
-    include 'database.php';
+    include '/classes/database.php';
 
     // checks if the form has been submitted
     if (isset($_POST['submit'])) {

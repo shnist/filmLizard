@@ -1,3 +1,6 @@
+create database films;
+use films;
+
 # table for films
 create table film (id int(3) primary key not null auto_increment,
 title varchar(30) not null,
@@ -38,12 +41,10 @@ insert into genre(genre) values ("sci-fi");
 insert into genre(genre) values ("war");
 insert into genre(genre) values ("westerns");
 
-
-
-insert into film (id, title) values (1, "Taken");
-insert into film (id, title) values (2, "The Last Samurai");
-insert into film (id, title) values (3, "500 Days of Summer");
-insert into film (id, title) values (4, "Collateral");
-insert into film (id, title) values (5, "War of the Worlds");
-insert into film (id, title) values (6, "500 Days of Summer");
-insert into film (id, title) values (7, "Star Trek");
+insert into film (title) values ("Taken");
+insert into film (title) values ("The Last Samurai");
+insert into film (title) values ("500 Days of Summer");
+insert into film (title) values ("Collateral");
+insert into film (title) values ("War of the Worlds");
+insert into film (title) values ("No Country For Old Men");
+insert into film (title) values ("Star Trek");
