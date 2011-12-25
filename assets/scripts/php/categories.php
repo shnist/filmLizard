@@ -1,10 +1,13 @@
 <?php
-
-// checks if the form has been submitted
-if (isset($_POST['submit'])) {
-    // start a new connection to the database
-    $databaseConnection = new database("localhost", "root", "", "films");
-}
+    if ((include 'database.php') == 'OK') {
+        echo 'OK';
+    }
+    
+    // checks if the form has been submitted
+    if (isset($_POST['submit'])) {
+        // start a new connection to the database
+        $databaseConnection = new database("localhost", "root", "", "films");
+    }
 
 ?>
 
