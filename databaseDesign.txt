@@ -2,6 +2,56 @@ Database Design
 
 Film 
 
-Id 
-Title
+id
+title
+certificate
+releaseDate
 rating
+
+
+Actor 
+id
+name
+
+
+Genre 
+
+id
+name
+
+
+GenreFilm 
+
+genreId
+filmId
+
+
+ActorsFilm
+
+actorsId
+filmId
+
+
+
+user research 
+search categories:
+genre,
+rating,
+actors,
+release date,
+subgenres
+
+Tables 
+
+Genre
+1 action
+2 adventure
+3 comedy
+4 crime
+5 drama
+6 historical 
+7 horror
+8 musical
+9 sci-fi
+10 war
+11 westerns
