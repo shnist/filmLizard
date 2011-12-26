@@ -53,8 +53,7 @@ class database {
             echo "query error";
         }
     }
-    function retrieveAllUnpopulated (){
-        $query = "select * from film where certificate is null";
+    function retrieveUnpopulated ($query){
         if ($result = $this->connection->query($query)){
             // if results were returned
             if ($result->num_rows !== 0){
@@ -71,7 +70,7 @@ class database {
             echo "query error";
         }
     }
-    function insertNewData ($id, $certificate, $date, $rating) {
+    function insertNewData ($id, $certificate, $date, $rating, $poster) {
         $query = "update film set certificate='".$certificate."', releaseDate='".$date."', rating='".$rating."', poster='".$poster."', where id =".$id;
         if ($result = $this->connection->query($query)){
             return "success";

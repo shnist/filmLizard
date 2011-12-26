@@ -4,7 +4,7 @@ var imdb = window.imdb || {},
 imdb = {
     connect : function (search) {
         // add loader
-        $('#imdb').append('<div id="loader"> </div>');
+        $('.imdb').append('<div id="loader"> </div>');
         $.ajax({
             url : "http://www.imdbapi.com/",
             data : {
@@ -34,7 +34,7 @@ imdb = {
     error : function () {
         // remove loader when results have returned
         $('#loader').remove();        
-        $('#imdb').append("<p> Request has timed out </p>");
+        $('.imdb').append("<p> Request has timed out </p>");
     }
 };
 
@@ -58,7 +58,7 @@ database = {
     error : function () {
         // remove loader when results have returned
         $('#loader').remove();        
-        $('#imdb').append("<p> Request has timed out </p>");
+        $('.imdb').append("<p> Request has timed out </p>");
     }
 };
 
@@ -69,7 +69,7 @@ $(document).ready(function () {
         $('#film-search').val($(this).text());
     });
     
-    $('#imdb').submit(function (e) {
+    $('.imdb').submit(function (e) {
         e.preventDefault();
         var value = $('#film-search').val();
         imdb.connect(value);
