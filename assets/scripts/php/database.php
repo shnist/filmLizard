@@ -39,7 +39,7 @@
         echo "</ul>";
 ?>
             </div>
-            <form action="#" method="POST">
+            <form action="#" method="POST" id="imdb">
                 <fieldset>
                     <legend> IMDB data search for films </legend>
                     <label for="film-search">Search for this film on IMDB: </label>
@@ -50,12 +50,20 @@
             <form action="/assets/scripts/php/populateDatabase.php" method="POST">
                 <fieldset>
                     <legend> Populate the Database with the film </legend>
-                    <label for="certificate">Certificate</label>
-                    <input type="text" name="certificate" id="certificate">
-                    <label for="release-date">Release Date </label>
-                    <input type="text" name="release-date" id="release-date">
-                    <label for="rating">Rating </label>
-                    <input type="text" name="rating" id="rating">
+                    <ul>
+                        <li>
+                            <label for="certificate">Certificate</label>
+                            <input type="text" name="certificate" id="certificate">
+                        </li>
+                        <li>
+                            <label for="release-date">Release Date </label>
+                            <input type="text" name="release-date" id="release-date">
+                        </li>
+                        <li>
+                            <label for="rating">Rating </label>
+                            <input type="text" name="rating" id="rating">
+                        </li>
+                    </ul>
                     <input type="submit" value="populate database" name="submit">
                 </fieldset>
                 
@@ -70,7 +78,7 @@
                         $('#film-search').val($(this).text());
                     });
                     
-                    $('form').submit(function (e) {
+                    $('#imdb').submit(function (e) {
                         e.preventDefault();
                         var value = encodeURI($('#film-search').val());
                         imdb.connect(value);
