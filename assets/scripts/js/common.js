@@ -1,32 +1,33 @@
-var imdb = window.imdb || {},
+var api = window.api || {},
     database = window.database || {};
 
-imdb = {
+api = {
     connect : function (search) {
         // add loader
         $('.imdb').append('<div id="loader"> </div>');
         $.ajax({
-            url : "http://www.imdbapi.com/",
+            url : "http://api.rottentomatoes.com/api/public/v1.0/movies.json?",
             data : {
-                "t" : search
+                "apikey" : "wje47anurr2v5f4kv9e3ppjy",
+                "q" : search
             },
             dataType : "JSONP",
-            success: imdb.success,
+            success: api.success,
             timeout : 4000,
-            error : database.error
+            error : api.error
         
         });
     },
     success : function (result) {
         // remove loader when results have returned
         $('#loader').remove();
-        
+
         if ($('#film-update').length){
-            imdb.updateFilm(result);
+            api.updateFilm(result);
         }
-        if ($('#genre-update').length) {
-            imdb.updateGenre(result);
-        }
+        //if ($('#genre-update').length) {
+        //    imdb.updateGenre(result);
+        //}
     
     },
     error : function () {
@@ -35,16 +36,18 @@ imdb = {
         $('.imdb').append("<p> Request has timed out </p>");
     },
     updateFilm : function (result) {
+        console.log(result.movies);
+        var htmlString = '<ul class="film-search-results">';
         // populate the populate database form with retrieved values
-        var releaseDate = result.Year,
-            certificate = result.Rated,
-            rating = result.Rating,
-            poster = result.Poster;
-            
-        $('#certificate').val(certificate);
-        $('#release-date').val(releaseDate);
-        $('#rating').val(rating);
-        $('#poster').val(poster);
+        for (var i = 0; i < result.movies.length; i = i + 1){
+            htmlString = htmlString +  '<li><a href="#">'
+            + '<p class="title">' + result.movies[i].title  + '</p>'
+            + '<img src="' + result.movies[i].posters.thumbnail + '">'
+            + '<p class="year">' + result.movies[i].year + '</p>'
+            + '</a></li>'
+        }
+        htmlString = htmlString + "</ul>";
+        $('#film-update').after(htmlString);
     },
     updateGenre : function (result) {
         console.log(result);
@@ -87,8 +90,8 @@ $(document).ready(function () {
     
     $('.imdb').submit(function (e) {
         e.preventDefault();
-        var value = $('#film-search').val();
-        imdb.connect(value);
+        var value = encodeURI($('#film-search').val());
+        api.connect(value);
         database.connect(value);
     });
 });

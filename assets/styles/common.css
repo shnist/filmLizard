@@ -54,6 +54,24 @@ li{
     background: url(/assets/images/loader.gif) no-repeat;
 }
 
+/* 3.1 Api film search results */
+
+.film-search-results li{
+    display: inline-block;
+    margin: 0 10px 0 0;
+    width: 100px;
+    vertical-align: top;
+    max-height: 350px;
+}
+.film-search-results a{
+    display: block;
+    padding: 10px;
+    border: 1px solid #999;
+}
+.film-search-results img{
+    width: 65px;
+}
+
 
 
 

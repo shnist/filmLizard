@@ -7,3 +7,5 @@ Search by genre
 search by actor / actress
 
 rotten tomatoes key - wje47anurr2v5f4kv9e3ppjy
+
+http://api.rottentomatoes.com/api/public/v1.0.json?apikey=wje47anurr2v5f4kv9e3ppjy - base url
