@@ -5,7 +5,7 @@ use films;
 create table film (id int(3) primary key not null auto_increment,
 title varchar(30) not null,
 certificate varchar(5),
-releaseDate varchar(10),
+releaseDate date,
 rating double) engine=InnoDB;
 
 # tables for genres

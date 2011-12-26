@@ -35,25 +35,6 @@ class database {
             echo "there has been a query error";
         }
     }
-    function searchByGenre($genre) {
-        $query = "select * from film where genre='".$genre."'";
-        // search database by genre
-        if ($result = $this->connection->query($query)){
-            // if results were returned
-            if ($result->num_rows !== 0){
-                while ($row = $result->fetch_assoc()){
-                    $returnedResult[] = $row;
-                }
-                return $returnedResult;
-            } else {
-                echo "no results returned!";
-            }
-            // close query
-            $result->close();
-        } else {
-            echo "query error";
-        }
-    }
     function searchForIdByTitle($title) {
         $query = "select id from film where title='".$title."'";
         if ($result = $this->connection->query($query)){
@@ -98,7 +79,23 @@ class database {
             return "error";
         }  
     }
+    function searchByQuery ($query){
+        if ($result = $this->connection->query($query)){
+            // if results were returned
+            if ($result->num_rows !== 0){
+                while ($row = $result->fetch_assoc()){
+                    $returnedResult[] = $row;
+                }
+                return $returnedResult;
+            } else {
+                echo "no results returned!";
+            }
+            // close query
+            $result->close();
+        } else {
+            echo "query error";
+        }
+    }
 }
 
-// ".$certificate.",".$date.",".$rating."
 ?>
