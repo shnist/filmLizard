@@ -38,6 +38,22 @@
                 <input type="submit" value="search for film">
             </fieldset>
         </form>
+        <form action="/assets/php/scripts/populateGenreFilm.php" method="POST">
+            <fieldset>
+                <legend> Fields for populating the FilmGenre table </legend>
+                <ul>
+                    <li>
+                        <label for="id">ID from database </label>
+                        <input type="text" name="id" id="id">
+                    </li>
+                    <li>
+                        <label for="id">Genres for film </label>
+                        <input type="text" name="genres" id="genres">
+                    </li>                    
+                </ul>
+                <input type="submit" name="submit" value="add genres">
+            </fieldset>
+        </form>
     </div>
 
     <!-- javascript files -->

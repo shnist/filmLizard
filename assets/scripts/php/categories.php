@@ -75,6 +75,8 @@
                 echo "<li>".$result[$i]["rating"]."</li>";
                 echo "</ul>";
             }
+        } elseif ($useGenre === true){
+            $query = 
         }
     }
 

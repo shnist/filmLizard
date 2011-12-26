@@ -48,6 +48,9 @@ imdb = {
     },
     updateGenre : function (result) {
         console.log(result);
+        var genres = result.Genres;
+        
+        $('#genres').val(genres);
     }
 };
 
