@@ -68,9 +68,14 @@ li{
     padding: 10px;
     border: 1px solid #999;
 }
+.film-search-results a.selected{
+    border: 1px solid #ABC;
+    background: #DDD;
+}
 .film-search-results img{
     width: 65px;
 }
+
 
 
 
