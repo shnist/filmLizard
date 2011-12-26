@@ -66,6 +66,10 @@
                             <label for="rating">Rating </label>
                             <input type="text" name="rating" id="rating">
                         </li>
+                        <li>
+                            <label for="poster">Poster</label>
+                            <input type="text" name="poster" id="poster">
+                        </li>
                     </ul>
                     <input type="submit" value="populate database" name="submit">
                 </fieldset>
