@@ -28,7 +28,7 @@
             <div class="results">
                 <h3> Unpopulated data </h3>
 <?php
-        $results = $databaseConnection->retrieveAll();
+        $results = $databaseConnection->retrieveAllUnpopulated();
         $length = sizeof($results);
         echo "<ul>";
          for ($i = 0; $i < $length; $i++) {

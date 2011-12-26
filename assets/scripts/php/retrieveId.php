@@ -3,7 +3,7 @@
     include '/classes/database.php';
     
     if ($_POST['t'] !== ''){
-        $title = $_POST['t'];
+        $title = urldecode($_POST['t']);
         // start a new connection to the database
         $databaseConnection = new database("localhost", "root", "", "films");
         $id = $databaseConnection->searchForIdByTitle($title);

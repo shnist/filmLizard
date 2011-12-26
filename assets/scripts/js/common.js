@@ -3,6 +3,8 @@ var imdb = window.imdb || {},
 
 imdb = {
     connect : function (search) {
+        // add loader
+        $('body').append('<div id="loader"> </div>');
         $.ajax({
             url : "http://www.imdbapi.com/",
             data : {

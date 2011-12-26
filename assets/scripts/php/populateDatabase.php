@@ -10,7 +10,13 @@
             $certificate = $_POST['certificate'];
             $date = $_POST['release-date'];
             $rating = $_POST['rating'];
-            $databaseConnection->insertNewData($id, $certificate, $date, $rating);        
+            $insert = $databaseConnection->insertNewData($id, $certificate, $date, $rating);
+            
+            if ($insert === "success"){
+                echo "<p> Data successfully inserted </p>";
+            } else {
+                echo "<p> an error has occurred </p>";
+            }
         } else {
             echo "an empty value has been submitted";
         }

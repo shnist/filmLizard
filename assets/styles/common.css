@@ -44,6 +44,16 @@ li{
     border-radius: 0 0 5px 5px;
 }
 
+/* 3.0 Ajax */
+/* All styles relating to server connections */
+
+#loader{
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: url(/assets/images/loader.gif) no-repeat;
+}
+
 
 
 
