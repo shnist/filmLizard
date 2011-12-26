@@ -30,7 +30,9 @@ imdb = {
             $('#rating').val(rating);
     },
     error : function () {
-        console.log('timed out');
+        // remove loader when results have returned
+        $('#loader').remove();        
+        $('#imdb').append("<p> Request has timed out </p>");
     }
 };
 
@@ -52,7 +54,9 @@ database = {
         $('#id').val(result);
     },
     error : function () {
-        console.log('time out');
+        // remove loader when results have returned
+        $('#loader').remove();        
+        $('#imdb').append("<p> Request has timed out </p>");
     }
 };
 
