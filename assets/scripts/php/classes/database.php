@@ -72,7 +72,7 @@ class database {
         }
     }
     function insertNewData ($id, $certificate, $date, $rating) {
-        $query = "update film set certificate='".$certificate."', releaseDate='".$date."', rating='".$rating."' where id =".$id;
+        $query = "update film set certificate='".$certificate."', releaseDate='".$date."', rating='".$rating."', poster='".$poster."', where id =".$id;
         if ($result = $this->connection->query($query)){
             return "success";
         } else {

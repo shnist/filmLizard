@@ -23,11 +23,13 @@ imdb = {
         // populate the populate database form with retrieved values
         var releaseDate = result.Year,
             certificate = result.Rated,
-            rating = result.Rating;
+            rating = result.Rating,
+            poster = result.Poster;
             
             $('#certificate').val(certificate);
             $('#release-date').val(releaseDate);
             $('#rating').val(rating);
+            $('#poster').val(poster);
     },
     error : function () {
         // remove loader when results have returned

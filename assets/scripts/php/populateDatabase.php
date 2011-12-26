@@ -4,13 +4,14 @@
     
     if (isset ($_POST['submit'])){
         // ensuring empty values are not submitted
-        if ($_POST['id'] !== '' || $_POST['certificate'] !== '' || $_POST['release-date'] !== '' || $_POST['rating'] !== ''){
+        if ($_POST['id'] !== '' || $_POST['certificate'] !== '' || $_POST['release-date'] !== '' || $_POST['rating'] !== '' || $_POST['poster'] !== ''){
             $databaseConnection = new database("localhost", "root", "", "films");
             $id = $_POST['id'];
             $certificate = $_POST['certificate'];
             $date = $_POST['release-date'];
             $rating = $_POST['rating'];
-            $insert = $databaseConnection->insertNewData($id, $certificate, $date, $rating);
+            $poster = urlencode($_POST['poster']);
+            $insert = $databaseConnection->insertNewData($id, $certificate, $date, $rating, $poster);
             
             if ($insert === "success"){
                 echo "<p> Data successfully inserted </p>";
