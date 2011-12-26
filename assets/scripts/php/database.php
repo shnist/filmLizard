@@ -69,44 +69,8 @@
                 
             </form>
         </div>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-            <script>
-                $(document).ready(function () {
-                    $('a').click(function (e) {
-                        e.preventDefault();
-                        // value of search parameter
-                        $('#film-search').val($(this).text());
-                    });
-                    
-                    $('#imdb').submit(function (e) {
-                        e.preventDefault();
-                        var value = encodeURI($('#film-search').val());
-                        imdb.connect(value);
-                    });
-                    
-                    var imdb = window.imdb || {};
-                    imdb = {
-                        connect : function (search) {
-                            $.ajax({
-                                url : "http://www.imdbapi.com/",
-                                data : {
-                                    "t" : search,
-                                },
-                                dataType : "JSONP",
-                                success: imdb.success,
-                                timeout : 4000 
-                            
-                            });
-                        },
-                        success : function (result) {
-                            console.log(result);
-                        },
-                        error : function () {
-                            console.log('timed out');
-                        }
-                    };
-                });
-                
-            </script>
+        <!-- javascript files -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="/assets/scripts/js/common.js"></script>
     </body>
 </html>
