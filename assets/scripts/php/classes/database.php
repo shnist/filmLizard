@@ -89,6 +89,10 @@ class database {
         } else {
             echo "query error";
         }
-    } 
+    }
+    function insertNewData () {
+        
+        
+    }
 }
 ?>

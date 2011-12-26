@@ -3,15 +3,18 @@
     include '/classes/database.php';
     
     if (isset ($_POST['submit'])){
-        if ($_POST['certificate'] === ''){
-            echo "<p>no value submitted for certificate</p>";
+        // ensuring empty values are not submitted
+        if ($_POST['id'] !== '' || $_POST['certificate'] !== '' || $_POST['release-date'] !== '' || $_POST['rating'] !== ''){
+            $databaseConnection = new database("localhost", "root", "", "films");
+            $id = $_POST['id'];
+            $certificate = $_POST['certificate'];
+            $date = $_POST['release-date'];
+            $rating = $_POST['rating'];
+            $databaseConnection->insertNewData($id, $certificate, $date, $rating);        
+        } else {
+            echo "an empty value has been submitted";
         }
-        if ($_POST['release-date'] === ''){
-            echo "<p>no value submitted for release date</p>";
-        }
-        if ($_POST['rating'] === ''){
-            echo "<p>no value submitted for rating</p>";
-        }
+     
     } else {
         echo "<p>form not submitted</p>";
     }

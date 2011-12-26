@@ -62,7 +62,7 @@ $(document).ready(function () {
     $('#imdb').submit(function (e) {
         e.preventDefault();
         var value = encodeURI($('#film-search').val());
-        //imdb.connect(value);
+        imdb.connect(value);
         database.connect(value);
     });
 });
