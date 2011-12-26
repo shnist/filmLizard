@@ -54,5 +54,23 @@ class database {
             echo "query error";
         }
     }
+    function retrieveAll (){
+        $query = "select * from film";
+        if ($result = $this->connection->query($query)){
+            // if results were returned
+            if ($result->num_rows !== 0){
+                while ($row = $result->fetch_assoc()){
+                    $returnedResult[] = $row;
+                }
+                return $returnedResult;
+            } else {
+                echo "no results returned!";
+            }
+            // close query
+            $result->close();
+        } else {
+            echo "query error";
+        }
+    } 
 }
 ?>
