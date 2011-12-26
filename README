@@ -1,10 +1,9 @@
 To do:
 
 
-Search by genre
--> test that genres are extracted correctly from imdb api
+Combine the genre search into the generic film update 
 
-search by actor / actress
+Add actors and actresses to the generic  film update
 
 rotten tomatoes key - wje47anurr2v5f4kv9e3ppjy
 

@@ -16,6 +16,8 @@ api = {
                 // remove loader when results have returned
                 $('#loader').remove();
                 
+                console.log(result)
+                
                 if ($('#film-update').length){
                 api.updateFilm(result);
                 }
@@ -138,7 +140,8 @@ $(document).ready(function () {
     
     $('.imdb').submit(function (e) {
         e.preventDefault();
-        var value = encodeURI($('#film-search').val());
+        var value = $('#film-search').val();
+        console.log(value);
         api.searchFilms(value);
         database.connect(value);
     });
