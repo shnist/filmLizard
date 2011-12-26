@@ -29,13 +29,12 @@
                 <h3> Unpopulated data </h3>
 <?php
         $results = $databaseConnection->retrieveAll();
-       // var_dump($results);
-       $length = sizeof($results);
-       echo "<ul>";
-        for ($i = 0; $i < $length; $i++) {
-            echo "<li><a href='#'>".$results[$i]["title"]."</a></li>";
-        
-        }
+        $length = sizeof($results);
+        echo "<ul>";
+         for ($i = 0; $i < $length; $i++) {
+             echo "<li><a href='#'>".$results[$i]["title"]."</a></li>";
+         
+         }
         echo "</ul>";
 ?>
             </div>
@@ -51,6 +50,10 @@
                 <fieldset>
                     <legend> Populate the Database with the film </legend>
                     <ul>
+                        <li>
+                            <label for="id">ID from database </label>
+                            <input type="text" name="id" id="id">
+                        </li>
                         <li>
                             <label for="certificate">Certificate</label>
                             <input type="text" name="certificate" id="certificate">
