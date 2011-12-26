@@ -76,7 +76,7 @@
                 echo "</ul>";
             }
         } elseif ($useGenre === true){
-            $query = 
+            $query = "select * from film";
         }
     }
 

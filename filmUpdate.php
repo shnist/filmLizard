@@ -26,7 +26,7 @@
                 be used to search for data on a film.
             </p>
             <div class="results">
-                <h3> Unpopulated data </h3>
+                <h2> Unpopulated data </h2>
 <?php
         $query = "select * from film where certificate is null";
         $results = $databaseConnection->retrieveUnpopulated($query);
