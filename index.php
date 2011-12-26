@@ -17,7 +17,8 @@
             </fieldset>
             <input type="submit" value="Search" name="submit">
         </form>
-        <form action="/assets/scripts/php/search.php" method="POST">
+        <h2> Categories </h2>
+        <form action="/assets/scripts/php/categories.php" method="POST">
             <fieldset>
                 <legend>Search by genre </legend>
                 <label for="genre-search"> Search by genre </label>
@@ -50,6 +51,22 @@
             </fieldset>
             <fieldset>
                 <legend>Search by release date </legend>
+                <select name="date" id="date">
+                    <option value="select">Select an option</option>
+                    <option value="2012">2012</option>
+                    <option value="2011">2011</option>
+                    <option value="2010">2010</option>
+                    <option value="2009">2009</option>
+                    <option value="2008">2008</option>
+                    <option value="2007">2007</option>
+                    <option value="2006">2006</option>
+                    <option value="2005">2005</option>
+                    <option value="2004">2004</option>
+                    <option value="2003">2003</option>
+                    <option value="2002">2002</option>
+                    <option value="2001">2001</option>
+                    <option value="2000">2000</option>
+                </select>
             </fieldset>
             <input type="submit" value="Search" name="submit" class="submit">
         </form>
