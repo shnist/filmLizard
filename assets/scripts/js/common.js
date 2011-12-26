@@ -4,7 +4,7 @@ var imdb = window.imdb || {},
 imdb = {
     connect : function (search) {
         // add loader
-        $('body').append('<div id="loader"> </div>');
+        $('#imdb').append('<div id="loader"> </div>');
         $.ajax({
             url : "http://www.imdbapi.com/",
             data : {
@@ -18,6 +18,8 @@ imdb = {
         });
     },
     success : function (result) {
+        // remove loader when results have returned
+        $('#loader').remove();
         // populate the populate database form with retrieved values
         var releaseDate = result.Year,
             certificate = result.Rated,
@@ -63,7 +65,7 @@ $(document).ready(function () {
     
     $('#imdb').submit(function (e) {
         e.preventDefault();
-        var value = encodeURI($('#film-search').val());
+        var value = $('#film-search').val();
         imdb.connect(value);
         database.connect(value);
     });
