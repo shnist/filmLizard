@@ -20,21 +20,34 @@ imdb = {
     success : function (result) {
         // remove loader when results have returned
         $('#loader').remove();
+        
+        if ($('#film-update').length){
+            imdb.updateFilm(result);
+        }
+        if ($('#genre-update').length) {
+            imdb.updateGenre(result);
+        }
+    
+    },
+    error : function () {
+        // remove loader when results have returned
+        $('#loader').remove();        
+        $('.imdb').append("<p> Request has timed out </p>");
+    },
+    updateFilm : function (result) {
         // populate the populate database form with retrieved values
         var releaseDate = result.Year,
             certificate = result.Rated,
             rating = result.Rating,
             poster = result.Poster;
             
-            $('#certificate').val(certificate);
-            $('#release-date').val(releaseDate);
-            $('#rating').val(rating);
-            $('#poster').val(poster);
+        $('#certificate').val(certificate);
+        $('#release-date').val(releaseDate);
+        $('#rating').val(rating);
+        $('#poster').val(poster);
     },
-    error : function () {
-        // remove loader when results have returned
-        $('#loader').remove();        
-        $('.imdb').append("<p> Request has timed out </p>");
+    updateGenre : function (result) {
+        console.log(result);
     }
 };
 

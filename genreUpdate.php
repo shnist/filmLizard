@@ -30,7 +30,7 @@
          }
         echo "</ul>";
 ?>
-        <form action="#" method="POST" id="imdb">
+        <form action="#" method="POST" class="imdb" id="genre-update">
             <fieldset>
                 <legend> IMDB data search for films </legend>
                 <label for="film-search">Search for this film on IMDB: </label>
