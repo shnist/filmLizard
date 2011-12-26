@@ -5,7 +5,7 @@ use films;
 create table film (id int(3) primary key not null auto_increment,
 title varchar(30) not null,
 certificate varchar(5),
-releaseDate date,
+releaseDate varchar(4),
 poster varchar(200),
 rating double) engine=InnoDB;
 
