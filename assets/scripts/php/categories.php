@@ -64,7 +64,7 @@
                 echo "</ul>";
             }
         } elseif ($useDate === true){
-            $query = "select * from film where date > ".$date;
+            $query = "select * from film where releaseDate = '".$date."'";
             $result = $databaseConnection->searchByQuery($query);
             $length = count($result);
             for ($i = 0; $i < $length; $i++){
