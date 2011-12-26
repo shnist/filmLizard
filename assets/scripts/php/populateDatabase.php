@@ -26,6 +26,6 @@
         echo "<p>form not submitted</p>";
     }
 
-    echo "<a href='/assets/scripts/php/database.php'>Go Back </a>";
+    echo "<a href='/filmUpdate.php'>Go Back </a>";
 
 ?>
