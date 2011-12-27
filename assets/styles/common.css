@@ -43,8 +43,10 @@ li{
     width: 900px;
     margin: 0 auto;
     background: #FFF;
-    padding: 10px;
     border-radius: 0 0 5px 5px;
+}
+#content{
+    padding: 10px;
 }
 
 /* 3.0 Ajax */
@@ -83,9 +85,11 @@ li{
 
 .navigation{
     background: #CCC;
+    padding: 10px;
 }
 .navigation li{
     display: inline-block;
+    margin: 0 10px 0 0;
 }
 .navigation a{
     color: #444;
