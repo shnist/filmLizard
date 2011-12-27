@@ -16,8 +16,6 @@ api = {
                 // remove loader when results have returned
                 $('#loader').remove();
                 
-                console.log(result)
-                
                 if ($('#film-update').length){
                 api.updateFilm(result);
                 }
@@ -45,12 +43,19 @@ api = {
                 var certificate = result.mpaa_rating,
                     date = result.year,
                     rating = result.ratings.audience_score,
-                    poster = result.posters.original;
+                    poster = result.posters.original,
+                    genres = '',
+                    i = 0;
+                    
+                for (i; i < result.genres.length; i = i + 1){
+                    genres = genres + result.genres[i] + ', ';
+                }    
                 
                 $('#certificate').val(certificate);
                 $('#release-date').val(date);
                 $('#rating').val(rating);
                 $('#poster').val(poster);
+                $('#genres').val(genres);
             }
         });
     },

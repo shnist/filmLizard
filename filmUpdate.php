@@ -78,6 +78,10 @@
                             <label for="poster">Poster</label>
                             <input type="text" name="poster" id="poster">
                         </li>
+                        <li>
+                            <label for="genres">Genres</label>
+                            <textarea name="genres" id="genres"></textarea>
+                        </li>
                     </ul>
                     <input type="submit" value="populate database" name="submit">
                 </fieldset>
