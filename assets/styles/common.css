@@ -79,6 +79,21 @@ li{
     width: 65px;
 }
 
+/* 4.0 Navigation */
+
+.navigation{
+    background: #CCC;
+}
+.navigation li{
+    display: inline-block;
+}
+.navigation a{
+    color: #444;
+}
+.navigation a:hover{
+    color: #666;
+}
+
 
 
 

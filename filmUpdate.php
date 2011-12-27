@@ -16,6 +16,14 @@
     
     <body>
         <div id="page">
+            <ul class="navigation" id="primary-navigation">
+                <li>
+                    <a href="/index.php">Home</a>
+                </li>
+                <li>
+                    <a href="/assets/scripts/php/filmUpdate.php">Update Database</a>
+                </li>
+            </ul>            
             <h1>Database</h1>
             <p>
                 This page is used for populating the database.

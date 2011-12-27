@@ -8,6 +8,14 @@
 
 <body>
     <div id="page">
+        <ul class="navigation" id="primary-navigation">
+            <li>
+                <a href="/index.php">Home</a>
+            </li>
+            <li>
+                <a href="/assets/scripts/php/filmUpdate.php">Update Database</a>
+            </li>
+        </ul>
         <h1> Aaron's Film Collection </h1>
         <form action="/assets/scripts/php/search.php" method="POST">
             <fieldset>
@@ -37,16 +45,16 @@
                 <legend>Search by rating </legend>
                 <select name="rating" id="rating">
                     <option value="select">Select an option</option>
+                    <option value="100">100</option>
+                    <option value="90">90</option>
+                    <option value="80">80</option>
+                    <option value="70">70</option>
+                    <option value="60">60</option>
+                    <option value="50">50</option>
+                    <option value="40">40</option>
+                    <option value="30">30</option>
+                    <option value="20">20</option>
                     <option value="10">10</option>
-                    <option value="9">9</option>
-                    <option value="8">8</option>
-                    <option value="7">7</option>
-                    <option value="6">6</option>
-                    <option value="5">5</option>
-                    <option value="4">4</option>
-                    <option value="3">3</option>
-                    <option value="2">2</option>
-                    <option value="1">1</option>
                 </select>
             </fieldset>
             <fieldset>
