@@ -18,10 +18,10 @@
         <div id="page">
             <ul class="navigation" id="primary-navigation">
                 <li>
-                    <a href="/index.php">Home</a>
+                    <a href="index.php">Home</a>
                 </li>
                 <li>
-                    <a href="/assets/scripts/php/filmUpdate.php">Update Database</a>
+                    <a href="filmUpdate.php">Update Database</a>
                 </li>
             </ul>            
             <h1>Database</h1>

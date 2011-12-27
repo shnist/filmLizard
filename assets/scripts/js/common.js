@@ -132,7 +132,7 @@ database = {
 };
 
 $(document).ready(function () {
-    $('a').click(function (e) {
+    $('.results a').click(function (e) {
         e.preventDefault();
         // value of search parameter
         $('#film-search').val($(this).text());
