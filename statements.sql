@@ -29,19 +29,6 @@ filmId int(2),
 foreign key (actorId) references actor(id),
 foreign key (filmId) references film(id)) engine=InnoDB;
 
-# adding values to the genre table
-insert into genre(genre) values ("action");
-insert into genre(genre) values ("adventure");
-insert into genre(genre) values ("comedy");
-insert into genre(genre) values ("crime");
-insert into genre(genre) values ("drama");
-insert into genre(genre) values ("historical");
-insert into genre(genre) values ("horror");
-insert into genre(genre) values ("musical");
-insert into genre(genre) values ("sci-fi");
-insert into genre(genre) values ("war");
-insert into genre(genre) values ("westerns");
-
 insert into film (title) values ("Taken");
 insert into film (title) values ("The Last Samurai");
 insert into film (title) values ("500 Days of Summer");

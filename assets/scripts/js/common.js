@@ -46,9 +46,13 @@ api = {
                     poster = result.posters.original,
                     genres = '',
                     i = 0;
-                    
+
                 for (i; i < result.genres.length; i = i + 1){
-                    genres = genres + result.genres[i] + ', ';
+                    if (i !== (result.genres.length - 1)){
+                        genres = genres + result.genres[i] + ',';
+                    } else {
+                        genres = genres + result.genres[i];
+                    }
                 }    
                 
                 $('#certificate').val(certificate);

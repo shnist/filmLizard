@@ -95,6 +95,9 @@ class database {
             echo "query error";
         }
     }
+    function selectGenres (){
+        
+    }
 }
 
 ?>

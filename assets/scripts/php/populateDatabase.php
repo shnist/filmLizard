@@ -14,13 +14,27 @@
             $insert = $databaseConnection->insertNewData($id, $certificate, $date, $rating, $poster);
             
             if ($insert === "success"){
-                echo "<p> Data successfully inserted </p>";
+                echo "<p> Data successfully inserted into film</p>";
             } else {
                 echo "<p> an error has occurred </p>";
             }
         } else {
             echo "an empty value has been submitted";
         }
+        
+        // code to update the genre tables
+        // this code will add a genre if it doesn't already exist and then populate the genreFilm table
+        // for the film 
+        if ($_POST['genres'] !== ''){
+            $genres = $_POST['genres'];
+            // break the genres into an array using
+            $genreArray = explode(",", $genres);
+            
+            // get all the existing genres from the database
+            $existingGenres = $databaseConnection->selectGenres();
+            
+        }
+        
      
     } else {
         echo "<p>form not submitted</p>";
