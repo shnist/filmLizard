@@ -20,7 +20,16 @@
 
 <body>
     <div id="page">
-        <h1> Results </h1>
+        <ul class="navigation" id="primary-navigation">
+            <li>
+                <a href="index.php">Home</a>
+            </li>
+            <li>
+                <a href="filmUpdate.php">Update Database</a>
+            </li>
+        </ul>
+        <div id="content">
+            <h1> Results </h1>
 <?php
     $categoryNumber = 0;
     $useGenre = false;
@@ -82,7 +91,8 @@
 
 
 ?>
-        <a href="/index.php">Back to search </a>
+            <a href="/index.php">Back to search </a>
+        </div>
     </div>
 </body>
 </html>

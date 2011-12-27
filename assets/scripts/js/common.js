@@ -45,7 +45,8 @@ api = {
                     rating = result.ratings.audience_score,
                     poster = result.posters.original,
                     genres = '',
-                    i = 0;
+                    actors = '',
+                    i = 0, j = 0;
 
                 for (i; i < result.genres.length; i = i + 1){
                     if (i !== (result.genres.length - 1)){
@@ -53,13 +54,22 @@ api = {
                     } else {
                         genres = genres + result.genres[i];
                     }
-                }    
+                }
+                
+                for (j; j < result.actors.length; j = j + 1){
+                    if (j !== (result.actors.length - 1)){
+                        actors = actors + result.actors[i] + ',';
+                    } else {
+                        actors = actors + result.actors[i];
+                    }
+                }
                 
                 $('#certificate').val(certificate);
                 $('#release-date').val(date);
                 $('#rating').val(rating);
                 $('#poster').val(poster);
                 $('#genres').val(genres);
+                $('#actors').val(actors);
             }
         });
     },
