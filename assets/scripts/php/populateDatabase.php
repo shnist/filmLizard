@@ -33,6 +33,8 @@
             // get all the existing genres from the database
             $existingGenres = $databaseConnection->selectGenres();
             
+            // 
+            
         }
         
      

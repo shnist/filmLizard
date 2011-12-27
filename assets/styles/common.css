@@ -22,6 +22,7 @@ fieldset{
 label{
     width: 150px;
     display: inline-block;
+    vertical-align: top;
 }
 ul {
     list-style: none;

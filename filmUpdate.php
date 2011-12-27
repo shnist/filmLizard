@@ -83,6 +83,10 @@
                                 <label for="genres">Genres</label>
                                 <textarea name="genres" id="genres"></textarea>
                             </li>
+                            <li>
+                                <label for="actors">Actors</label>
+                                <textarea name="actors" id="actors"></textarea>
+                            </li>
                         </ul>
                         <input type="submit" value="populate database" name="submit">
                     </fieldset>
