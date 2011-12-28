@@ -1,12 +1,21 @@
 To do:
 
+Immediate Goals 
 - search by genre 
 - Add actors and actresses to the generic film update
+
+Future
 - Location to the film
     - find out about setting specific constraints such as "home"
 - Suggested films based on viewing habits
     - dominace of particular actor or genre then it would suggest films
-    - suggested films in a sidebar that you could rent or buy online 
+    - suggested films in a sidebar that you could rent or buy online
+
+Far future
+- look into php templating
+
+Even further
+- converting back end to node?
 
 I'm feeling lucky option - will return a random film
 
