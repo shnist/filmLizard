@@ -84,15 +84,17 @@
                 $newActors = array_values(array_diff($actorArray, $existingActors));
                 // these are then inserted into the genre table
                 $insertActors = $databaseConnection->insertNewActors($newActors);
-                //echo "<p> new genres </p>";
-                //var_dump($newGenres);
             } else {
-                //echo "first insert";
                 $insertActors = $databaseConnection->insertNewActors($actorArray);  
             }
             if ($insertActors === "error"){
                 echo $insertActors;
             }
+            // code to update the actorFilm table
+            $updateActorFilm = $databaseConnection->updateActorFilm($id, $actorArray);
+            if ($updateActorFilm === "error") {
+                echo $updateActorFilm;
+            }             
         }
         
     } else {

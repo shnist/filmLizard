@@ -179,6 +179,19 @@ class database {
             }
         }
     }
+    function updateActorFilm($filmId, $actors){
+        $actorsLength = count($actors);
+        for ($b = 0; $b < $actorsLength; $b++){
+            $actorIdResult = $this->connection->query("select id from actor where name='".urlencode($actors[$b])."'");
+            
+            if ($actorIdResult->num_rows !== 0){
+                $actorId = $actorIdResult->fetch_object();
+            }
+            if ($this->connection->query("insert into actorfilm (filmId, actorId) values ('".$filmId."','".$actorId->id."')") !== true){
+                return "error";
+            } 
+        }
+    }
 }
 
 ?>

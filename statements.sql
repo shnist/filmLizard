@@ -24,7 +24,7 @@ foreign key (genreId) references genre(id),
 foreign key (filmId) references film(id)) engine=InnoDB;
 
 # creating an associative table between actors and films
-create table actorsFilm (actorId int(2),
+create table actorFilm (actorId int(2),
 filmId int(2),
 foreign key (actorId) references actor(id),
 foreign key (filmId) references film(id)) engine=InnoDB;
