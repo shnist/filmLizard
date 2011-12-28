@@ -32,15 +32,14 @@
             $existingGenres = $databaseConnection->selectAllGenres();
             
             // error checking
-            echo "<p> genres of film </p>";
-            var_dump($genreArray);
-            if ($existingGenres !== null){
-                echo "<p> existing genres </p>";
-                var_dump($existingGenres);
-            } else {
-                echo "<p> no existing genres </p>";
-            }
-            
+            //echo "<p> genres of film </p>";
+            //var_dump($genreArray);
+            //if ($existingGenres !== null){
+            //    echo "<p> existing genres </p>";
+            //    var_dump($existingGenres);
+            //} else {
+            //    echo "<p> no existing genres </p>";
+            //}
             // eo error checking
                     
             // the differences between the two arrays is compared and genres that do not exist
@@ -50,21 +49,50 @@
                 $newGenres = array_values(array_diff($genreArray, $existingGenres));
                 // these are then inserted into the genre table
                 $insertGenres = $databaseConnection->insertGenres($newGenres);
-                echo "<p> new genres </p>";
-                var_dump($newGenres);
+                //echo "<p> new genres </p>";
+                //var_dump($newGenres);
             } else {
                 //echo "first insert";
                 $insertGenres = $databaseConnection->insertGenres($genreArray);  
             }
-            //if ($insertGenres === "error"){
-                //var_dump($insertGenres);
-            //}
+            if ($insertGenres === "error"){
+                echo $insertGenres;
+            }
             
             // code to update the genreFilm table
             $updateGenreFilm = $databaseConnection->updateGenreFilm($id, $genreArray);
             if ($updateGenreFilm === "error") {
                 echo $updateGenreFilm;
             } 
+        }
+        
+        // code to update the actors tables
+        if ($_POST['actors'] !== ''){
+            $actors = $_POST['actors'];
+            echo "<p> actors of film </p>";
+            var_dump($actors);
+
+            $actorArray = explode(",", $actors);
+            // get all the existing actors from the database
+            $existingActors = $databaseConnection->selectAllActors();
+            
+            echo "<p> existing actors </p>";
+            var_dump($existingActors);
+
+            if ($existingActors !== null){
+                // array_values resets the index of the returned array - known short coming of array_diff
+                $newActors = array_values(array_diff($actorArray, $existingActors));
+                // these are then inserted into the genre table
+                $insertActors = $databaseConnection->insertNewActors($newActors);
+                //echo "<p> new genres </p>";
+                //var_dump($newGenres);
+            } else {
+                //echo "first insert";
+                $insertActors = $databaseConnection->insertNewActors($actorArray);  
+            }
+            if ($insertActors === "error"){
+                echo $insertActors;
+            }
         }
         
     } else {

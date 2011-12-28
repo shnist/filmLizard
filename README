@@ -1,23 +1,26 @@
 To do:
 
 Immediate Goals 
-- search by genre 
 - Add actors and actresses to the generic film update
+- filter by rating
+- filter by release date
+- disable the populate database form so that values cannot be tampered with
+- don't assume that the films have already been inputted - modify application to accommodate
 
 Future
-- Location to the film
+- Location of the film
     - find out about setting specific constraints such as "home"
 - Suggested films based on viewing habits
     - dominace of particular actor or genre then it would suggest films
     - suggested films in a sidebar that you could rent or buy online
+- I'm feeling lucky option - will return a random film
+- refactor database class - a lot of repitition can probably be reduced
 
 Far future
 - look into php templating
 
 Even further
 - converting back end to node?
-
-I'm feeling lucky option - will return a random film
 
 Rotten Tomatoes Application Details
 rotten tomatoes key - wje47anurr2v5f4kv9e3ppjy

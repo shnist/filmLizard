@@ -153,6 +153,32 @@ class database {
             echo "query error";
         }
     }
+    function selectAllActors(){
+        $query = "select * from actor";
+        if ($result = $this->connection->query($query)){
+            // if results were returned
+            if ($result->num_rows !== 0){
+                while ($row = $result->fetch_assoc()){
+                    $returnedResult[] = urldecode($row['name']);
+                }
+                return $returnedResult;
+            } else {
+                echo "no results returned!";
+            }
+            // close query
+            $result->close();
+        } else {
+            echo "query error";
+        }
+    }
+    function insertNewActors($actors){
+        $actorLength = count($actors);
+        for ($a = 0; $a < $actorLength; $a++){
+            if ($this->connection->query("insert into actor(name) values ('".urlencode($actors[$a])."')") !== true){
+                return "error";
+            }
+        }
+    }
 }
 
 ?>

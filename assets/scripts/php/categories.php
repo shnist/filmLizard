@@ -22,10 +22,10 @@
     <div id="page">
         <ul class="navigation" id="primary-navigation">
             <li>
-                <a href="index.php">Home</a>
+                <a href="/index.php">Home</a>
             </li>
             <li>
-                <a href="filmUpdate.php">Update Database</a>
+                <a href="/filmUpdate.php">Update Database</a>
             </li>
         </ul>
         <div id="content">
@@ -65,24 +65,31 @@
                         <option value="2001">2001</option>
                         <option value="2000">2000</option>
                     </select>
-                </fieldset>                
+                </fieldset>
+                <input type ="submit" name="submit" value="filter">
             </form>
 <?php
     // first we will find out which categories the user wishes to search by
     if($_POST['genre'] !== 'select'){
         $genre = urlencode($_POST['genre']);
-        echo "<p> You search by : ".urldecode($genre)."</p>";
+        echo "<p> You searched for : ".urldecode($genre)."</p>";
         $genreResults = $databaseConnection->selectByGenre($genre);
+        $arrayLength = count($genreResults);
         
         echo "<ul>";
-        
-        var_dump($genreResults);
-        
+        for ($i = 0; $i < $arrayLength; $i++){
+            echo "<li>";
+                echo "<ul>";
+                    echo "<li>".$genreResults[$i]['title']." </li>";
+                    echo "<li><img src='".urldecode($genreResults[$i]['poster'])."' alt='".$genreResults[$i]['title']."' </li>";
+                    echo "<li>".$genreResults[$i]['certificate']." </li>";
+                    echo "<li>".$genreResults[$i]['releaseDate']." </li>";
+                    echo "<li>".$genreResults[$i]['rating']." </li>";
+                echo "</ul>";
+            echo "</li>";
+        } 
         echo "</ul>";
    }
-
-
-
 ?>
             <a href="/index.php">Back to search </a>
         </div>

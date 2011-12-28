@@ -49,8 +49,8 @@
                 </div>
                 <form action="#" method="POST" class="imdb" id="film-update">
                     <fieldset>
-                        <legend> IMDB data search for films </legend>
-                        <label for="film-search">Search for this film on IMDB: </label>
+                        <legend> Rotten Tomatoes data search for films </legend>
+                        <label for="film-search">Search for this film on Rotten Tomatoes: </label>
                         <input type="text" name="film-search" id="film-search">
                         <input type="submit" value="search for film">
                     </fieldset>
