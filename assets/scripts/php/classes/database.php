@@ -95,7 +95,7 @@ class database {
             echo "query error";
         }
     }
-    function selectGenres (){
+    function selectAllGenres (){
         $query = "select * from genre";
         if ($result = $this->connection->query($query)){
             // if results were returned
@@ -131,6 +131,10 @@ class database {
                 return "error";
             } 
         }
+    }
+    function selectByGenre($genre){
+        // i want to select * from where 
+        $query = "select * from film where ";
     }
 }
 

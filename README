@@ -1,12 +1,11 @@
 To do:
 
-1) Combine the genre search into the generic film update 
-2) Add actors and actresses to the generic film update
-3) Location to the film
-3) i) find out about setting specific constraints such as "home"
-4) Suggested films based on viewing habits
-4) i) dominace of particular actor or genre then it would suggest films
-4) ii) suggested films in a sidebar that you could rent or buy online 
+- Add actors and actresses to the generic film update
+- Location to the film
+    - find out about setting specific constraints such as "home"
+- Suggested films based on viewing habits
+    - dominace of particular actor or genre then it would suggest films
+    - suggested films in a sidebar that you could rent or buy online 
 
 I'm feeling lucky option - will return a random film
 

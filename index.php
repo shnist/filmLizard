@@ -6,7 +6,7 @@
     <link href="/assets/styles/common.css" rel="stylesheet">
 </head>
 
-<body>
+<body> 
     <div id="page">
         <ul class="navigation" id="primary-navigation">
             <li>
@@ -33,13 +33,19 @@
                     <label for="genre-search"> Search by genre </label>
                     <select name="genre" id="genre-search">
                         <option value="select"> Select an option </option>
-                        <option value="action">Action </option>
-                        <option value="romance"> Romance </option>
-                        <option value="comedy"> Comedy </option>
-                        <option value="thriller"> Thriller </option>
-                        <option value="horror"> Horror </option>
-                        <option value="disney"> Disney </option>
-                        <option value="sci-fi"> Sci-Fi </option>
+<?php
+    // include the database class
+    include '/assets/scripts/php/classes/database.php';
+
+    // start a new connection to the database
+    $databaseConnection = new database("localhost", "root", "", "films");
+
+    $genres = $databaseConnection->selectAllGenres();
+    $genresLength = count($genres);
+    for ($i = 0; $i < $genresLength; $i++){
+        echo "<option value='".$genres[$i]."'>".$genres[$i]."</option>";
+    }
+?>
                     </select>
                 </fieldset>
                 <fieldset>

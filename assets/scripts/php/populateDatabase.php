@@ -29,7 +29,7 @@
             $genreArray = explode(",", $genres);
             
             // get all the existing genres from the database
-            $existingGenres = $databaseConnection->selectGenres();
+            $existingGenres = $databaseConnection->selectAllGenres();
             
             // error checking
             echo "<p> genres of film </p>";
