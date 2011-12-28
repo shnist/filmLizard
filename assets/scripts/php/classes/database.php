@@ -101,7 +101,7 @@ class database {
             // if results were returned
             if ($result->num_rows !== 0){
                 while ($row = $result->fetch_assoc()){
-                    $returnedResult[] = $row;
+                    $returnedResult[] = urldecode($row['genre']);
                 }
                 return $returnedResult;
             }
@@ -123,6 +123,7 @@ class database {
         $genresLength = count($genres);
         for ($j = 0; $j < $genresLength; $j++){
             $genreIdResult = $this->connection->query("select id from genre where genre='".urlencode($genres[$j])."'");
+            
             if ($genreIdResult->num_rows !== 0){
                 $genreId = $genreIdResult->fetch_object();
             }

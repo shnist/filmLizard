@@ -30,26 +30,41 @@
             
             // get all the existing genres from the database
             $existingGenres = $databaseConnection->selectGenres();
+            
+            // error checking
+            echo "<p> genres of film </p>";
+            var_dump($genreArray);
+            if ($existingGenres !== null){
+                echo "<p> existing genres </p>";
+                var_dump($existingGenres);
+            } else {
+                echo "<p> no existing genres </p>";
+            }
+            
+            // eo error checking
                     
             // the differences between the two arrays is compared and genres that do not exist
             // in the database are assigned to the new genres variable
             if ($existingGenres !== null){
-                $newGenres = array_diff_assoc($genreArray, $existingGenres);
+                // array_values resets the index of the returned array - known short coming of array_diff
+                $newGenres = array_values(array_diff($genreArray, $existingGenres));
                 // these are then inserted into the genre table
-                $insertGenres = $databaseConnection->insertGenres($newGenres);                
+                $insertGenres = $databaseConnection->insertGenres($newGenres);
+                echo "<p> new genres </p>";
+                var_dump($newGenres);
             } else {
+                //echo "first insert";
                 $insertGenres = $databaseConnection->insertGenres($genreArray);  
             }
-            if ($insertGenres === "error"){
-                echo $insertGenres;
-            }
-            
+            //if ($insertGenres === "error"){
+                //var_dump($insertGenres);
+            //}
             
             // code to update the genreFilm table
             $updateGenreFilm = $databaseConnection->updateGenreFilm($id, $genreArray);
-            //if ($updateGenreFilm === "error") {
-                var_dump($updateGenreFilm);
-            //} 
+            if ($updateGenreFilm === "error") {
+                echo $updateGenreFilm;
+            } 
         }
         
     } else {
