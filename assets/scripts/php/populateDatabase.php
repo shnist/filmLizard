@@ -33,8 +33,10 @@
             // get all the existing genres from the database
             $existingGenres = $databaseConnection->selectGenres();
             
-            // 
+            // look up how to compare two arrays to find the same values
+            $newGenres = array_diff_assoc($genreArray, $existingGenres);
             
+            var_dump($newGenres);
         }
         
      

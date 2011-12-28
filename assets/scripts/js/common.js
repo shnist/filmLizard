@@ -56,11 +56,11 @@ api = {
                     }
                 }
                 
-                for (j; j < result.actors.length; j = j + 1){
-                    if (j !== (result.actors.length - 1)){
-                        actors = actors + result.actors[i] + ',';
+                for (j; j < result.abridged_cast.length; j = j + 1){
+                    if (j !== (result.abridged_cast.length - 1)){
+                        actors = actors + result.abridged_cast[j].name + ',';
                     } else {
-                        actors = actors + result.actors[i];
+                        actors = actors + result.abridged_cast[j].name;
                     }
                 }
                 
@@ -160,7 +160,6 @@ $(document).ready(function () {
     $('.imdb').submit(function (e) {
         e.preventDefault();
         var value = $('#film-search').val();
-        console.log(value);
         api.searchFilms(value);
         database.connect(value);
     });
