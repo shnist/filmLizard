@@ -13,10 +13,8 @@
             $poster = urlencode($_POST['poster']);
             $insert = $databaseConnection->insertNewData($id, $certificate, $date, $rating, $poster);
             
-            if ($insert === "success"){
-                echo "<p> Data successfully inserted into film</p>";
-            } else {
-                echo "<p> an error has occurred </p>";
+            if ($insert !== "success"){
+                echo "<p> an error inserting data into film table has occurred </p>";
             }
         } else {
             echo "an empty value has been submitted";
@@ -32,17 +30,25 @@
             
             // get all the existing genres from the database
             $existingGenres = $databaseConnection->selectGenres();
-            
+                    
             // the differences between the two arrays is compared and genres that do not exist
             // in the database are assigned to the new genres variable
-            $newGenres = array_diff_assoc($genreArray, $existingGenres);
-            
-            // these are then inserted into the genre table
-            $databaseConnection->insertGenres($newGenres);
-            
+            if ($existingGenres !== null){
+                $newGenres = array_diff_assoc($genreArray, $existingGenres);
+                // these are then inserted into the genre table
+                $insertGenres = $databaseConnection->insertGenres($newGenres);                
+            } else {
+                $insertGenres = $databaseConnection->insertGenres($genreArray);  
+            }
+
+            echo $insertGenres;
+
         }
         
-     
+        // code to update the genreFilm table
+        //$updateGenreFilm = $databaseConnection->updateGenreFilm($id, $genreArray);
+        
+        
     } else {
         echo "<p>form not submitted</p>";
     }

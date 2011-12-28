@@ -104,8 +104,6 @@ class database {
                     $returnedResult[] = $row;
                 }
                 return $returnedResult;
-            } else {
-                echo "no results returned!";
             }
             // close query
             $result->close();
@@ -115,8 +113,18 @@ class database {
     }
     function insertGenres($genres){
         $length = count($genres);
-        for ($i = 0; $i < length; $i++){
-            
+        for ($i = 0; $i < $length; $i++){
+            if ($this->connection->query("insert into genre(genre) values ('".urlencode($genres[$i])."')") !== true){
+                return "error";
+            }
+        }
+    }
+    function updateGenreFilm($filmId, $genres){
+        $genresLength = count($genres);
+        for ($j = 0; $j < $genresLength; $j++){
+            if ($this->connection->query("insert into genrefilm (filmId, genreId) values ()")){
+                
+            }
         }
     }
 }
