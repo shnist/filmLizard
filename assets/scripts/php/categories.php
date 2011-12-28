@@ -69,10 +69,15 @@
                 <input type ="submit" name="submit" value="filter">
             </form>
 <?php
+    var_dump($_POST['genre-search']);
+    var_dump($_POST['actor-search']);
+
     // first we will find out which categories the user wishes to search by
-    if($_POST['genre'] !== 'select'){
-        $genre = urlencode($_POST['genre']);
-        echo "<p> You searched for : ".urldecode($genre)."</p>";
+    if ($_POST['genre-search'] !== 'select' && $_POST['actor-search'] !== ''){
+        echo "<p> searched for both </p>";
+    } elseif ($_POST['genre-search'] !== 'select'){
+        $genre = urlencode($_POST['genre-search']);
+        echo "<p> You searched be genre : ".urldecode($genre)."</p>";
         $genreResults = $databaseConnection->selectByGenre($genre);
         $arrayLength = count($genreResults);
         
@@ -89,7 +94,29 @@
             echo "</li>";
         } 
         echo "</ul>";
-   }
+    } elseif ($_POST['actor-search'] !== '') {
+        $actor = urlencode($_POST['actor-search']);
+        echo "<p> You searched by actor : ".urldecode($actor)."</p>";
+        $actorResults = $databaseConnection->selectByActor($actor);
+        $arrayLength = count($actorResults);
+        
+        echo "<ul>";
+        for ($i = 0; $i < $arrayLength; $i++){
+            echo "<li>";
+                echo "<ul>";
+                    echo "<li>".$actorResults[$i]['title']." </li>";
+                    echo "<li><img src='".urldecode($actorResults[$i]['poster'])."' alt='".$actorResults[$i]['title']."' </li>";
+                    echo "<li>".$actorResults[$i]['certificate']." </li>";
+                    echo "<li>".$actorResults[$i]['releaseDate']." </li>";
+                    echo "<li>".$actorResults[$i]['rating']." </li>";
+                echo "</ul>";
+            echo "</li>";
+        } 
+        echo "</ul>";        
+    } else {
+        "<p> nothing was searched </p>";
+    }
+
 ?>
             <a href="/index.php">Back to search </a>
         </div>

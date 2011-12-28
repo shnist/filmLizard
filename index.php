@@ -22,16 +22,16 @@
                 <fieldset>
                     <legend>Search for a film </legend>
                     <label for="film-search">Search by title</label>
-                    <input type="text" name="film-search" id="film-search"> 
+                    <input type="text" name="film-search" id="film-search">
+                    <input type="submit" value="Search" name="submit">
                 </fieldset>
-                <input type="submit" value="Search" name="submit">
             </form>
             <h2> Categories </h2>
             <form action="/assets/scripts/php/categories.php" method="POST">
                 <fieldset>
                     <legend>Search by genre </legend>
                     <label for="genre-search"> Search by genre </label>
-                    <select name="genre" id="genre-search">
+                    <select name="genre-search" id="genre-search">
                         <option value="select"> Select an option </option>
 <?php
     // include the database class

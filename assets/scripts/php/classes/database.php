@@ -133,9 +133,6 @@ class database {
         }
     }
     function selectByGenre($genre){
-        // i want to select * from film where id = (select filmId from genreFilm where genreId = (select id from genre where genre = $genre))
-        // select * from film where id in (select filmId from genreFilm where genreId in (select id from genre where genre = "comedy"));
-        
         $query = "select * from film where id in (select filmId from genreFilm where genreId in (select id from genre where genre = '".$genre."'))";
         if ($result = $this->connection->query($query)){
             // if results were returned
@@ -190,6 +187,24 @@ class database {
             if ($this->connection->query("insert into actorfilm (filmId, actorId) values ('".$filmId."','".$actorId->id."')") !== true){
                 return "error";
             } 
+        }
+    }
+    function selectByActor($actor){
+        $query = "select * from film where id in (select filmId from actorFilm where actorId in (select id from actor where name = '".$actor."'))";
+        if ($result = $this->connection->query($query)){
+            // if results were returned
+            if ($result->num_rows !== 0){
+                while ($row = $result->fetch_assoc()){
+                    $returnedResult[] = $row;
+                }
+                return $returnedResult;
+            } else {
+                echo "no results returned!";
+            }
+            // close query
+            $result->close();
+        } else {
+            echo "query error";
         }
     }
 }
