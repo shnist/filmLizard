@@ -40,14 +40,17 @@
             } else {
                 $insertGenres = $databaseConnection->insertGenres($genreArray);  
             }
-
-            echo $insertGenres;
-
+            if ($insertGenres === "error"){
+                echo $insertGenres;
+            }
+            
+            
+            // code to update the genreFilm table
+            $updateGenreFilm = $databaseConnection->updateGenreFilm($id, $genreArray);
+            //if ($updateGenreFilm === "error") {
+                var_dump($updateGenreFilm);
+            //} 
         }
-        
-        // code to update the genreFilm table
-        //$updateGenreFilm = $databaseConnection->updateGenreFilm($id, $genreArray);
-        
         
     } else {
         echo "<p>form not submitted</p>";

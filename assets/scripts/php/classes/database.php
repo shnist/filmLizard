@@ -122,9 +122,13 @@ class database {
     function updateGenreFilm($filmId, $genres){
         $genresLength = count($genres);
         for ($j = 0; $j < $genresLength; $j++){
-            if ($this->connection->query("insert into genrefilm (filmId, genreId) values ()")){
-                
+            $genreIdResult = $this->connection->query("select id from genre where genre='".urlencode($genres[$j])."'");
+            if ($genreIdResult->num_rows !== 0){
+                $genreId = $genreIdResult->fetch_object();
             }
+            if ($this->connection->query("insert into genrefilm (filmId, genreId) values ('".$filmId."','".$genreId->id."')") !== true){
+                return "error";
+            } 
         }
     }
 }
