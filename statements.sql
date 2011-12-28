@@ -11,7 +11,7 @@ rating double) engine=InnoDB;
 
 # tables for genres
 create table genre (id int(2) primary key not null auto_increment,
-genre varchar(10)) engine=InnoDB;
+genre varchar(30)) engine=InnoDB;
 
 # table for actors
 create table actor (id int(2) primary key not null auto_increment,

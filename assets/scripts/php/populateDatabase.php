@@ -33,10 +33,13 @@
             // get all the existing genres from the database
             $existingGenres = $databaseConnection->selectGenres();
             
-            // look up how to compare two arrays to find the same values
+            // the differences between the two arrays is compared and genres that do not exist
+            // in the database are assigned to the new genres variable
             $newGenres = array_diff_assoc($genreArray, $existingGenres);
             
-            var_dump($newGenres);
+            // these are then inserted into the genre table
+            $databaseConnection->insertGenres($newGenres);
+            
         }
         
      

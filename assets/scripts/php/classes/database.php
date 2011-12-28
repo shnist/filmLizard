@@ -113,6 +113,12 @@ class database {
             echo "query error";
         }
     }
+    function insertGenres($genres){
+        $length = count($genres);
+        for ($i = 0; $i < length; $i++){
+            
+        }
+    }
 }
 
 ?>
