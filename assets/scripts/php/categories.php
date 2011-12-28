@@ -70,9 +70,10 @@
 <?php
     // first we will find out which categories the user wishes to search by
     if($_POST['genre'] !== 'select'){
-        $genre = $_POST['genre'];
+        $genre = urlencode($_POST['genre']);
         echo "<p> genre: ".$genre."</p>";
         $genreResults = $databaseConnection->selectByGenre($genre);
+        var_dump($genreResults);
         
    }
 
