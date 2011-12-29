@@ -96,27 +96,7 @@
                 echo $updateActorFilm;
             }             
         }
-        
-        if ($_POST['genres'] !== '' && $_POST['actors'] !== ''){
-            $genreLength = count($genreArray);
-            $actorLength = count($actorArray);
-            // for each genre id get all the ids of the actors and add them to the
-            // genreActor table
-            for ($c = 0; $c < $genreLength; $c++){
-                // get the genre id
-                $genreIds = $databaseConnection->selectGenreIdByGenre(urlencode($genreArray[$c]));
-                for ($d = 0; $d < $actorLength; $d++){
-                    $actorIds = $databaseConnection->selectActorIdByActor(urlencode($actorArray[$d]));
-                    $updateGenreActor = $databaseConnection->updateGenreActor(urlencode($genreIds[0]['id']), urlencode($actorIds[0]['id']));
-                    if ($updateGenreActor === "error"){
-                        echo $updateGenreActor;
-                    }
-                }
-            }
-            
-            
-        }
-        
+                
     } else {
         echo "<p>form not submitted</p>";
     }
