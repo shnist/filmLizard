@@ -207,6 +207,59 @@ class database {
             echo "query error";
         }
     }
+    function selectByGenreAndActor($actor, $genre){
+        // select * from film where id in (select filmId.actorFilm, filmId.genreFilm from actorFilm, genreFilm where actorId in (select id from actor where name = "actor"
+       // ) and (select id from genre where genre="genre"));
+       
+       //select everything from film where id = select filmId from filmGenre where genreId = select genreId from genreActor where actorId =
+       //select id from actor where name = "name"
+        
+
+        $query = "select * from film where id in (select filmId from actorFilm where actorId in (select id from actor where name = '".$actor."'))
+        and ";
+    }
+    function selectGenreIdByGenre($genre){
+        $query = "select id from genre where genre='".$genre."'";
+        if ($result = $this->connection->query($query)){
+            // if results were returned
+            if ($result->num_rows !== 0){
+                while ($row = $result->fetch_assoc()){
+                    $returnedResult[] = $row;
+                }
+                return $returnedResult;
+            } else {
+                echo "no results returned!";
+            }
+            // close query
+            $result->close();
+        } else {
+            echo "query error";
+        }
+    }
+    function selectActorIdByActor($actor){
+        $query = "select id from actor where name='".$actor."'";
+        if ($result = $this->connection->query($query)){
+            // if results were returned
+            if ($result->num_rows !== 0){
+                while ($row = $result->fetch_assoc()){
+                    $returnedResult[] = $row;
+                }
+                return $returnedResult;
+            } else {
+                echo "no results returned!";
+            }
+            // close query
+            $result->close();
+        } else {
+            echo "query error";
+        }
+    }
+    function updateGenreActor($genreId, $actorId){
+        $query = "insert into genreActor (genreId, actorId) values ('".$genreId."', '".$actorId."')";
+        if ($this->connection->query($query) !== true){
+            return "error";
+        }
+    }
 }
 
 ?>

@@ -69,15 +69,15 @@
         // code to update the actors tables
         if ($_POST['actors'] !== ''){
             $actors = $_POST['actors'];
-            echo "<p> actors of film </p>";
-            var_dump($actors);
+            //echo "<p> actors of film </p>";
+            //var_dump($actors);
 
             $actorArray = explode(",", $actors);
             // get all the existing actors from the database
             $existingActors = $databaseConnection->selectAllActors();
             
-            echo "<p> existing actors </p>";
-            var_dump($existingActors);
+            //echo "<p> existing actors </p>";
+            //var_dump($existingActors);
 
             if ($existingActors !== null){
                 // array_values resets the index of the returned array - known short coming of array_diff
@@ -95,6 +95,26 @@
             if ($updateActorFilm === "error") {
                 echo $updateActorFilm;
             }             
+        }
+        
+        if ($_POST['genres'] !== '' && $_POST['actors'] !== ''){
+            $genreLength = count($genreArray);
+            $actorLength = count($actorArray);
+            // for each genre id get all the ids of the actors and add them to the
+            // genreActor table
+            for ($c = 0; $c < $genreLength; $c++){
+                // get the genre id
+                $genreIds = $databaseConnection->selectGenreIdByGenre(urlencode($genreArray[$c]));
+                for ($d = 0; $d < $actorLength; $d++){
+                    $actorIds = $databaseConnection->selectActorIdByActor(urlencode($actorArray[$d]));
+                    $updateGenreActor = $databaseConnection->updateGenreActor(urlencode($genreIds[0]['id']), urlencode($actorIds[0]['id']));
+                    if ($updateGenreActor === "error"){
+                        echo $updateGenreActor;
+                    }
+                }
+            }
+            
+            
         }
         
     } else {

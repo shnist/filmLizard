@@ -29,6 +29,12 @@ filmId int(2),
 foreign key (actorId) references actor(id),
 foreign key (filmId) references film(id)) engine=InnoDB;
 
+# associative table between genre and actor
+create table genreActor (genreId int(2),
+actorId int(2),
+foreign key (genreId) references genre(id),
+foreign key (actorId) references actor(id)) engine=InnoDB;
+
 insert into film (title) values ("Taken");
 insert into film (title) values ("The Last Samurai");
 insert into film (title) values ("500 Days of Summer");

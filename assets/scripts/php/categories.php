@@ -69,12 +69,15 @@
                 <input type ="submit" name="submit" value="filter">
             </form>
 <?php
-    var_dump($_POST['genre-search']);
-    var_dump($_POST['actor-search']);
-
     // first we will find out which categories the user wishes to search by
     if ($_POST['genre-search'] !== 'select' && $_POST['actor-search'] !== ''){
-        echo "<p> searched for both </p>";
+        $genre = urlencode($_POST['genre-search']);
+        $actor = urlencode($_POST['actor-search']);
+        echo "<p> You searched be genre : ".urldecode($genre)."</p>";
+        echo "<p> And by actor : ".urldecode($actor)."</p>";
+        $queryResults = $databaseConnection->selectByGenreAndActor($actor, $genre);
+        
+        
     } elseif ($_POST['genre-search'] !== 'select'){
         $genre = urlencode($_POST['genre-search']);
         echo "<p> You searched be genre : ".urldecode($genre)."</p>";

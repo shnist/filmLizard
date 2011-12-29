@@ -1,7 +1,7 @@
 To do:
 
 Immediate Goals 
-- search by actor
+- search by both genre and actor
 - filter by rating
 - filter by release date
 - disable the populate database form so that values cannot be tampered with
@@ -15,12 +15,20 @@ Future
     - suggested films in a sidebar that you could rent or buy online
 - I'm feeling lucky option - will return a random film
 - refactor database class - a lot of repitition can probably be reduced
+- suggest films you may own - looks at most popular actors and genres from your collection
+- pagination for search results
 
 Far future
 - look into php templating
+- facebook integration
+- twitter integration
 
 Even further
 - converting back end to node?
+- different users
+- mysql injection prevention
+- feedback form
+
 
 Rotten Tomatoes Application Details
 rotten tomatoes key - wje47anurr2v5f4kv9e3ppjy
