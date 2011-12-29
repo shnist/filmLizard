@@ -77,7 +77,7 @@
         echo "<p> And by actor : ".urldecode($actor)."</p>";
         $queryResults = $databaseConnection->selectByGenreAndActor($actor, $genre);
         $arrayLength = count($queryResults);
-        
+       
         echo "<ul>";
         for ($i = 0; $i < $arrayLength; $i++){
             echo "<li>";

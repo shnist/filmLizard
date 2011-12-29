@@ -209,15 +209,14 @@ class database {
     }
     function selectByGenreAndActor($actor, $genre){
         // create genre view
-        $genreView = "create view genreSelection as select * from film where id in (select filmId from genreFilm where genreId in
-        (select id from genre where genre = '".$genre."'))";
+        $genreView = "create or replace view genreSelection as select * from film where id in (select filmId from genreFilm where genreId in (select id from genre where genre = '".$genre."'))";
         if ($this->connection->query($genreView) !== true){
-            return "error";
+            return "view creation error";
         } else {
             // filter by actor on genreview
             $actorFilter = "select * from genreSelection where id in (select filmId from actorFilm where actorId in (select id from
             actor where name = '".$actor."'))";
-            if ($result = $this->connection->query($query)){
+            if ($result = $this->connection->query($actorFilter)){
                 // if results were returned
                 if ($result->num_rows !== 0){
                     while ($row = $result->fetch_assoc()){
@@ -229,6 +228,8 @@ class database {
                 }
                 // close query
                 $result->close();
+                // tidy up by deleting the view
+                $deleteView = "";
             } else {
                 echo "query error";
             } 
