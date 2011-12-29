@@ -52,23 +52,6 @@ class database {
             echo "query error";
         }
     }
-    function retrieveUnpopulated ($query){
-        if ($result = $this->connection->query($query)){
-            // if results were returned
-            if ($result->num_rows !== 0){
-                while ($row = $result->fetch_assoc()){
-                    $returnedResult[] = $row;
-                }
-                return $returnedResult;
-            } else {
-                echo "no results returned!";
-            }
-            // close query
-            $result->close();
-        } else {
-            echo "query error";
-        }
-    }
     function insertNewData ($id, $certificate, $date, $rating, $poster) {
         $query = "update film set certificate='".$certificate."', releaseDate='".$date."', rating='".$rating."', poster='".$poster."' where id =".$id;
         if ($result = $this->connection->query($query)){
