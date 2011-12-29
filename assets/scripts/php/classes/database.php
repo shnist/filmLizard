@@ -132,8 +132,14 @@ class database {
             } 
         }
     }
-    function selectByGenre($genre){
-        $query = "select * from film where id in (select filmId from genreFilm where genreId in (select id from genre where genre = '".$genre."'))";
+    function selectByGenre($genre, $order){
+        if ($order !== ''){
+            $query = "select * from film where id in (select filmId from genreFilm where genreId in (select id from
+            genre where genre = '".$genre."')) order by ".$order." desc";
+        } else {
+            $query = "select * from film where id in (select filmId from genreFilm where genreId in (select id from genre where genre = '".$genre."'))";
+        }
+
         if ($result = $this->connection->query($query)){
             // if results were returned
             if ($result->num_rows !== 0){
@@ -190,7 +196,12 @@ class database {
         }
     }
     function selectByActor($actor){
-        $query = "select * from film where id in (select filmId from actorFilm where actorId in (select id from actor where name = '".$actor."'))";
+        if ($order !== ''){
+            $query = "select * from film where id in (select filmId from actorFilm where actorId in (select id from actor
+            where name = '".$actor."')) order by ".$order." desc";
+        } else {
+            $query = "select * from film where id in (select filmId from actorFilm where actorId in (select id from actor where name = '".$actor."'))";
+        }        
         if ($result = $this->connection->query($query)){
             // if results were returned
             if ($result->num_rows !== 0){
@@ -207,15 +218,20 @@ class database {
             echo "query error";
         }
     }
-    function selectByGenreAndActor($actor, $genre){
+    function selectByGenreAndActor($actor, $genre, $order){
         // create genre view
         $genreView = "create or replace view genreSelection as select * from film where id in (select filmId from genreFilm where genreId in (select id from genre where genre = '".$genre."'))";
         if ($this->connection->query($genreView) !== true){
             return "view creation error";
         } else {
-            // filter by actor on genreview
-            $actorFilter = "select * from genreSelection where id in (select filmId from actorFilm where actorId in (select id from
-            actor where name = '".$actor."'))";
+            // filter by actor on genreview - with optional order
+            if ($order !== ''){
+                $actorFilter = "select * from genreSelection where id in (select filmId from actorFilm where actorId in (select id from
+                actor where name = '".$actor."')) order by ".$order." desc";
+            } else {
+                $actorFilter = "select * from genreSelection where id in (select filmId from actorFilm where actorId in (select id from
+                actor where name = '".$actor."'))";
+            }
             if ($result = $this->connection->query($actorFilter)){
                 // if results were returned
                 if ($result->num_rows !== 0){

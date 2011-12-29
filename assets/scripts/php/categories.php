@@ -36,20 +36,20 @@
 <?php
     // inserting values if they exist
     if ($_POST['genre-search'] !== 'select' && $_POST['actor-search'] !== ''){
-        $genre = urlencode($_POST['genre-search']);
-        $actor = urlencode($_POST['actor-search']);
+        $genre = urldecode($_POST['genre-search']);
+        $actor = urldecode($_POST['actor-search']);
         echo "<select name='genre-search' readonly='readonly'>";
         echo    "<option value='".$genre."'>".$genre."</option>";
         echo "</select>";
         echo "<input type='text' name='actor-search' readonly='readonly' value='".$actor."'>";
     } elseif ($_POST['genre-search'] !== 'select'){
-        $genre = urlencode($_POST['genre-search']);
+        $genre = urldecode($_POST['genre-search']);
         echo "<select name='genre-search' readonly='readonly'>";
         echo    "<option value='".$genre."'>".$genre."</option>";
         echo "</select>";
         echo "<input type='text' name='actor-search' readonly='readonly' value=''>";        
     } elseif ($_POST['actor-search'] !== '') {
-        $actor = urlencode($_POST['actor-search']);
+        $actor = urldecode($_POST['actor-search']);
         echo "<select name='genre-search' readonly='readonly'>";
         echo    "<option value='select'>select</option>";
         echo "</select>";
@@ -59,15 +59,24 @@
                 </fieldset>
                 <fieldset>
                     <legend>Sort by rating </legend>
-                    <select name="filter" id="filter">
+                    <select name="sort-by" id="sort-by">
                         <option value="select">Select an option</option>
                         <option value="rating">rating</option>
-                        <option value="date">release date</option>
+                        <option value="releaseDate">release date</option>
                     </select>
                 </fieldset>
                 <input type ="submit" name="submit" value="filter">
             </form>
 <?php
+    // sort by
+    if (isset($_POST['sort-by'])){
+        if ($_POST['sort-by'] !== null){  
+            $orderBy = $_POST['sort-by'];
+        } 
+    } else {
+        $orderBy = '';
+    }
+
     // first we will find out which categories the user wishes to search by
     if ($_POST['genre-search'] !== 'select' && $_POST['actor-search'] !== ''){
         $genre = urlencode($_POST['genre-search']);
@@ -75,16 +84,16 @@
         echo "<p> You searched be genre : ".urldecode($genre)."</p>";
         echo "<p> And by actor : ".urldecode($actor)."</p>";
         
-        if ($_POST['rating'] !== 'select'){
-        
-        } elseif (){
-        
+        if ($orderBy !== 'select'){
+            $queryResults = $databaseConnection->selectByGenreAndActor($actor, $genre, $orderBy);
+        } else {
+            $queryResults = $databaseConnection->selectByGenreAndActor($actor, $genre);
         }
         
         $queryResults = $databaseConnection->selectByGenreAndActor($actor, $genre);
         $arrayLength = count($queryResults);
        
-        echo "<ul>";
+        echo "<ul class='category-results'>";
         for ($i = 0; $i < $arrayLength; $i++){
             echo "<li>";
                 echo "<ul>";
@@ -101,10 +110,14 @@
     } elseif ($_POST['genre-search'] !== 'select'){
         $genre = urlencode($_POST['genre-search']);
         echo "<p> You searched by genre : ".urldecode($genre)."</p>";
-        $genreResults = $databaseConnection->selectByGenre($genre);
+        if ($orderBy !== 'select'){
+            $genreResults = $databaseConnection->selectByGenre($genre, $orderBy);
+        } else {
+            $genreResults = $databaseConnection->selectByGenre($genre);
+        }
         $arrayLength = count($genreResults);
         
-        echo "<ul>";
+        echo "<ul class='category-results'>";
         for ($i = 0; $i < $arrayLength; $i++){
             echo "<li>";
                 echo "<ul>";
@@ -120,10 +133,15 @@
     } elseif ($_POST['actor-search'] !== '') {
         $actor = urlencode($_POST['actor-search']);
         echo "<p> You searched by actor : ".urldecode($actor)."</p>";
+        if ($orderBy !== 'select'){
+            $queryResults = $databaseConnection->selectByActor($actor, $orderBy);
+        } else {
+            $queryResults = $databaseConnection->selectByActor($actor);
+        }        
         $actorResults = $databaseConnection->selectByActor($actor);
         $arrayLength = count($actorResults);
         
-        echo "<ul>";
+        echo "<ul class='category-results'>";
         for ($i = 0; $i < $arrayLength; $i++){
             echo "<li>";
                 echo "<ul>";

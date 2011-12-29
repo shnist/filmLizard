@@ -1,18 +1,17 @@
 To do:
 
 Immediate Goals 
-- filter by rating
-- filter by release date
-    - use hidden form elements so that the query can be processed 
 - don't assume that the films have already been inputted - modify application to accommodate
-
-Future
+- I'm feeling lucky option - will return a random film
 - Location of the film
     - find out about setting specific constraints such as "home"
+- make search by title prevelant throughout the whole site
+    - find out about include
+
+Future
 - Suggested films based on viewing habits
     - dominace of particular actor or genre then it would suggest films
     - suggested films in a sidebar that you could rent or buy online
-- I'm feeling lucky option - will return a random film
 - refactor database class - a lot of repitition can probably be reduced
 - suggest films you may own - looks at most popular actors and genres from your collection
 - pagination for search results
