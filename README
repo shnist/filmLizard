@@ -3,11 +3,12 @@ To do:
 Immediate Goals
 - add synopsis to database
 - don't assume that the films have already been inputted - modify application to accommodate
-- I'm feeling lucky option - will return a random film
 - Location of the film
     - find out about setting specific constraints such as "home"
 - make search by title and i'm feeling lucky prevelant throughout the whole site
+- make sure nav is throughout the site
     - find out about include
+
 
 
 Future
@@ -36,3 +37,34 @@ Even further
 Rotten Tomatoes Application Details
 rotten tomatoes key - wje47anurr2v5f4kv9e3ppjy
 http://api.rottentomatoes.com/api/public/v1.0.json?apikey=wje47anurr2v5f4kv9e3ppjy - base url
+
+
+List of films
+Taken
+The Last Samurai
+500 Days of Summer
+Collateral
+War of the Worlds
+No Country For Old Men
+Star Trek
+Rare Exports: A Christmas Tale
+The Lives of Others
+Crouching Tiger Hidden Dragon
+The Girl With The Dragon Tattoo
+300
+Dejavu
+Die Hard
+Hancock
+Black Hawk Down
+Blade Runner
+Superman Returns
+Alien vs Predator
+Ace Ventura Pet Detective
+Jumanji
+Spider Man 2
+Big Fish
+The Aviator
+Australia
+The Butterfly Effect
+Cast Away
+Borat
