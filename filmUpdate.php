@@ -29,25 +29,7 @@
                 <p>
                     This page is used for populating the database.
                 </p>
-                <p>
-                    Below is a list of all the films that have not
-                    been populate with data yet. Click on one of them to populate the form, which can then
-                    be used to search for data on a film.
-                </p>
-                <div class="results">
-                    <h2> Unpopulated data </h2>
-    <?php
-            $query = "select * from film where certificate is null";
-            $results = $databaseConnection->retrieveUnpopulated($query);
-            $length = sizeof($results);
-            echo "<ul>";
-             for ($i = 0; $i < $length; $i++) {
-                echo "<li><a href='#'>".$results[$i]["title"]."</a></li>";
-             }
-            echo "</ul>";
-    ?>
-                </div>
-                <form action="#" method="POST" class="imdb" id="film-update">
+                <form action="/assets/scripts/php/" method="POST" id="film-update">
                     <fieldset>
                         <legend> Rotten Tomatoes data search for films </legend>
                         <label for="film-search">Search for this film on Rotten Tomatoes: </label>
