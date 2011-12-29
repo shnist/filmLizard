@@ -3,7 +3,7 @@
     include '/classes/database.php';
 
     // checks if the form has been submitted
-    if (isset($_POST['submit'])) {
+    if (isset($_POST['submit']) || isset($_POST['random'])) {
         // start a new connection to the database
         $databaseConnection = new database("localhost", "root", "", "films");
     } 
@@ -50,6 +50,21 @@
             }
         }
     }
+    // random film
+    if (isset($_POST['random'])){
+        $query = "select * from film where id >= RAND() * (select max(id) from film) limit 1";
+        $result = $databaseConnection->selectQuery($query);
+        if ($result !== null) {
+            echo "<ul>";
+            echo "<li>Title: ".$result->title."</li>";
+            echo "<li>Rating: ".$result->rating."</li>";
+            echo "<li>Certificate: ".$result->certificate."</li>";
+            echo "<li>Release Year: ".$result->releaseDate."</li>";
+            echo "<li><img src='".urldecode($result->poster)."' alt='".$result->title."'></li>";
+            echo "</ul>";
+        }
+    }
+    
     // close the connection
     unset($databaseConnection);    
 ?>
