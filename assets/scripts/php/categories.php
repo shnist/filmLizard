@@ -93,7 +93,7 @@
         $queryResults = $databaseConnection->selectByGenreAndActor($actor, $genre);
         $arrayLength = count($queryResults);
        
-        echo "<ul class='category-results'>";
+        echo "<ul class='search-results'>";
         for ($i = 0; $i < $arrayLength; $i++){
             echo "<li class='result'>";
                 echo "<ul>";
@@ -121,7 +121,7 @@
         }
         $arrayLength = count($genreResults);
         
-        echo "<ul class='category-results'>";
+        echo "<ul class='search-results'>";
         for ($i = 0; $i < $arrayLength; $i++){
             echo "<li class='result'>";
                 echo "<ul>";
@@ -149,7 +149,7 @@
         $actorResults = $databaseConnection->selectByActor($actor);
         $arrayLength = count($actorResults);
         
-        echo "<ul class='category-results'>";
+        echo "<ul class='search-results'>";
         for ($i = 0; $i < $arrayLength; $i++){
             echo "<li class='result'>";
                 echo "<ul>";

@@ -6,7 +6,16 @@
     </head>
     <body>
         <div id="page">
-
+            <ul class="navigation" id="primary-navigation">
+                <li>
+                    <a href="index.php">Home</a>
+                </li>
+                <li>
+                    <a href="filmUpdate.php">Update Database</a>
+                </li>
+            </ul>
+            <div id="content">
+                <h1> Search results </h1>
 <?php
 
 if (isset($_POST['submit'])){
@@ -35,11 +44,25 @@ if (isset($_POST['submit'])){
         
         // play with the data!
         $movies = $search_results->movies;
-        echo '<ul>';
+
+        echo "<ul class='search-results'>";
         foreach ($movies as $movie) {
-          echo '<li><a href="' . $movie->links->alternate . '">' . $movie->title . " (" . $movie->year . ")</a></li>";
-        }
-        echo '</ul>';
+            echo "<li class='result'>";
+                echo "<ul>";
+                    echo "<li>".$movie->title." </li>";
+                    echo "<li><img src='".urldecode($movie->posters->original)."' alt='".$movie->title."' </li>";
+                    echo "<li>".$movie->mpaa_rating." </li>";
+                    echo "<li>".$movie->year." </li>";
+                    echo "<li>".$movie->ratings->audience_score." </li>";
+                echo "</ul>";
+                echo "<form action='/assets/scripts/php/search.php' method='post'>";
+                    echo "<input type='text' name='film-id' value='".$movie->title."' readonly='readonly'>";
+                    echo "<input type='submit' name='submit' value='get details'>";
+                echo "</form>";
+            echo "</li>";
+        } 
+        echo "</ul>";        
+        
 
         echo "<a href='/filmUpdate.php'>New search</a>";
     } elseif ($_POST['film-search'] === '') {
@@ -52,6 +75,7 @@ if (isset($_POST['submit'])){
 }
     
 ?>
+            </div>
         </div>
     </body>
 </html>
