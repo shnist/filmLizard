@@ -17,8 +17,7 @@ class database {
     function __destruct (){
         $this->connection->close();
     }
-    function searchByTitle($title) {
-        $query = "SELECT * FROM film WHERE title='".$title."'";
+    function selectQuery ($query){
         // search the database by title
         if ($result = $this->connection->query($query)) {
             // if results were returned          

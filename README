@@ -1,12 +1,15 @@
 To do:
 
-Immediate Goals 
+Immediate Goals
+- get details about each film from the category results
+- add synopsis to database
 - don't assume that the films have already been inputted - modify application to accommodate
 - I'm feeling lucky option - will return a random film
 - Location of the film
     - find out about setting specific constraints such as "home"
 - make search by title prevelant throughout the whole site
     - find out about include
+
 
 Future
 - Suggested films based on viewing habits
@@ -15,6 +18,7 @@ Future
 - refactor database class - a lot of repitition can probably be reduced
 - suggest films you may own - looks at most popular actors and genres from your collection
 - pagination for search results
+- release date both from oldest and newest
 
 Far future
 - look into php templating

@@ -19,24 +19,39 @@
 <body>
     <div id="page">
 <?php
-    // if someone has search by title
-    if($_POST['film-search'] !== ''){
-        $filmTitle = $_POST['film-search'];
-        $titleResult = $databaseConnection->searchByTitle($filmTitle);
-       
-        if ($titleResult !== null) {
-            echo "<ul>";
-            echo "<li>Title: ".$titleResult->title."</li>";
-            echo "<li>Rating: ".$titleResult->rating."</li>";
-            echo "<li>Certificate: ".$titleResult->certificate."</li>";
-            echo "<li>Release Year: ".$titleResult->releaseDate."</li>";
-            echo "<li><img src='".urldecode($titleResult->poster)."' alt='".$titleResult->title."'></li>";
-            echo "</ul>";
+    if(isset($_POST['film-search'])){
+        if($_POST['film-search'] !== ''){
+            $film = $_POST['film-search'];        
+            $query = "select * from film where title='".$film."'";
+            $result = $databaseConnection->selectQuery($query);
+            if ($result !== null) {
+                echo "<ul>";
+                echo "<li>Title: ".$result->title."</li>";
+                echo "<li>Rating: ".$result->rating."</li>";
+                echo "<li>Certificate: ".$result->certificate."</li>";
+                echo "<li>Release Year: ".$result->releaseDate."</li>";
+                echo "<li><img src='".urldecode($result->poster)."' alt='".$result->title."'></li>";
+                echo "</ul>";
+            }
         }
-
-        // close the connection
-        unset($databaseConnection);
+    } elseif (isset($_POST['film-id'])){
+        if($_POST['film-id'] !== ''){
+            $film = $_POST['film-id'];
+            $query = "select * from film where id='".$film."'";
+            $result = $databaseConnection->selectQuery($query);
+            if ($result !== null) {
+                echo "<ul>";
+                echo "<li>Title: ".$result->title."</li>";
+                echo "<li>Rating: ".$result->rating."</li>";
+                echo "<li>Certificate: ".$result->certificate."</li>";
+                echo "<li>Release Year: ".$result->releaseDate."</li>";
+                echo "<li><img src='".urldecode($result->poster)."' alt='".$result->title."'></li>";
+                echo "</ul>";
+            }
+        }
     }
+    // close the connection
+    unset($databaseConnection);    
 ?>
     <a href="/index.php">Search another film</a>
     </div>

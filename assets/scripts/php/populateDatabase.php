@@ -2,6 +2,7 @@
     // include the database class
     include '/classes/database.php';
     
+    // something to show
     var_dump($_POST);
     
     if (isset ($_POST['submit'])){

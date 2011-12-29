@@ -95,7 +95,7 @@
        
         echo "<ul class='category-results'>";
         for ($i = 0; $i < $arrayLength; $i++){
-            echo "<li>";
+            echo "<li class='result'>";
                 echo "<ul>";
                     echo "<li>".$queryResults[$i]['title']." </li>";
                     echo "<li><img src='".urldecode($queryResults[$i]['poster'])."' alt='".$queryResults[$i]['title']."' </li>";
@@ -103,6 +103,10 @@
                     echo "<li>".$queryResults[$i]['releaseDate']." </li>";
                     echo "<li>".$queryResults[$i]['rating']." </li>";
                 echo "</ul>";
+                echo "<form action='/assets/scripts/php/search.php' method='post'>";
+                    echo "<input type='text' name='film-id' value='".$queryResults[$i]['id']."' readonly='readonly'>";
+                    echo "<input type='submit' name='submit' value='get details'>";
+                echo "</form>";
             echo "</li>";
         } 
         echo "</ul>";
@@ -119,7 +123,7 @@
         
         echo "<ul class='category-results'>";
         for ($i = 0; $i < $arrayLength; $i++){
-            echo "<li>";
+            echo "<li class='result'>";
                 echo "<ul>";
                     echo "<li>".$genreResults[$i]['title']." </li>";
                     echo "<li><img src='".urldecode($genreResults[$i]['poster'])."' alt='".$genreResults[$i]['title']."' </li>";
@@ -127,6 +131,10 @@
                     echo "<li>".$genreResults[$i]['releaseDate']." </li>";
                     echo "<li>".$genreResults[$i]['rating']." </li>";
                 echo "</ul>";
+                echo "<form action='/assets/scripts/php/search.php' method='post'>";
+                    echo "<input type='text' name='film-id' value='".$genreResults[$i]['id']."' readonly='readonly'>";
+                    echo "<input type='submit' name='submit' value='get details'>";
+                echo "</form>";
             echo "</li>";
         } 
         echo "</ul>";
@@ -143,7 +151,7 @@
         
         echo "<ul class='category-results'>";
         for ($i = 0; $i < $arrayLength; $i++){
-            echo "<li>";
+            echo "<li class='result'>";
                 echo "<ul>";
                     echo "<li>".$actorResults[$i]['title']." </li>";
                     echo "<li><img src='".urldecode($actorResults[$i]['poster'])."' alt='".$actorResults[$i]['title']."' </li>";
@@ -151,6 +159,10 @@
                     echo "<li>".$actorResults[$i]['releaseDate']." </li>";
                     echo "<li>".$actorResults[$i]['rating']." </li>";
                 echo "</ul>";
+                echo "<form action='/assets/scripts/php/search.php' method='post'>";
+                    echo "<input type='text' name='film-id' value='".$actorResults[$i]['id']."' readonly='readonly'>";
+                    echo "<input type='submit' name='submit' value='get details'>";
+                echo "</form>";
             echo "</li>";
         } 
         echo "</ul>";        
