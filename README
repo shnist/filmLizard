@@ -1,8 +1,8 @@
 To do:
 
 Immediate Goals
-- add synopsis to database
 - don't assume that the films have already been inputted - modify application to accommodate
+    - update results page - the form part for each result needs changing
 - Location of the film
     - find out about setting specific constraints such as "home"
 - make search by title and i'm feeling lucky prevelant throughout the whole site

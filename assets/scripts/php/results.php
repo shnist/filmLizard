@@ -8,10 +8,10 @@
         <div id="page">
             <ul class="navigation" id="primary-navigation">
                 <li>
-                    <a href="index.php">Home</a>
+                    <a href="/index.php">Home</a>
                 </li>
                 <li>
-                    <a href="filmUpdate.php">Update Database</a>
+                    <a href="/filmUpdate.php">Update Database</a>
                 </li>
             </ul>
             <div id="content">
@@ -55,10 +55,38 @@ if (isset($_POST['submit'])){
                     echo "<li>".$movie->year." </li>";
                     echo "<li>".$movie->ratings->audience_score." </li>";
                 echo "</ul>";
-                echo "<form action='/assets/scripts/php/search.php' method='post'>";
-                    echo "<input type='text' name='film-id' value='".$movie->title."' readonly='readonly'>";
-                    echo "<input type='submit' name='submit' value='get details'>";
-                echo "</form>";
+                echo "<form action='/assets/scripts/php/populateDatabase.php' method='POST'>";
+                    echo "<fieldset>";
+                        echo "<legend> Add the film to your collection </legend>";
+                        echo "<ul>";
+                            echo "<li>";
+                                echo "<label for='certificate'>Certificate</label>";
+                                <input type="text" name="certificate" id="certificate" readonly="readonly">
+                            </li>
+                            <li>
+                                <label for="release-date">Release Date </label>
+                                <input type="text" name="release-date" id="release-date" readonly="readonly">
+                            </li>
+                            <li>
+                                <label for="rating">Rating </label>
+                                <input type="text" name="rating" id="rating" readonly="readonly">
+                            </li>
+                            <li>
+                                <label for="poster">Poster</label>
+                                <input type="text" name="poster" id="poster" readonly="readonly">
+                            </li>
+                            <li>
+                                <label for="genres">Genres</label>
+                                <textarea name="genres" id="genres" readonly="readonly"></textarea>
+                            </li>
+                            <li>
+                                <label for="actors">Actors</label>
+                                <textarea name="actors" id="actors" ></textarea>
+                            </li>
+                        </ul>
+                        <input type="submit" value="populate database" name="submit">
+                    </fieldset>
+                </form>
             echo "</li>";
         } 
         echo "</ul>";        

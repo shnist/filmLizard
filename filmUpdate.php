@@ -37,43 +37,6 @@
                         <input type="submit" value="search for film" name="submit">
                     </fieldset>
                 </form>
-                <form action="/assets/scripts/php/populateDatabase.php" method="POST">
-                    <fieldset>
-                        <legend> Populate the Database with the film </legend>
-                        <ul>
-                            <li>
-                                <label for="id">ID from database </label>
-                                <input type="text" name="id" id="id" readonly="readonly">
-                            </li>
-                            <li>
-                                <label for="certificate">Certificate</label>
-                                <input type="text" name="certificate" id="certificate" readonly="readonly">
-                            </li>
-                            <li>
-                                <label for="release-date">Release Date </label>
-                                <input type="text" name="release-date" id="release-date" readonly="readonly">
-                            </li>
-                            <li>
-                                <label for="rating">Rating </label>
-                                <input type="text" name="rating" id="rating" readonly="readonly">
-                            </li>
-                            <li>
-                                <label for="poster">Poster</label>
-                                <input type="text" name="poster" id="poster" readonly="readonly">
-                            </li>
-                            <li>
-                                <label for="genres">Genres</label>
-                                <textarea name="genres" id="genres" readonly="readonly"></textarea>
-                            </li>
-                            <li>
-                                <label for="actors">Actors</label>
-                                <textarea name="actors" id="actors" ></textarea>
-                            </li>
-                        </ul>
-                        <input type="submit" value="populate database" name="submit">
-                    </fieldset>
-                    
-                </form>
             </div>
         </div>
         <!-- javascript files -->
