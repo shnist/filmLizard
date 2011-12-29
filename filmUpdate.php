@@ -29,12 +29,12 @@
                 <p>
                     This page is used for populating the database.
                 </p>
-                <form action="/assets/scripts/php/" method="POST" id="film-update">
+                <form action="/assets/scripts/php/results.php" method="POST" id="film-update">
                     <fieldset>
                         <legend> Rotten Tomatoes data search for films </legend>
                         <label for="film-search">Search for this film on Rotten Tomatoes: </label>
                         <input type="text" name="film-search" id="film-search">
-                        <input type="submit" value="search for film">
+                        <input type="submit" value="search for film" name="submit">
                     </fieldset>
                 </form>
                 <form action="/assets/scripts/php/populateDatabase.php" method="POST">
