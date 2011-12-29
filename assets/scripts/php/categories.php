@@ -76,7 +76,21 @@
         echo "<p> You searched be genre : ".urldecode($genre)."</p>";
         echo "<p> And by actor : ".urldecode($actor)."</p>";
         $queryResults = $databaseConnection->selectByGenreAndActor($actor, $genre);
+        $arrayLength = count($queryResults);
         
+        echo "<ul>";
+        for ($i = 0; $i < $arrayLength; $i++){
+            echo "<li>";
+                echo "<ul>";
+                    echo "<li>".$queryResults[$i]['title']." </li>";
+                    echo "<li><img src='".urldecode($queryResults[$i]['poster'])."' alt='".$queryResults[$i]['title']."' </li>";
+                    echo "<li>".$queryResults[$i]['certificate']." </li>";
+                    echo "<li>".$queryResults[$i]['releaseDate']." </li>";
+                    echo "<li>".$queryResults[$i]['rating']." </li>";
+                echo "</ul>";
+            echo "</li>";
+        } 
+        echo "</ul>";
         
     } elseif ($_POST['genre-search'] !== 'select'){
         $genre = urlencode($_POST['genre-search']);

@@ -208,15 +208,31 @@ class database {
         }
     }
     function selectByGenreAndActor($actor, $genre){
-        // select * from film where id in (select filmId.actorFilm, filmId.genreFilm from actorFilm, genreFilm where actorId in (select id from actor where name = "actor"
-       // ) and (select id from genre where genre="genre"));
-       
-       //select everything from film where id = select filmId from filmGenre where genreId = select genreId from genreActor where actorId =
-       //select id from actor where name = "name"
-        
-
-        $query = "select * from film where id in (select filmId from actorFilm where actorId in (select id from actor where name = '".$actor."'))
-        and ";
+        // create genre view
+        $genreView = "create view genreSelection as select * from film where id in (select filmId from genreFilm where genreId in
+        (select id from genre where genre = '".$genre."'))";
+        if ($this->connection->query($genreView) !== true){
+            return "error";
+        } else {
+            // filter by actor on genreview
+            $actorFilter = "select * from genreSelection where id in (select filmId from actorFilm where actorId in (select id from
+            actor where name = '".$actor."'))";
+            if ($result = $this->connection->query($query)){
+                // if results were returned
+                if ($result->num_rows !== 0){
+                    while ($row = $result->fetch_assoc()){
+                        $returnedResult[] = $row;
+                    }
+                    return $returnedResult;
+                } else {
+                    echo "no results returned!";
+                }
+                // close query
+                $result->close();
+            } else {
+                echo "query error";
+            } 
+        }
     }
     function selectGenreIdByGenre($genre){
         $query = "select id from genre where genre='".$genre."'";
