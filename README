@@ -3,6 +3,7 @@ To do:
 Immediate Goals 
 - filter by rating
 - filter by release date
+    - use hidden form elements so that the query can be processed 
 - don't assume that the films have already been inputted - modify application to accommodate
 
 Future

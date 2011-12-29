@@ -32,38 +32,37 @@
             <h1> Results </h1>
             <form action="/assets/scripts/php/categories.php" method="POST">
                 <fieldset>
-                    <legend>Filter by rating </legend>
-                    <select name="rating" id="rating">
-                        <option value="select">Select an option</option>
-                        <option value="100">100</option>
-                        <option value="90">90</option>
-                        <option value="80">80</option>
-                        <option value="70">70</option>
-                        <option value="60">60</option>
-                        <option value="50">50</option>
-                        <option value="40">40</option>
-                        <option value="30">30</option>
-                        <option value="20">20</option>
-                        <option value="10">10</option>
-                    </select>
+                    <legend>Original search values</legend>
+<?php
+    // inserting values if they exist
+    if ($_POST['genre-search'] !== 'select' && $_POST['actor-search'] !== ''){
+        $genre = urlencode($_POST['genre-search']);
+        $actor = urlencode($_POST['actor-search']);
+        echo "<select name='genre-search' readonly='readonly'>";
+        echo    "<option value='".$genre."'>".$genre."</option>";
+        echo "</select>";
+        echo "<input type='text' name='actor-search' readonly='readonly' value='".$actor."'>";
+    } elseif ($_POST['genre-search'] !== 'select'){
+        $genre = urlencode($_POST['genre-search']);
+        echo "<select name='genre-search' readonly='readonly'>";
+        echo    "<option value='".$genre."'>".$genre."</option>";
+        echo "</select>";
+        echo "<input type='text' name='actor-search' readonly='readonly' value=''>";        
+    } elseif ($_POST['actor-search'] !== '') {
+        $actor = urlencode($_POST['actor-search']);
+        echo "<select name='genre-search' readonly='readonly'>";
+        echo    "<option value='select'>select</option>";
+        echo "</select>";
+        echo "<input type='text' name='actor-search' readonly='readonly' value='".$actor."'>";      
+    }
+?>                    
                 </fieldset>
                 <fieldset>
-                    <legend>Filter by release date </legend>
-                    <select name="date" id="date">
+                    <legend>Sort by rating </legend>
+                    <select name="filter" id="filter">
                         <option value="select">Select an option</option>
-                        <option value="2012">2012</option>
-                        <option value="2011">2011</option>
-                        <option value="2010">2010</option>
-                        <option value="2009">2009</option>
-                        <option value="2008">2008</option>
-                        <option value="2007">2007</option>
-                        <option value="2006">2006</option>
-                        <option value="2005">2005</option>
-                        <option value="2004">2004</option>
-                        <option value="2003">2003</option>
-                        <option value="2002">2002</option>
-                        <option value="2001">2001</option>
-                        <option value="2000">2000</option>
+                        <option value="rating">rating</option>
+                        <option value="date">release date</option>
                     </select>
                 </fieldset>
                 <input type ="submit" name="submit" value="filter">
@@ -75,6 +74,13 @@
         $actor = urlencode($_POST['actor-search']);
         echo "<p> You searched be genre : ".urldecode($genre)."</p>";
         echo "<p> And by actor : ".urldecode($actor)."</p>";
+        
+        if ($_POST['rating'] !== 'select'){
+        
+        } elseif (){
+        
+        }
+        
         $queryResults = $databaseConnection->selectByGenreAndActor($actor, $genre);
         $arrayLength = count($queryResults);
        
@@ -94,7 +100,7 @@
         
     } elseif ($_POST['genre-search'] !== 'select'){
         $genre = urlencode($_POST['genre-search']);
-        echo "<p> You searched be genre : ".urldecode($genre)."</p>";
+        echo "<p> You searched by genre : ".urldecode($genre)."</p>";
         $genreResults = $databaseConnection->selectByGenre($genre);
         $arrayLength = count($genreResults);
         
