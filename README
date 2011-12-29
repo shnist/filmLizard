@@ -1,10 +1,8 @@
 To do:
 
 Immediate Goals 
-- search by both genre and actor
 - filter by rating
 - filter by release date
-- disable the populate database form so that values cannot be tampered with
 - don't assume that the films have already been inputted - modify application to accommodate
 
 Future

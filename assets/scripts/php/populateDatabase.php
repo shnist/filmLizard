@@ -2,6 +2,8 @@
     // include the database class
     include '/classes/database.php';
     
+    var_dump($_POST);
+    
     if (isset ($_POST['submit'])){
         // ensuring empty values are not submitted
         if ($_POST['id'] !== '' || $_POST['certificate'] !== '' || $_POST['release-date'] !== '' || $_POST['rating'] !== '' || $_POST['poster'] !== ''){

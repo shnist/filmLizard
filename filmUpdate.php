@@ -61,31 +61,31 @@
                         <ul>
                             <li>
                                 <label for="id">ID from database </label>
-                                <input type="text" name="id" id="id">
+                                <input type="text" name="id" id="id" readonly="readonly">
                             </li>
                             <li>
                                 <label for="certificate">Certificate</label>
-                                <input type="text" name="certificate" id="certificate">
+                                <input type="text" name="certificate" id="certificate" readonly="readonly">
                             </li>
                             <li>
                                 <label for="release-date">Release Date </label>
-                                <input type="text" name="release-date" id="release-date">
+                                <input type="text" name="release-date" id="release-date" readonly="readonly">
                             </li>
                             <li>
                                 <label for="rating">Rating </label>
-                                <input type="text" name="rating" id="rating">
+                                <input type="text" name="rating" id="rating" readonly="readonly">
                             </li>
                             <li>
                                 <label for="poster">Poster</label>
-                                <input type="text" name="poster" id="poster">
+                                <input type="text" name="poster" id="poster" readonly="readonly">
                             </li>
                             <li>
                                 <label for="genres">Genres</label>
-                                <textarea name="genres" id="genres"></textarea>
+                                <textarea name="genres" id="genres" readonly="readonly"></textarea>
                             </li>
                             <li>
                                 <label for="actors">Actors</label>
-                                <textarea name="actors" id="actors"></textarea>
+                                <textarea name="actors" id="actors" ></textarea>
                             </li>
                         </ul>
                         <input type="submit" value="populate database" name="submit">
