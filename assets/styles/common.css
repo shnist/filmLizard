@@ -199,6 +199,16 @@ input[type="submit"]:hover{
 .search-results .poster, .search-results .title{
     text-align: center;
 }
+.categories .search-results{
+    border-top: 1px solid;
+    padding: 20px 0 0 0;
+    margin: 0;
+}
+.categories .search-by-information{
+    display: inline-block;
+    width: 650px;
+    margin: 10px 0 5px 0;
+}
 
 /* 6.0 Forms */
 /* 6.1 Primary Search */
@@ -249,7 +259,22 @@ input[type="submit"]:hover{
   All styles relating to the api search results
  */
 
-.add-to-collection input[type="submit"]{
+.add-to-collection input[type="submit"], .get-details input[type="submit"]{
     display: block;
     margin: 20px auto 0 auto;
+}
+
+/* 6.4 Sort By */
+/*
+ * All styles relating to the sort by options on the categories results page
+*/
+
+.sort-by{
+    display: inline-block;
+}
+.sort-by .sort-by-options{
+    display: inline-block;
+}
+.sort-by-options label{
+    width: inherit;
 }
