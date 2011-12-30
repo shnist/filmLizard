@@ -23,12 +23,12 @@
                     <legend>Search for a film </legend>
                     <label for="film-search">Search by title</label>
                     <input type="text" name="film-search" id="film-search">
+                    <input type="submit" value="Search" name="submit">
                 </fieldset>
                 <fieldset>
                     <legend>Search from random film</legend>
                     <input type="submit" value="i'm feeling lucky" name="random">
                 </fieldset>
-                <input type="submit" value="Search" name="submit">
             </form>
             <h2> Categories </h2>
             <form action="/assets/scripts/php/categories.php" method="POST">

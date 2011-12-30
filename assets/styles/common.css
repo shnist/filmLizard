@@ -3,6 +3,10 @@
 /* Contents
     1.0 Common
     2.0 Structure
+    3.0 Ajax
+    4.0 Navigation
+        4.1 Primary Navigation
+    5.0 Category Search Results
 */
 
 /* 1.0 Common */
@@ -18,7 +22,11 @@ body{
 }
 fieldset{
     margin: 10px 0 10px 0;
-    display: none;
+    border: none;
+    padding: 0;
+}
+legend {
+    display: none;    
 }
 label{
     width: 150px;
@@ -100,6 +108,13 @@ li{
 .navigation a:hover{
     color: #666;
 }
+
+/* 4.1 Primary Navigation */
+
+#primary-navigation{
+    margin: 0;
+}
+
 
 
 /* 5.0 Category search results */

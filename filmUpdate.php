@@ -25,9 +25,9 @@
                 </li>
             </ul>
             <div id="content">
-                <h1>Database</h1>
+                <h1>Add A Film To Your Collection</h1>
                 <p>
-                    This page is used for populating the database.
+                    Search for a film and add it to your collection.
                 </p>
                 <form action="/assets/scripts/php/results.php" method="POST" id="film-update">
                     <fieldset>
