@@ -3,10 +3,8 @@
     include '/classes/database.php';
 
     // checks if the form has been submitted
-    if (isset($_POST['submit']) || isset($_POST['random'])) {
-        // start a new connection to the database
-        $databaseConnection = new database("localhost", "root", "", "films");
-    } 
+    $databaseConnection = new database("localhost", "root", "", "films");
+
 ?>
 <!DOCTYPE html>
 
@@ -24,7 +22,7 @@
     <div id="page" class="film-details">
         <?php
             // this ensures that the file is located properly from the assets folder
-            $navigation = $path.="/htmlTemplates/blocks/b_1.0_primary_navigation.html";
+            $navigation = $path."/htmlTemplates/blocks/b_1.0_primary_navigation.html";
             include_once($navigation);
         ?>
         <div id="content">
@@ -42,11 +40,12 @@
             $filmQuery = "select * from film where id='".$film."'";
             $result = $databaseConnection->selectQuery($filmQuery);
         }
-    }
-    // random film
-    if (isset($_POST['random'])){
+    } elseif (isset($_POST['random'])){
+        // random film
         $filmQuery = "select * from film where id >= RAND() * (select max(id) from film) limit 1";
         $result = $databaseConnection->selectQuery($filmQuery);
+    } else {
+        $result = null;
     }
     
     if ($result !== null) {

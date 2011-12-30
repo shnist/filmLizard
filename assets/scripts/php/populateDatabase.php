@@ -22,7 +22,7 @@
     include '/classes/database.php';
     
 
-    if (isset($_POST['submit'])){
+
         $databaseConnection = new database("localhost", "root", "", "films");
         // empty value checking for the most important data
         if ($_POST['release-date'] !== '' || $_POST['rating'] !== ''){
@@ -124,7 +124,7 @@
         } else {
             echo "<p> An empty value has been submitted </p>";
         }
-    }
+
     // close the connection
     unset($databaseConnection);
 

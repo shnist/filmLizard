@@ -24,8 +24,8 @@ label{
     height: 1%;
 }
 input[type="text"], input[type="submit"]{
-    height: inherit;
-    padding: 10px 5px 10px 5px;
+    height: auto;
+    padding: 5px 5px 5px 5px;
 }
 
 /* 4.0 Navigation */

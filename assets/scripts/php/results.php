@@ -19,7 +19,7 @@
                 <h1> Search results </h1>
 <?php
 
-if (isset($_POST['submit'])){
+
     if ($_POST['film-search'] !== ''){
         $film = $_POST['film-search'];
         $apikey = 'wje47anurr2v5f4kv9e3ppjy';
@@ -139,7 +139,7 @@ if (isset($_POST['submit'])){
         echo "<p> No results returned</p>";
         echo "<a href='/filmUpdate.php'>New search</a>";
     }
-}
+
     
 ?>
             </div>
