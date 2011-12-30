@@ -56,9 +56,13 @@
         $genre = urlencode($_POST['genre-search']);
         echo "<p class='search-by-information'> You searched by genre : ".urldecode($genre)."</p>";
         if ($orderBy !== 'select' && $orderBy !== ''){
-            $queryResults = $databaseConnection->selectByGenre($genre, $orderBy);
+            $query = "select * from film where id in (select filmId from genreFilm where genreId in (select id from
+            genre where genre = '".$genre."')) order by ".$orderBy." desc";
+            $queryResults = $databaseConnection->selectQuery($query);
         } else {
-            $queryResults = $databaseConnection->selectByGenre($genre);
+            $query = "select * from film where id in (select filmId from genreFilm where genreId in (select id from
+            genre where genre = '".$genre."'))";
+            $queryResults = $databaseConnection->selectQuery($query);
         }
         $arrayLength = count($queryResults);
         
