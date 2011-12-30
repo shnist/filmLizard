@@ -3,6 +3,7 @@ To do:
 Immediate Goals
 - add the first layer of styling to the site
 
+
 Future
 - Suggested films based on viewing habits
     - dominace of particular actor or genre then it would suggest films
@@ -15,11 +16,14 @@ Future
 - make sure all database connections are closed after use to free up memory
 - be able to update the location of the film
 - convert the certificates into english ones
+- cross browser testing
+- possibility of trailers
 
 Far future
 - look into php templating
 - facebook integration
 - twitter integration
+- aria labels for accessibility
 
 Even further
 - converting back end to node?

@@ -57,9 +57,16 @@ input[type="text"], input[type="submit"]{
 }
 input[type="text"]{
     border: 1px solid #BBB;
+    width: 140px;
 }
 .hidden{
     display: none;
+}
+.category{
+    font-weight: bold;
+}
+select{
+    width: 150px;
 }
 
 /* 1.1 Buttons */
@@ -193,9 +200,6 @@ input[type="submit"]:hover{
     padding: 10px;
     border-radius: 3px;
 }
-.search-results .category{
-    font-weight: bold;
-}
 .search-results .poster, .search-results .title{
     text-align: center;
 }
@@ -281,4 +285,23 @@ input[type="submit"]:hover{
 }
 .sort-by-options select{
     margin: 0 8px 0 0;
+}
+
+/* 7.0 Film Details */
+/*
+ * All styles relating to the detailed search result page
+*/
+
+.film-details img{
+    width: 200px;
+    margin: 0 0 20px 0;
+}
+.film-details ul{
+    display: inline-block;
+    vertical-align: top;
+    width: 400px;
+    margin: 0 0 0 20px;
+}
+.film-details a{
+    display: block;
 }

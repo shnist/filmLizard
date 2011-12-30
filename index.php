@@ -18,7 +18,7 @@
                 help you choose a film for that romantic night in, those lazy days and
                 for when you need to procrastinate!
             </p>           
-            <h2> Categories </h2>
+            <h2> Search for a film in my collection </h2>
             <form action="/assets/scripts/php/categories.php" method="POST">
                 <fieldset>
                     <legend>Search by genre </legend>

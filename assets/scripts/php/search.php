@@ -21,64 +21,75 @@
 </head>
 
 <body>
-    <div id="page">
+    <div id="page" class="film-details">
         <?php
             // this ensures that the file is located properly from the assets folder
             $navigation = $path.="/htmlTemplates/blocks/b_1.0_primary_navigation.html";
             include_once($navigation);
         ?>
         <div id="content">
+            <h1 class="hidden">Film Details</h1> 
 <?php
     if(isset($_POST['film-search'])){
         if($_POST['film-search'] !== ''){
             $film = $_POST['film-search'];        
-            $query = "select * from film where title='".$film."'";
-            $result = $databaseConnection->selectQuery($query);
-            if ($result !== null) {
-                echo "<ul>";
-                echo "<li>Title: ".$result->title."</li>";
-                echo "<li>Rating: ".$result->rating."</li>";
-                echo "<li>Certificate: ".$result->certificate."</li>";
-                echo "<li>Release Year: ".$result->releaseDate."</li>";
-                echo "<li><img src='".urldecode($result->poster)."' alt='".$result->title."'></li>";
-                echo "</ul>";
-            }
+            $filmQuery = "select * from film where title='".$film."'";
+            $result = $databaseConnection->selectQuery($filmQuery);
         }
     } elseif (isset($_POST['film-id'])){
         if($_POST['film-id'] !== ''){
             $film = $_POST['film-id'];
-            $query = "select * from film where id='".$film."'";
-            $result = $databaseConnection->selectQuery($query);
-            if ($result !== null) {
-                echo "<ul>";
-                echo "<li>Title: ".$result->title."</li>";
-                echo "<li>Rating: ".$result->rating."</li>";
-                echo "<li>Certificate: ".$result->certificate."</li>";
-                echo "<li>Release Year: ".$result->releaseDate."</li>";
-                echo "<li><img src='".urldecode($result->poster)."' alt='".$result->title."'></li>";
-                echo "</ul>";
-            }
+            $filmQuery = "select * from film where id='".$film."'";
+            $result = $databaseConnection->selectQuery($filmQuery);
         }
     }
     // random film
     if (isset($_POST['random'])){
-        $query = "select * from film where id >= RAND() * (select max(id) from film) limit 1";
-        $result = $databaseConnection->selectQuery($query);
-        if ($result !== null) {
-            echo "<ul>";
-            echo "<li>Title: ".$result->title."</li>";
-            echo "<li>Rating: ".$result->rating."</li>";
-            echo "<li>Certificate: ".$result->certificate."</li>";
-            echo "<li>Release Year: ".$result->releaseDate."</li>";
-            echo "<li><img src='".urldecode($result->poster)."' alt='".$result->title."'></li>";
-            echo "</ul>";
-        }
+        $filmQuery = "select * from film where id >= RAND() * (select max(id) from film) limit 1";
+        $result = $databaseConnection->selectQuery($filmQuery);
+    }
+    
+    if ($result !== null) {
+        // get the genres
+        $genreQuery = "select genre from genre where id in (select genreId from genreFilm where filmId = '".$result[0]['id']."')";
+        $actorQuery = "select name from actor where id in (select actorId from actorFilm where filmid = '".$result[0]['id']."')";
+        $genres = $databaseConnection->selectQuery($genreQuery);
+        $actors = $databaseConnection->selectQuery($actorQuery);
+        $genresLength = count($genres);
+        $actorsLength = count($actors);
+    
+        echo "<h2>".$result[0]['title']."</h2>";
+        echo "<img src='".urldecode($result[0]['poster'])."' alt='".$result[0]['title']."'>";
+        echo "<ul>";
+            echo "<li><span class='category'>Rating</span>: ".$result[0]['rating']."</li>";
+            echo "<li><span class='category'>Certificate</span>: ".$result[0]['certificate']."</li>";
+            echo "<li><span class='category'>Release Year</span>: ".$result[0]['releaseDate']."</li>";
+            echo "<li><span class='category'>Current Location</span>: ".$result[0]['location']." </li>";
+            echo "<li><span class='category'>Genres</span>: ";
+                for ($i = 0; $i < $genresLength; $i++){
+                    if ($i !== ($genresLength - 1)){
+                        echo urldecode($genres[$i]['genre']).", ";
+                    } else {
+                        echo urldecode($genres[$i]['genre']);
+                    }
+                }
+            echo "</li>";
+            echo "<li><span class='category'>Principal Actors</span>: ";
+                for ($i = 0; $i < $actorsLength; $i++){
+                    if ($i !== ($actorsLength - 1)){
+                        echo urldecode($actors[$i]['name']).", ";
+                    } else {
+                        echo urldecode($actors[$i]['name']);
+                    }
+                }
+            echo "</li>";
+        echo "</ul>";
     }
     
     // close the connection
     unset($databaseConnection);    
 ?>
-            <a href="/index.php">Search another film</a>
+            <a href="/index.php">Search for another film</a>   
         </div>
     </div>
 </body>

@@ -19,20 +19,20 @@ class database {
     }
     function selectQuery ($query){
         // search the database by title
-        if ($result = $this->connection->query($query)) {
-            // if results were returned          
+        if ($result = $this->connection->query($query)){
+            // if results were returned
             if ($result->num_rows !== 0){
-                while ($row = $result->fetch_object()) { 
-                    return $row;
+                while ($row = $result->fetch_assoc()){
+                    $returnedResult[] = $row;
                 }
+                return $returnedResult;
             } else {
-                // testing purposes
                 //echo "no results returned!";
             }
-            // close the query 
+            // close query
             $result->close();
         } else {
-            echo "there has been a query error";
+            echo "query error";
         }
     }
     function insertQuery ($query) {
