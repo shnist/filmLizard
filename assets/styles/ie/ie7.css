@@ -26,9 +26,11 @@ label{
 input[type="text"], input[type="submit"]{
     height: auto;
     padding: 5px 5px 5px 5px;
+    vertical-align: middle;
 }
 ul{
     margin: 0;
+    border: none;
 }
 
 /* 4.0 Navigation */
@@ -61,6 +63,7 @@ ul{
 .categories .search-by-information{
     display: inline;
     height: 1%;
+    width: 520px;
 }
 
 /* 6.0 Forms */

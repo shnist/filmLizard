@@ -191,7 +191,7 @@ input[type="submit"]:hover{
     text-align: center;
 }
 .categories .search-results{
-    border-top: 1px solid;
+    border-top: 1px solid #666;
     padding: 20px 0 0 0;
     margin: 0;
 }

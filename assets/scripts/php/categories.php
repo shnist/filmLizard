@@ -136,6 +136,7 @@
                         echo "<option value='releaseDate'>release date</option>";
                     echo "</select>";
                 echo "</fieldset>";
+                echo "<input type='text' name='submitted' class='hidden'>";
                 echo "<input type='submit' name='submit' value='filter'>";
             echo "</form>";
         echo "<ul class='search-results'>";
