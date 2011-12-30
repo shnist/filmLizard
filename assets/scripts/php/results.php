@@ -126,7 +126,7 @@ if (isset($_POST['submitted'])){
                                 echo "</select>";
                             echo "</li>";
                         echo "</ul>";
-                        echo "<input type='text' name='submitted' class='hidden'>"
+                        echo "<input type='text' name='submitted' class='hidden'>";
                        echo "<input type='submit' value='Add to your collection' name='submit'>";
                     echo "</fieldset>";
                 echo "</form>";

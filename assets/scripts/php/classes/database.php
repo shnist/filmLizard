@@ -39,7 +39,7 @@ class database {
         if ($result = $this->connection->query($query)){
             return "success";
         } else {
-            return "error";
+            return $query." error";
         }  
     }
     function createView($query){
