@@ -78,65 +78,70 @@
         "<p> Oops. It seems you didn't search for anything. Why don't you <a href='index.php'>make another search?</a> </p>";
     }
 ?>
-            <form action="/assets/scripts/php/categories.php" method="POST" class="sort-by">
-                <fieldset class="hidden">
-                    <legend>Original search values</legend>
+
 <?php
-    // inserting values if they exist
-    if ($_POST['genre-search'] !== 'select' && $_POST['actor-search'] !== ''){
-        $genre = urldecode($_POST['genre-search']);
-        $actor = urldecode($_POST['actor-search']);
-        echo "<select name='genre-search' readonly='readonly'>";
-        echo    "<option value='".$genre."'>".$genre."</option>";
-        echo "</select>";
-        echo "<input type='text' name='actor-search' readonly='readonly' value='".$actor."'>";
-    } elseif ($_POST['genre-search'] !== 'select'){
-        $genre = urldecode($_POST['genre-search']);
-        echo "<select name='genre-search' readonly='readonly'>";
-        echo    "<option value='".$genre."'>".$genre."</option>";
-        echo "</select>";
-        echo "<input type='text' name='actor-search' readonly='readonly' value=''>";        
-    } elseif ($_POST['actor-search'] !== '') {
-        $actor = urldecode($_POST['actor-search']);
-        echo "<select name='genre-search' readonly='readonly'>";
-        echo    "<option value='select'>select</option>";
-        echo "</select>";
-        echo "<input type='text' name='actor-search' readonly='readonly' value='".$actor."'>";      
-    }
-?>                    
-                </fieldset>
-                <fieldset class="sort-by-options">
-                    <legend>Sort by rating </legend>
-                    <label for="sort-by">Sort by</label>
-                    <select name="sort-by" id="sort-by">
-                        <option value="select">Select an option</option>
-                        <option value="rating">rating</option>
-                        <option value="releaseDate">release date</option>
-                    </select>
-                </fieldset>
-                <input type ="submit" name="submit" value="filter">
-            </form>
-<?php
-    echo "<ul class='search-results'>";
-    for ($i = 0; $i < $arrayLength; $i++){
-        echo "<li class='result'>";
-            echo "<ul>";
-                echo "<li class='title'>".$queryResults[$i]['title']." </li>";
-                echo "<li class='poster'><img src='".urldecode($queryResults[$i]['poster'])."' alt='".$queryResults[$i]['title']."' </li>";
-                echo "<li><span class='category'>Certificate</span>: ".$queryResults[$i]['certificate']." </li>";
-                echo "<li><span class='category'>Release Date</span>: ".$queryResults[$i]['releaseDate']." </li>";
-                echo "<li><span class='category'>Audience Rating</span>: ".$queryResults[$i]['rating']." </li>";
-                echo "<li><span class='category'>Location</span>: ".$queryResults[$i]['location']." </li>";
-            echo "</ul>";
-            echo "<form action='/assets/scripts/php/search.php' method='post' class='get-details'>";
-                echo "<input type='text' name='film-id' value='".$queryResults[$i]['id']."' readonly='readonly' class='hidden'>";
-                echo "<input type='submit' name='submit' value='View Details'>";
+
+    if ($queryResults !== null){
+            echo "<form action='/assets/scripts/php/categories.php' method='POST' class='sort-by'>";
+                echo "<fieldset class='hidden'>";
+                    echo "<legend>Original search values</legend>";
+                    // inserting values if they exist
+                    if ($_POST['genre-search'] !== 'select' && $_POST['actor-search'] !== ''){
+                        $genre = urldecode($_POST['genre-search']);
+                        $actor = urldecode($_POST['actor-search']);
+                        echo "<select name='genre-search' readonly='readonly'>";
+                        echo    "<option value='".$genre."'>".$genre."</option>";
+                        echo "</select>";
+                        echo "<input type='text' name='actor-search' readonly='readonly' value='".$actor."'>";
+                    } elseif ($_POST['genre-search'] !== 'select'){
+                        $genre = urldecode($_POST['genre-search']);
+                        echo "<select name='genre-search' readonly='readonly'>";
+                        echo    "<option value='".$genre."'>".$genre."</option>";
+                        echo "</select>";
+                        echo "<input type='text' name='actor-search' readonly='readonly' value=''>";        
+                    } elseif ($_POST['actor-search'] !== '') {
+                        $actor = urldecode($_POST['actor-search']);
+                        echo "<select name='genre-search' readonly='readonly'>";
+                        echo    "<option value='select'>select</option>";
+                        echo "</select>";
+                        echo "<input type='text' name='actor-search' readonly='readonly' value='".$actor."'>";      
+                    }
+                echo "</fieldset>";
+                echo "<fieldset class='sort-by-options'>";
+                    echo "<legend>Sort by rating </legend>";
+                    echo "<label for='sort-by'>Sort by</label>";
+                    echo "<select name='sort-by' id='sort-by'>";
+                        echo "<option value='select'>Select an option</option>";
+                        echo "<option value='rating'>rating</option>";
+                        echo "<option value='releaseDate'>release date</option>";
+                    echo "</select>";
+                echo "</fieldset>";
+                echo "<input type='submit' name='submit' value='filter'>";
             echo "</form>";
-        echo "</li>";
-    } 
-    echo "</ul>";
+        echo "<ul class='search-results'>";
+        for ($i = 0; $i < $arrayLength; $i++){
+            echo "<li class='result'>";
+                echo "<ul>";
+                    echo "<li class='title'>".$queryResults[$i]['title']." </li>";
+                    echo "<li class='poster'><img src='".urldecode($queryResults[$i]['poster'])."' alt='".$queryResults[$i]['title']."' </li>";
+                    echo "<li><span class='category'>Certificate</span>: ".$queryResults[$i]['certificate']." </li>";
+                    echo "<li><span class='category'>Release Date</span>: ".$queryResults[$i]['releaseDate']." </li>";
+                    echo "<li><span class='category'>Audience Rating</span>: ".$queryResults[$i]['rating']." </li>";
+                    echo "<li><span class='category'>Location</span>: ".$queryResults[$i]['location']." </li>";
+                echo "</ul>";
+                echo "<form action='/assets/scripts/php/search.php' method='post' class='get-details'>";
+                    echo "<input type='text' name='film-id' value='".$queryResults[$i]['id']."' readonly='readonly' class='hidden'>";
+                    echo "<input type='submit' name='submit' value='View Details'>";
+                echo "</form>";
+            echo "</li>";
+        } 
+        echo "</ul>";
+    } else {
+        echo "<p> No results for your search. Sad times! </p>";
+    }
+
 ?>
-        <p> Not what you were looking for? Try a <a href="/index.php"> different search</a>. </p>
+        <p> Try a <a href="/index.php"> different search</a>. </p>
         </div>
     </div>
 </body>

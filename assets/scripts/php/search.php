@@ -13,7 +13,10 @@
 <html>
 <head>
     <?php
-        include '/htmlTemplates/blocks/b_0.0_head.html';
+        // this ensures that the file is located properly from the assets folder
+        $path = $_SERVER['DOCUMENT_ROOT'];
+        $head = $path.'/htmlTemplates/blocks/b_0.0_head.html';
+        include_once($head);
     ?>
 </head>
 
@@ -21,9 +24,8 @@
     <div id="page">
         <?php
             // this ensures that the file is located properly from the assets folder
-            $path = $_SERVER['DOCUMENT_ROOT'];
             $navigation = $path.="/htmlTemplates/blocks/b_1.0_primary_navigation.html";
-            include_once($path);
+            include_once($navigation);
         ?>
         <div id="content">
 <?php

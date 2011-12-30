@@ -52,7 +52,7 @@ class database {
                 }
                 return $returnedResult;
             } else {
-                echo "no results returned!";
+                //echo "no results returned!";
             }
             // close query
             $result->close();
@@ -77,7 +77,7 @@ class database {
                 }
                 return $returnedResult;
             } else {
-                echo "no results returned!";
+                //echo "no results returned!";
             }
             // close query
             $result->close();
@@ -138,7 +138,7 @@ class database {
                 }
                 return $returnedResult;
             } else {
-                echo "no results returned!";
+                //echo "no results returned!";
             }
             // close query
             $result->close();
@@ -156,7 +156,7 @@ class database {
                 }
                 return $returnedResult;
             } else {
-                echo "no results returned!";
+               // echo "no results returned!";
             }
             // close query
             $result->close();
@@ -200,7 +200,7 @@ class database {
                 }
                 return $returnedResult;
             } else {
-                echo "no results returned!";
+                //echo "no results returned!";
             }
             // close query
             $result->close();
@@ -230,7 +230,7 @@ class database {
                     }
                     return $returnedResult;
                 } else {
-                    echo "no results returned!";
+                    //echo "no results returned!";
                 }
                 // close query
                 $result->close();
@@ -251,7 +251,7 @@ class database {
                 }
                 return $returnedResult;
             } else {
-                echo "no results returned!";
+                //echo "no results returned!";
             }
             // close query
             $result->close();
@@ -269,7 +269,7 @@ class database {
                 }
                 return $returnedResult;
             } else {
-                echo "no results returned!";
+                //echo "no results returned!";
             }
             // close query
             $result->close();
