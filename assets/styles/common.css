@@ -191,6 +191,13 @@ input[type="submit"]:hover{
     vertical-align: top;
     margin: 0 10px 20px 0;
     padding: 10px;
+    border-radius: 3px;
+}
+.search-results .category{
+    font-weight: bold;
+}
+.search-results .poster, .search-results .title{
+    text-align: center;
 }
 
 /* 6.0 Forms */
@@ -241,3 +248,8 @@ input[type="submit"]:hover{
 /*
   All styles relating to the api search results
  */
+
+.add-to-collection input[type="submit"]{
+    display: block;
+    margin: 20px auto 0 auto;
+}
