@@ -42,6 +42,13 @@ class database {
             return "error";
         }  
     }
+    function createView($query){
+        if ($result = $this->connection->query($query)){
+            return "success";
+        } else {
+            return "error";
+        }  
+    }
     function searchForIdByTitle($title) {
         $query = "select id from film where title='".$title."'";
         if ($result = $this->connection->query($query)){

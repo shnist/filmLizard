@@ -43,13 +43,24 @@
         $genre = urlencode($_POST['genre-search']);
         $actor = urlencode($_POST['actor-search']);
         echo "<p class='search-by-information'> You searched by genre : ".urldecode($genre).". And by actor : ".urldecode($actor)."</p>";
-       
-        if ($orderBy !== 'select' && $orderBy !== ''){
-            $queryResults = $databaseConnection->selectByGenreAndActor($actor, $genre, $orderBy);
+
+        $viewQuery = "create or replace view genreSelection as select * from film where id in (select filmId from
+        genreFilm where genreId in (select id from genre where genre = '".$genre."'))";
+        $viewResults = $databaseConnection->createView($viewQuery);
+        if ($viewResults === 'success'){
+            if ($orderBy !== 'select' && $orderBy !== ''){
+                $query = "select * from genreSelection where id in (select filmId from actorFilm where actorId in (select id from
+                actor where name like '%".$actor."%')) order by ".$orderBy." desc";        
+                $queryResults = $databaseConnection->selectQuery($query);
+            } else {
+                $query = "select * from genreSelection where id in (select filmId from actorFilm where actorId in (select id from
+                actor where name like '%".$actor."%'))";        
+                $queryResults = $databaseConnection->selectQuery($query);
+            }
         } else {
-            $queryResults = $databaseConnection->selectByGenreAndActor($actor, $genre);
+            $queryResults = 'empty';
         }
-    
+
         $arrayLength = count($queryResults);
         
     } elseif ($_POST['genre-search'] !== 'select'){
