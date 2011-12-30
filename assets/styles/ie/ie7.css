@@ -19,3 +19,6 @@
 .navigation a{
     color: #FFF;  
 }
+.navigation a:hover{
+    color: #BBB;
+}
