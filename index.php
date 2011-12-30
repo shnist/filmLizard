@@ -17,19 +17,7 @@
                 Keep track of your physical film collection online with Film Lizard. Let it
                 help you choose a film for that romantic night in, those lazy days and
                 for when you need to procrastinate!
-            </p>
-            <form action="/assets/scripts/php/search.php" method="POST" class="primary-search">
-                <fieldset>
-                    <legend>Search for a film </legend>
-                    <label for="film-search">Search by title</label>
-                    <input type="text" name="film-search" id="film-search">
-                    <input type="submit" value="Search" name="submit">
-                </fieldset>
-                <fieldset>
-                    <legend>Search from random film</legend>
-                    <input type="submit" value="i'm feeling lucky" name="random">
-                </fieldset>
-            </form>            
+            </p>           
             <h2> Categories </h2>
             <form action="/assets/scripts/php/categories.php" method="POST">
                 <fieldset>

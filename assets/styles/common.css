@@ -7,6 +7,8 @@
     4.0 Navigation
         4.1 Primary Navigation
     5.0 Category Search Results
+    6.0 Forms
+        6.1 Primary Search
 */
 
 /* 1.0 Common */
@@ -120,6 +122,16 @@ h1, h2, h3, h4, h5{
 
 #primary-navigation{
     margin: 0;
+    padding: 20px 15px 15px 15px;
+    font-family: Armata, verdana, sans-serif;
+    font-weight: 500;
+}
+#primary-navigation a{
+    font-size: 18px;
+}
+#primary-navigation ul{
+    display: inline-block;
+    vertical-align: top;
 }
 
 
@@ -136,4 +148,15 @@ h1, h2, h3, h4, h5{
     vertical-align: top;
     margin: 0 10px 20px 0;
     padding: 10px;
+}
+
+/* 6.0 Forms */
+/* 6.1 Primary Search */
+/*
+ * All styles relating to the primary search bar in the primary navigation
+ */
+
+#primary-search{
+    display: inline-block;
+    vertical-align: top;
 }
