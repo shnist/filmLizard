@@ -41,5 +41,8 @@
                 </form>            
             </div>
         </div>
+<?php
+   include '/htmlTemplates/blocks/b_0.1_scripts.html';
+?>           
     </body>
 </html>

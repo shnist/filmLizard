@@ -14,6 +14,16 @@
     7.0 Film Details
 */
 
+/* 1.0 Common */
+/*
+ * All styles relating to common elements
+*/
+
+input[type="text"], input[type="submit"]{
+    height: inherit;
+    padding: 5px 5px 5px 5px;
+}
+
 /* 4.0 Navigation */
 
 .navigation a{

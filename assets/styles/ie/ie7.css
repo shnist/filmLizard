@@ -14,11 +14,84 @@
     7.0 Film Details
 */
 
+/* 1.0 Common */
+/*
+ * All styles relating to common elements
+*/
+
+label{
+    display: inline;
+    height: 1%;
+}
+input[type="text"], input[type="submit"]{
+    height: inherit;
+    padding: 10px 5px 10px 5px;
+}
+
 /* 4.0 Navigation */
 
+.navigation li{
+    display: inline;
+    height: 1%;
+}
 .navigation a{
     color: #FFF;  
 }
 .navigation a:hover{
     color: #BBB;
+}
+
+
+/* 4.1 Primary Navigation */
+
+#primary-navigation ul{
+    display: inline;
+    height: 1%;
+}
+
+/* 5.0 Category search results */
+
+.search-results .result{
+    display: inline;
+    height: 1%;
+}
+.categories .search-by-information{
+    display: inline;
+    height: 1%;
+}
+
+/* 6.0 Forms */
+/* 6.1 Primary Search */
+/*
+ * All styles relating to the primary search bar in the primary navigation
+ */
+
+#primary-search fieldset{
+    display: inline;
+    height: 1%;
+}
+
+
+/* 6.4 Sort By */
+/*
+ * All styles relating to the sort by options on the categories results page
+*/
+
+.sort-by{
+    display: inline;
+    height: 1%;
+}
+.sort-by .sort-by-options{
+    display: inline;
+    height: 1%;
+}
+
+/* 7.0 Film Details */
+/*
+ * All styles relating to the detailed search result page
+*/
+
+.film-details ul{
+    display: inline;
+    height: 1%;
 }

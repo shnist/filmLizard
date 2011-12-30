@@ -144,5 +144,9 @@ if (isset($_POST['submit'])){
 ?>
             </div>
         </div>
+<?php
+    $scripts = $path.'/htmlTemplates/blocks/b_0.1_scripts.html';
+    include_once($scripts);
+?>          
     </body>
 </html>
