@@ -73,11 +73,11 @@
         if ($orderBy !== 'select' && $orderBy !== ''){
             echo "here";
             $query = "select * from film where id in (select filmId from actorFilm where actorId in (select id from actor
-            where name = '".$actor."')) order by ".$orderBy." desc";
+            where name like '%".$actor."%')) order by ".$orderBy." desc";
             $queryResults = $databaseConnection->selectQuery($query);
         } else {
             $query = "select * from film where id in (select filmId from actorFilm where actorId in (select id from actor
-            where name = '".$actor."'))";
+            where name like '%".$actor."%'))";
             $queryResults = $databaseConnection->selectQuery($query);
         }        
         $arrayLength = count($queryResults);

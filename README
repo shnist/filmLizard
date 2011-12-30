@@ -1,20 +1,20 @@
 To do:
 
 Immediate Goals
-- make film title searchable by part name
-
+- search by actor = make partial names work
+- refactor database class - a lot of repitition can probably be reduced
+- quick search - search by film title and by actor name?
 - cross browser testing
     - style updates for internet 9 - 7
 
 - make unstable branch for new features
 
-- quick search - search by film title and by actor name?
 
 Future
 - Suggested films based on viewing habits
     - dominace of particular actor or genre then it would suggest films
     - suggested films in a sidebar that you could rent or buy online
-- refactor database class - a lot of repitition can probably be reduced
+
 - suggest films you may own - looks at most popular actors and genres from your collection
     - each film comes with a public suggested films json file from rotten tomatoes which may be useful
 - pagination for search results
