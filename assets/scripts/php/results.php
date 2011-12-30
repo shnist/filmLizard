@@ -43,8 +43,8 @@ if (isset($_POST['submit'])){
         $searchResults = json_decode($data);
         if ($searchResults === NULL) die('Error parsing json');
         
-        // play with the data!
         $movies = $searchResults->movies;
+        echo "<p>Not what you were looking for? <a href='/filmUpdate.php'> Search for another film</a></p>";
         echo "<ul class='search-results'>";
         foreach ($movies as $movie) {
             // search for movie details to extract the genres
@@ -126,13 +126,12 @@ if (isset($_POST['submit'])){
                                 echo "</select>";
                             echo "</li>";
                         echo "</ul>";
-                       echo "<input type='submit' value='add to the collection' name='submit'>";
+                       echo "<input type='submit' value='Add to your collection' name='submit'>";
                     echo "</fieldset>";
                 echo "</form>";
             echo "</li>";
         } 
         echo "</ul>";        
-        echo "<a href='/filmUpdate.php'>New search</a>";
     } elseif ($_POST['film-search'] === '') {
         echo "<p> You did not search for anything</p>";
         echo "<a href='/filmUpdate.php'>New search</a>";

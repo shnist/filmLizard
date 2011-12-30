@@ -26,7 +26,8 @@ class database {
                     return $row;
                 }
             } else {
-                echo "no results returned!";
+                // testing purposes
+                //echo "no results returned!";
             }
             // close the query 
             $result->close();

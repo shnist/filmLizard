@@ -1,3 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <?php
+        // this ensures that the file is located properly from the assets folder
+        $path = $_SERVER['DOCUMENT_ROOT'];
+        $head = $path.'/htmlTemplates/blocks/b_0.0_head.html';
+        include_once($head);
+    ?>
+</head>
+<body> 
+    <div id="page">
+        <?php
+            // this ensures that the file is located properly from the assets folder
+            $navigation = $path.'/htmlTemplates/blocks/b_1.0_primary_navigation.html';
+            include_once($navigation);
+        ?>
+        <div id="content">
 <?php
     // include the database class
     include '/classes/database.php';
@@ -45,17 +64,6 @@
                     // get all the existing genres from the database
                     $existingGenres = $databaseConnection->selectAllGenres();
                     
-                    // error checking
-                    //echo "<p> genres of film </p>";
-                    //var_dump($genreArray);
-                    //if ($existingGenres !== null){
-                    //    echo "<p> existing genres </p>";
-                    //    var_dump($existingGenres);
-                    //} else {
-                    //    echo "<p> no existing genres </p>";
-                    //}
-                    // eo error checking
-                            
                     // the differences between the two arrays is compared and genres that do not exist
                     // in the database are assigned to the new genres variable
                     if ($existingGenres !== null){
@@ -109,26 +117,20 @@
                     if ($updateActorFilm === "error") {
                         echo $updateActorFilm;
                     }             
-                }
-                
+                }   
             } else {
                 echo "<p> This film already exists in your collection </p>";
             }
-            
-            
-            
-            
         } else {
             echo "<p> An empty value has been submitted </p>";
         }
-        
-        
-        
     }
-    
     // close the connection
     unset($databaseConnection);
 
-    echo "<a href='/filmUpdate.php'>Go Back </a>";
-
+    echo "<a href='/filmUpdate.php'>Add Another Film To Your Collection</a>";
 ?>
+        </div>
+    </div>
+</body>
+</html>
