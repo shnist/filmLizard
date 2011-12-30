@@ -36,6 +36,7 @@
                         <legend> Rotten Tomatoes data search for films </legend>
                         <label for="film-search">Search for this film on Rotten Tomatoes: </label>
                         <input type="text" name="film-search" id="film-search" placeholder="Find a film to add to your collection...">
+                        <input type="text" name="submitted" class="hidden">
                         <input type="submit" value="Search" name="submit">
                     </fieldset>
                 </form>            

@@ -19,7 +19,7 @@
                 <h1> Search results </h1>
 <?php
 
-
+if (isset($_POST['submitted'])){
     if ($_POST['film-search'] !== ''){
         $film = $_POST['film-search'];
         $apikey = 'wje47anurr2v5f4kv9e3ppjy';
@@ -126,6 +126,7 @@
                                 echo "</select>";
                             echo "</li>";
                         echo "</ul>";
+                        echo "<input type='text' name='submitted' class='hidden'>"
                        echo "<input type='submit' value='Add to your collection' name='submit'>";
                     echo "</fieldset>";
                 echo "</form>";
@@ -139,7 +140,7 @@
         echo "<p> No results returned</p>";
         echo "<a href='/filmUpdate.php'>New search</a>";
     }
-
+}
     
 ?>
             </div>
