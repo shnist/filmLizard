@@ -2,9 +2,11 @@
     // include the database class
     include '/classes/database.php';
     
-    // start a new connection to the database
-    $databaseConnection = new database("localhost", "root", "", "films");
-
+    // checks if the form has been submitted
+    if (isset($_POST['submitted'])) {
+        // start a new connection to the database
+        $databaseConnection = new database("localhost", "root", "", "films");
+    }
 ?>
 
 <!DOCTYPE html>

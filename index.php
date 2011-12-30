@@ -45,6 +45,7 @@
                     <label for="actor-search">Search by actor</label>
                     <input type="text" name="actor-search" id="actor-search">
                 </fieldset>
+                <input type="text" name="submitted" class="hidden"> 
                 <input type="submit" value="Search" name="submit" class="submit">
             </form>
         </div>
