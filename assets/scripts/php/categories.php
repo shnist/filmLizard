@@ -1,37 +1,35 @@
 <?php
     // include the database class
     include '/classes/database.php';
-
     
     // checks if the form has been submitted
     if (isset($_POST['submit'])) {
         // start a new connection to the database
         $databaseConnection = new database("localhost", "root", "", "films");
     }
-
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Aaron's Film Collection</title>
-    <link href="/assets/styles/common.css" rel="stylesheet">
+    <?php
+        // this ensures that the file is located properly from the assets folder
+        $path = $_SERVER['DOCUMENT_ROOT'];
+        $head = $path.'/htmlTemplates/blocks/b_0.0_head.html';
+        include_once($head);
+    ?>
 </head>
-
 <body>
     <div id="page">
-        <ul class="navigation" id="primary-navigation">
-            <li>
-                <a href="/index.php">Home</a>
-            </li>
-            <li>
-                <a href="/filmUpdate.php">Update Database</a>
-            </li>
-        </ul>
+        <?php
+            // this ensures that the file is located properly from the assets folder
+            $navigation = $path.'/htmlTemplates/blocks/b_1.0_primary_navigation.html';
+            include_once($navigation);
+        ?>        
         <div id="content">
             <h1> Results </h1>
             <form action="/assets/scripts/php/categories.php" method="POST">
-                <fieldset>
+                <fieldset class="hidden">
                     <legend>Original search values</legend>
 <?php
     // inserting values if they exist
@@ -81,7 +79,7 @@
     if ($_POST['genre-search'] !== 'select' && $_POST['actor-search'] !== ''){
         $genre = urlencode($_POST['genre-search']);
         $actor = urlencode($_POST['actor-search']);
-        echo "<p> You searched be genre : ".urldecode($genre)."</p>";
+        echo "<p> You searched by genre : ".urldecode($genre)."</p>";
         echo "<p> And by actor : ".urldecode($actor)."</p>";
         
         if ($orderBy !== 'select'){
@@ -92,52 +90,18 @@
         
         $queryResults = $databaseConnection->selectByGenreAndActor($actor, $genre);
         $arrayLength = count($queryResults);
-       
-        echo "<ul class='search-results'>";
-        for ($i = 0; $i < $arrayLength; $i++){
-            echo "<li class='result'>";
-                echo "<ul>";
-                    echo "<li>".$queryResults[$i]['title']." </li>";
-                    echo "<li><img src='".urldecode($queryResults[$i]['poster'])."' alt='".$queryResults[$i]['title']."' </li>";
-                    echo "<li>".$queryResults[$i]['certificate']." </li>";
-                    echo "<li>".$queryResults[$i]['releaseDate']." </li>";
-                    echo "<li>".$queryResults[$i]['rating']." </li>";
-                echo "</ul>";
-                echo "<form action='/assets/scripts/php/search.php' method='post'>";
-                    echo "<input type='text' name='film-id' value='".$queryResults[$i]['id']."' readonly='readonly'>";
-                    echo "<input type='submit' name='submit' value='get details'>";
-                echo "</form>";
-            echo "</li>";
-        } 
-        echo "</ul>";
         
     } elseif ($_POST['genre-search'] !== 'select'){
         $genre = urlencode($_POST['genre-search']);
         echo "<p> You searched by genre : ".urldecode($genre)."</p>";
         if ($orderBy !== 'select'){
-            $genreResults = $databaseConnection->selectByGenre($genre, $orderBy);
+            $queryResults = $databaseConnection->selectByGenre($genre, $orderBy);
         } else {
-            $genreResults = $databaseConnection->selectByGenre($genre);
+            $queryResults = $databaseConnection->selectByGenre($genre);
         }
-        $arrayLength = count($genreResults);
+        $arrayLength = count($queryResults);
         
-        echo "<ul class='search-results'>";
-        for ($i = 0; $i < $arrayLength; $i++){
-            echo "<li class='result'>";
-                echo "<ul>";
-                    echo "<li>".$genreResults[$i]['title']." </li>";
-                    echo "<li><img src='".urldecode($genreResults[$i]['poster'])."' alt='".$genreResults[$i]['title']."' </li>";
-                    echo "<li>".$genreResults[$i]['certificate']." </li>";
-                    echo "<li>".$genreResults[$i]['releaseDate']." </li>";
-                    echo "<li>".$genreResults[$i]['rating']." </li>";
-                echo "</ul>";
-                echo "<form action='/assets/scripts/php/search.php' method='post'>";
-                    echo "<input type='text' name='film-id' value='".$genreResults[$i]['id']."' readonly='readonly'>";
-                    echo "<input type='submit' name='submit' value='get details'>";
-                echo "</form>";
-            echo "</li>";
-        } 
-        echo "</ul>";
+
     } elseif ($_POST['actor-search'] !== '') {
         $actor = urlencode($_POST['actor-search']);
         echo "<p> You searched by actor : ".urldecode($actor)."</p>";
@@ -146,29 +110,30 @@
         } else {
             $queryResults = $databaseConnection->selectByActor($actor);
         }        
-        $actorResults = $databaseConnection->selectByActor($actor);
-        $arrayLength = count($actorResults);
-        
-        echo "<ul class='search-results'>";
-        for ($i = 0; $i < $arrayLength; $i++){
-            echo "<li class='result'>";
-                echo "<ul>";
-                    echo "<li>".$actorResults[$i]['title']." </li>";
-                    echo "<li><img src='".urldecode($actorResults[$i]['poster'])."' alt='".$actorResults[$i]['title']."' </li>";
-                    echo "<li>".$actorResults[$i]['certificate']." </li>";
-                    echo "<li>".$actorResults[$i]['releaseDate']." </li>";
-                    echo "<li>".$actorResults[$i]['rating']." </li>";
-                echo "</ul>";
-                echo "<form action='/assets/scripts/php/search.php' method='post'>";
-                    echo "<input type='text' name='film-id' value='".$actorResults[$i]['id']."' readonly='readonly'>";
-                    echo "<input type='submit' name='submit' value='get details'>";
-                echo "</form>";
-            echo "</li>";
-        } 
-        echo "</ul>";        
+        $queryResults = $databaseConnection->selectByActor($actor);
+        $arrayLength = count($queryResults);
+               
     } else {
-        "<p> nothing was searched </p>";
+        "<p> Oops. It seems you didn't search for anything. Why don't you <a href='index.php'>make another search?</a> </p>";
     }
+    
+    echo "<ul class='search-results'>";
+    for ($i = 0; $i < $arrayLength; $i++){
+        echo "<li class='result'>";
+            echo "<ul>";
+                echo "<li class='title'>".$queryResults[$i]['title']." </li>";
+                echo "<li class='poster'><img src='".urldecode($queryResults[$i]['poster'])."' alt='".$queryResults[$i]['title']."' </li>";
+                echo "<li>".$queryResults[$i]['certificate']." </li>";
+                echo "<li>".$queryResults[$i]['releaseDate']." </li>";
+                echo "<li>".$queryResults[$i]['rating']." </li>";
+            echo "</ul>";
+            echo "<form action='/assets/scripts/php/search.php' method='post'>";
+                echo "<input type='text' name='film-id' value='".$queryResults[$i]['id']."' readonly='readonly' class='hidden'>";
+                echo "<input type='submit' name='submit' value='get details'>";
+            echo "</form>";
+        echo "</li>";
+    } 
+    echo "</ul>";
 
 ?>
             <a href="/index.php">Back to search </a>
