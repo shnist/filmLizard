@@ -15,10 +15,11 @@
 */
 
 body{
-    font-family: verdana, arial, sans-serif;
+    font-family: 'Trykker', georgia, serif;
     background: #DDD;
     margin: 0;
     padding: 0;
+    font-weight: 500;
 }
 fieldset{
     margin: 10px 0 10px 0;
@@ -43,6 +44,9 @@ li{
 .hidden{
     display: none;
 }
+h1, h2, h3, h4, h5{
+    margin: 10px 0 10px 0;
+}
 
 
 /* 2.0 Structure */
@@ -55,9 +59,12 @@ li{
     margin: 0 auto;
     background: #FFF;
     border-radius: 0 0 5px 5px;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px #888;
+    box-shadow: 0 0 5px #888;
 }
 #content{
-    padding: 10px;
+    padding: 15px;
 }
 
 /* 3.0 Ajax */
