@@ -18,7 +18,7 @@
                 help you choose a film for that romantic night in, those lazy days and
                 for when you need to procrastinate!
             </p>
-            <form action="/assets/scripts/php/search.php" method="POST">
+            <form action="/assets/scripts/php/search.php" method="POST" class="primary-search">
                 <fieldset>
                     <legend>Search for a film </legend>
                     <label for="film-search">Search by title</label>
