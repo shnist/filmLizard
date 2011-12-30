@@ -75,13 +75,14 @@
         $arrayLength = count($queryResults);
                
     } else {
-        "<p> Oops. It seems you didn't search for anything. Why don't you <a href='index.php'>make another search?</a> </p>";
+        $queryResults = "empty";
+        echo "<p> Oops. It seems you didn't search for anything. Why don't you <a href='/index.php'>make another search?</a> </p>";
     }
 ?>
 
 <?php
 
-    if ($queryResults !== null){
+    if ($queryResults !== null && $queryResults !== "empty"){
             echo "<form action='/assets/scripts/php/categories.php' method='POST' class='sort-by'>";
                 echo "<fieldset class='hidden'>";
                     echo "<legend>Original search values</legend>";
@@ -136,11 +137,12 @@
             echo "</li>";
         } 
         echo "</ul>";
-    } else {
+        echo "<p> Try a <a href='/index.php'> different search</a>. </p>";
+    } elseif ($queryResults !== "empty") {
         echo "<p> No results for your search. Sad times! </p>";
+        echo "<p> Try a <a href='/index.php'> different search</a>. </p>";
     }
 ?>
-        <p> Try a <a href="/index.php"> different search</a>. </p>
         </div>
     </div>
 </body>
