@@ -139,7 +139,6 @@
     } else {
         echo "<p> No results for your search. Sad times! </p>";
     }
-
 ?>
         <p> Try a <a href="/index.php"> different search</a>. </p>
         </div>

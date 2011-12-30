@@ -206,7 +206,7 @@ input[type="submit"]:hover{
 }
 .categories .search-by-information{
     display: inline-block;
-    width: 650px;
+    width: 640px;
     margin: 10px 0 5px 0;
 }
 
@@ -277,4 +277,8 @@ input[type="submit"]:hover{
 }
 .sort-by-options label{
     width: inherit;
+    margin: 0 8px 0 0;
+}
+.sort-by-options select{
+    margin: 0 8px 0 0;
 }
