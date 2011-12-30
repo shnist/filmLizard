@@ -1,4 +1,4 @@
-/*! Styles for the Film Database */
+/*! Styles for the Film Lizard */
 
 /* Contents
     1.0 Common
@@ -137,7 +137,7 @@ input[type="submit"]:hover{
     display: inline-block;
     margin: 0 10px 0 0;
 }
-.navigation a{
+.navigation a{ 
     color: rgba(254, 254, 254, 0.6);
     text-decoration: none;    
 }

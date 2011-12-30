@@ -1,0 +1,21 @@
+/*! Styles for the Film Lizard */
+
+/* Contents
+    1.0 Common
+        1.1 Buttons
+    2.0 Structure
+    3.0 Javascript
+        3.1 Placeholder
+    4.0 Navigation
+        4.1 Primary Navigation
+    5.0 Category Search Results
+    6.0 Forms
+        6.1 Primary Search
+    7.0 Film Details
+*/
+
+/* 4.0 Navigation */
+
+.navigation a{
+    color: #FFF;  
+}

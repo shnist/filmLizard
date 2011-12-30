@@ -1,7 +1,6 @@
 To do:
 
 Immediate Goals
-- search by actor = make partial names work
 - refactor database class - a lot of repitition can probably be reduced
 - quick search - search by film title and by actor name?
 - cross browser testing
