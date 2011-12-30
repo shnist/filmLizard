@@ -53,6 +53,10 @@ h1, h2, h3, h4, h5{
 input[type="text"], input[type="submit"]{
     height: 30px;
     padding: 0 5px 0 5px;
+    border-radius: 3px;
+}
+input[type="text"]{
+    border: 1px solid #BBB;
 }
 
 /* 1.1 Buttons */
@@ -63,9 +67,11 @@ input[type="submit"]{
     border: none;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) inset;
     color: #FFFFFF;
-    border-radius: 3px;
     font-family: Armata, verdana, sans-serif;
     font-weight: 500;    
+}
+input[type="submit"]:hover{
+    color: #DDD;
 }
 
 /* 2.0 Structure */
@@ -74,16 +80,17 @@ input[type="submit"]{
 */
 
 #page{
+
+}
+#content{
+    padding: 15px;
     width: 900px;
-    margin: 0 auto;
+    margin: 20px auto 0;
     background: #FFF;
     border-radius: 0 0 5px 5px;
     -moz-box-shadow: 0 0 5px #888;
     -webkit-box-shadow: 0 0 5px #888;
-    box-shadow: 0 0 5px #888;
-}
-#content{
-    padding: 15px;
+    box-shadow: 0 0 5px #888;    
 }
 
 /* 3.0 Ajax */
@@ -121,7 +128,7 @@ input[type="submit"]{
 /* 4.0 Navigation */
 
 .navigation{
-    background: #CCC;
+    background: #333;
     padding: 10px;
 }
 .navigation li{
@@ -129,7 +136,7 @@ input[type="submit"]{
     margin: 0 10px 0 0;
 }
 .navigation a{
-    color: #444;
+    color: rgba(254, 254, 254, 0.6);
 }
 .navigation a:hover{
     color: #666;
@@ -175,7 +182,9 @@ input[type="submit"]{
  */
 
 #primary-search{
-    display: inline-block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
     vertical-align: top;
 }
 #primary-search label{
