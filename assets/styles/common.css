@@ -4,12 +4,14 @@
     1.0 Common
         1.1 Buttons
     2.0 Structure
-    3.0 Ajax
+    3.0 Javascript
+        3.1 Placeholder
     4.0 Navigation
         4.1 Primary Navigation
     5.0 Category Search Results
     6.0 Forms
         6.1 Primary Search
+    7.0 Film Details
 */
 
 /* 1.0 Common */
@@ -108,8 +110,8 @@ input[type="submit"]:hover{
     box-shadow: 0 0 5px #888;    
 }
 
-/* 3.0 Ajax */
-/* All styles relating to server connections */
+/* 3.0 Javascript */
+/* All styles relating to dynamic elements */
 
 #loader{
     display: block;
@@ -118,26 +120,11 @@ input[type="submit"]:hover{
     background: url(/assets/images/loader.gif) no-repeat;
 }
 
-/* 3.1 Api film search results */
+/* 3.1 Placeholder */
+/* Styling generated placeholders */
 
-.film-search-results li{
-    display: inline-block;
-    margin: 0 10px 0 0;
-    width: 100px;
-    vertical-align: top;
-    max-height: 350px;
-}
-.film-search-results a{
-    display: block;
-    padding: 10px;
-    border: 1px solid #999;
-}
-.film-search-results a.selected{
-    border: 1px solid #ABC;
-    background: #DDD;
-}
-.film-search-results img{
-    width: 65px;
+.hasPlaceholder{
+    color: #888;
 }
 
 /* 4.0 Navigation */

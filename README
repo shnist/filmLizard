@@ -1,10 +1,11 @@
 To do:
 
 Immediate Goals
+- make film title searchable by part name
+
 - placeholder support for internet explorer
 - cross browser testing
     - style updates for internet 9 - 7
-- browser support to readme and about page
 
 - make unstable branch for new features
 
