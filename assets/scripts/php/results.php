@@ -2,16 +2,18 @@
 <html>
     <head>
         <?php
-            include '/htmlTemplates/blocks/b_0.0_head.html';
+            // this ensures that the file is located properly from the assets folder
+            $path = $_SERVER['DOCUMENT_ROOT'];
+            $head = $path.'/htmlTemplates/blocks/b_0.0_head.html';
+            include_once($head);
         ?>
     </head>
     <body>
         <div id="page">
             <?php
                 // this ensures that the file is located properly from the assets folder
-                $path = $_SERVER['DOCUMENT_ROOT'];
-                $navigation = $path."/htmlTemplates/blocks/b_1.0_primary_navigation.html";
-                include_once($path);
+                $navigation = $path.'/htmlTemplates/blocks/b_1.0_primary_navigation.html';
+                include_once($navigation);
             ?>
             <div id="content">
                 <h1> Search results </h1>
@@ -86,7 +88,7 @@ if (isset($_POST['submit'])){
                     echo "<li>".$movie->year." </li>";
                     echo "<li>".$movie->ratings->audience_score." </li>";
                 echo "</ul>";
-                echo "<form action='/assets/scripts/php/populateDatabase.php' method='POST'>";
+                echo "<form action='/assets/scripts/php/populateDatabase.php' method='POST' class='add-to-collection'>";
                     echo "<fieldset>";
                         echo "<legend> Add the film to your collection </legend>";
                         echo "<ul>";

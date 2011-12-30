@@ -1,8 +1,7 @@
 To do:
 
 Immediate Goals
-- make search by title and i'm feeling lucky prevelant throughout the whole site
-
+- add the first layer of styling to the site
 
 Future
 - Suggested films based on viewing habits
@@ -14,7 +13,8 @@ Future
 - pagination for search results
 - release date both from oldest and newest 
 - make sure all database connections are closed after use to free up memory
-- update the location of the film
+- be able to update the location of the film
+- convert the certificates into english ones
 
 Far future
 - look into php templating
