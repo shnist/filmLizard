@@ -6,14 +6,12 @@
     </head>
     <body>
         <div id="page">
-            <ul class="navigation" id="primary-navigation">
-                <li>
-                    <a href="/index.php">Home</a>
-                </li>
-                <li>
-                    <a href="/filmUpdate.php">Update Database</a>
-                </li>
-            </ul>
+            <?php
+                // this ensures that the file is located properly from the assets folder
+                $path = $_SERVER['DOCUMENT_ROOT'];
+                $navigation = $path."/htmlTemplates/blocks/b_1.0_primary_navigation.html";
+                include_once($path);
+            ?>
             <div id="content">
                 <h1> Search results </h1>
 <?php

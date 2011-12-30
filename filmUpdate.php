@@ -16,14 +16,9 @@
     
     <body>
         <div id="page">
-            <ul class="navigation" id="primary-navigation">
-                <li>
-                    <a href="index.php">Home</a>
-                </li>
-                <li>
-                    <a href="filmUpdate.php">Add A Film</a>
-                </li>
-            </ul>
+            <?php
+                include '/htmlTemplates/blocks/b_1.0_primary_navigation.html';
+            ?>
             <div id="content">
                 <h1>Add A Film To Your Collection</h1>
                 <p>

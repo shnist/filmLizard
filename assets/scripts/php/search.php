@@ -18,6 +18,13 @@
 
 <body>
     <div id="page">
+        <?php
+            // this ensures that the file is located properly from the assets folder
+            $path = $_SERVER['DOCUMENT_ROOT'];
+            $navigation = $path.="/htmlTemplates/blocks/b_1.0_primary_navigation.html";
+            include_once($path);
+        ?>
+        <div id="content">
 <?php
     if(isset($_POST['film-search'])){
         if($_POST['film-search'] !== ''){
@@ -68,7 +75,8 @@
     // close the connection
     unset($databaseConnection);    
 ?>
-    <a href="/index.php">Search another film</a>
+            <a href="/index.php">Search another film</a>
+        </div>
     </div>
 </body>
 </html>
