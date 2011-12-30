@@ -34,6 +34,13 @@ class database {
             echo "there has been a query error";
         }
     }
+    function insertQuery ($query) {
+        if ($result = $this->connection->query($query)){
+            return "success";
+        } else {
+            return "error";
+        }  
+    }
     function searchForIdByTitle($title) {
         $query = "select id from film where title='".$title."'";
         if ($result = $this->connection->query($query)){
@@ -53,7 +60,7 @@ class database {
         }
     }
     function insertNewData ($id, $certificate, $date, $rating, $poster) {
-        $query = "update film set certificate='".$certificate."', releaseDate='".$date."', rating='".$rating."', poster='".$poster."' where id =".$id;
+        $query = "insert into film values (certificate, date, )set certificate='".$certificate."', releaseDate='".$date."', rating='".$rating."', poster='".$poster."' where id =".$id;
         if ($result = $this->connection->query($query)){
             return "success";
         } else {

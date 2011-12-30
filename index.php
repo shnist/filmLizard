@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>Aaron's Film Collection</title>
+    <title>Film Lizard</title>
     <link href="/assets/styles/common.css" rel="stylesheet">
 </head>
 
@@ -13,11 +13,11 @@
                 <a href="index.php">Home</a>
             </li>
             <li>
-                <a href="filmUpdate.php">Update Database</a>
+                <a href="filmUpdate.php">Add A Film</a>
             </li>
         </ul>
         <div id="content">
-            <h1> Aaron's Film Collection </h1>
+            <h1> Film Lizard</h1>
             <form action="/assets/scripts/php/search.php" method="POST">
                 <fieldset>
                     <legend>Search for a film </legend>

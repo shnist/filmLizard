@@ -39,14 +39,46 @@ if (isset($_POST['submit'])){
         curl_close($session);
         
         // decode the json data to make it easier to parse the php
-        $search_results = json_decode($data);
-        if ($search_results === NULL) die('Error parsing json');
+        $searchResults = json_decode($data);
+        if ($searchResults === NULL) die('Error parsing json');
         
         // play with the data!
-        $movies = $search_results->movies;
-
+        $movies = $searchResults->movies;
         echo "<ul class='search-results'>";
         foreach ($movies as $movie) {
+            // search for movie details to extract the genres
+            $detailsUrl = $movie->links->self.'?apikey=' . $apikey;
+            // setup curl to make a call to the endpoint
+            $detailsSession = curl_init($detailsUrl);
+            // indicates that we want the response back
+            curl_setopt($detailsSession, CURLOPT_RETURNTRANSFER, true);
+            // exec curl and get the data back
+            $detailsData = curl_exec($detailsSession);
+            // remember to close the curl session once we are finished retrieveing the data
+            curl_close($detailsSession);
+            // decode the json data to make it easier to parse the php
+            $filmDetails = json_decode($detailsData);
+            if ($filmDetails === NULL) die('Error parsing json');
+            
+            $genresLength = count($filmDetails->genres);
+            $actorsLength = count($filmDetails->abridged_cast);
+            $genres = '';
+            $actors = '';
+            for ($i = 0; $i < $genresLength; $i++){
+                if ($i !== ($genresLength - 1)){
+                    $genres .= $filmDetails->genres[$i].',';
+                } else {
+                    $genres .= $filmDetails->genres[$i];
+                }
+            }
+            for ($j = 0; $j < $actorsLength; $j++){
+                if ($j !== ($actorsLength - 1)){
+                    $actors .= $filmDetails->abridged_cast[$j]->name.',';
+                } else {
+                    $actors .= $filmDetails->abridged_cast[$j]->name;
+                }
+            }
+            
             echo "<li class='result'>";
                 echo "<ul>";
                     echo "<li>".$movie->title." </li>";
@@ -60,38 +92,47 @@ if (isset($_POST['submit'])){
                         echo "<legend> Add the film to your collection </legend>";
                         echo "<ul>";
                             echo "<li>";
+                                echo "<label for='title'>Title</label>";
+                                echo "<input type='text' name='title' id='title' value='".$movie->title."' readonly='readonly'>";
+                            echo "</li>";
+                            echo "<li>";
                                 echo "<label for='certificate'>Certificate</label>";
-                                <input type="text" name="certificate" id="certificate" readonly="readonly">
-                            </li>
-                            <li>
-                                <label for="release-date">Release Date </label>
-                                <input type="text" name="release-date" id="release-date" readonly="readonly">
-                            </li>
-                            <li>
-                                <label for="rating">Rating </label>
-                                <input type="text" name="rating" id="rating" readonly="readonly">
-                            </li>
-                            <li>
-                                <label for="poster">Poster</label>
-                                <input type="text" name="poster" id="poster" readonly="readonly">
-                            </li>
-                            <li>
-                                <label for="genres">Genres</label>
-                                <textarea name="genres" id="genres" readonly="readonly"></textarea>
-                            </li>
-                            <li>
-                                <label for="actors">Actors</label>
-                                <textarea name="actors" id="actors" ></textarea>
-                            </li>
-                        </ul>
-                        <input type="submit" value="populate database" name="submit">
-                    </fieldset>
-                </form>
+                                echo "<input type='text' name='certificate' id='certificate' value='".$movie->mpaa_rating."' readonly='readonly'>";
+                            echo "</li>";
+                            echo "<li>";
+                                echo "<label for='release-date'>Release Date </label>";
+                                echo "<input type='text' name='release-date' id='release-date' value='".$movie->year."' readonly='readonly'>";
+                            echo "</li>";
+                            echo "<li>";
+                                echo "<label for='rating'>Rating </label>";
+                                echo "<input type='text' name='rating' id='rating' value='".$movie->ratings->audience_score."' readonly='readonly'>";
+                            echo "</li>";
+                            echo "<li>";
+                                echo "<label for='poster'>Poster</label>";
+                                echo "<input type='text' name='poster' id='poster' value='".$movie->posters->original."' readonly='readonly'>";
+                            echo "</li>";
+                            echo "<li>";
+                                echo "<label for='genres'>Genres</label>";
+                                echo "<textarea name='genres' id='genres' readonly='readonly'>".$genres."</textarea>";
+                            echo "</li>";
+                            echo "<li>";
+                                echo "<label for='actors'>Actors</label>";
+                                echo "<textarea name='actors' id='actors' readonly='readonly'>".$actors."</textarea>";
+                            echo "</li>";
+                            echo "<li>";
+                                echo "<label for='location'>Location</label>";
+                                echo "<select name='location' id='location'>";
+                                    echo "<option value='home'>Home</option>";
+                                    echo "<option value='university'>University</option>";
+                                echo "</select>";
+                            echo "</li>";
+                        echo "</ul>";
+                       echo "<input type='submit' value='add to the collection' name='submit'>";
+                    echo "</fieldset>";
+                echo "</form>";
             echo "</li>";
         } 
         echo "</ul>";        
-        
-
         echo "<a href='/filmUpdate.php'>New search</a>";
     } elseif ($_POST['film-search'] === '') {
         echo "<p> You did not search for anything</p>";

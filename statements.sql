@@ -7,7 +7,7 @@ title varchar(40) not null,
 certificate varchar(5),
 releaseDate varchar(4),
 poster varchar(200),
-synopsis text,
+location varchar(20) not null,
 rating double) engine=InnoDB;
 
 # tables for genres

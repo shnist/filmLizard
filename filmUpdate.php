@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Populate Database</title>
+        <title>Film Lizard</title>
         <link href="/assets/styles/common.css" rel="stylesheet">
     </head>
     
@@ -21,7 +21,7 @@
                     <a href="index.php">Home</a>
                 </li>
                 <li>
-                    <a href="filmUpdate.php">Update Database</a>
+                    <a href="filmUpdate.php">Add A Film</a>
                 </li>
             </ul>
             <div id="content">
