@@ -33,7 +33,7 @@
     if(isset($_POST['film-search'])){
         if($_POST['film-search'] !== ''){
             $film = $_POST['film-search'];        
-            $filmQuery = "select * from film where title='".$film."'";
+            $filmQuery = "select * from film where title like '%".$film."%'";
             $result = $databaseConnection->selectQuery($filmQuery);
         }
     } elseif (isset($_POST['film-id'])){
