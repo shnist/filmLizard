@@ -1,4 +1,4 @@
-create database aaronfa1_films;
+create database films;
 use films;
 
 # table for films

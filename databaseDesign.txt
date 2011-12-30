@@ -30,3 +30,9 @@ ActorsFilm
 
 actorsId
 filmId
+
+
+online credentials 
+database : aaronfa1_films
+user: aaronfa1_shnist
+password: 23!Tingi1089
