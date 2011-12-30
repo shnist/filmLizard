@@ -51,7 +51,7 @@
                 
                 $idSelection = "select id from film where title ='".$title."' and releaseDate= '".$date."'";
                 $idResult = $databaseConnection->selectQuery($idSelection);
-                $id = $idResult->id;
+                $id = $idResult[0]['id'];
                 
                 // code to update the genre tables
                 // this code will add a genre if it doesn't already exist and then populate the genreFilm table

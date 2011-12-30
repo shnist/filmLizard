@@ -84,6 +84,8 @@
                 }
             echo "</li>";
         echo "</ul>";
+    } else {
+        echo "<p> Sorry, we couldn't find anything! </p>";
     }
     
     // close the connection
