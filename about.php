@@ -25,7 +25,7 @@
                 </p>
                 <h2> Origins </h2>
                 <p>
-                    My girlfriend and I wanted some easier way of picking a film to watch than manually going
+                    My girlfriend and I wanted an easier way of picking a film to watch than manually going
                     through our film collections each time. 
                 </p>
                 <p>

@@ -1,8 +1,8 @@
 To do:
 
 Immediate Goals
-- add the first layer of styling to the site
-
+- placeholder support for internet explorer
+- cross browser testing
 
 Future
 - Suggested films based on viewing habits
@@ -16,7 +16,6 @@ Future
 - make sure all database connections are closed after use to free up memory
 - be able to update the location of the film
 - convert the certificates into english ones
-- cross browser testing
 - possibility of trailers
 
 Far future
