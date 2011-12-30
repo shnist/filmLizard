@@ -185,7 +185,7 @@ class database {
             } 
         }
     }
-    function selectByActor($actor){
+    function selectByActor($actor, $order){
         if ($order !== ''){
             $query = "select * from film where id in (select filmId from actorFilm where actorId in (select id from actor
             where name = '".$actor."')) order by ".$order." desc";

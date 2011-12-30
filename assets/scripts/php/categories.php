@@ -71,7 +71,6 @@
         } else {
             $queryResults = $databaseConnection->selectByActor($actor);
         }        
-        $queryResults = $databaseConnection->selectByActor($actor);
         $arrayLength = count($queryResults);
                
     } else {

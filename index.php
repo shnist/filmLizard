@@ -15,7 +15,7 @@
             <h1> Film Lizard</h1>
             <p>
                 Keep track of your physical film collection online with Film Lizard. Let it
-                help you choose a film for that romantic night in, those lazy days and
+                help you choose a film for those romantic nights in, those random lazy days and
                 for when you need to procrastinate!
             </p>           
             <h2> Search for a film in my collection </h2>
