@@ -185,29 +185,6 @@ class database {
             } 
         }
     }
-    function selectByActor($actor, $order){
-        if ($order !== ''){
-            $query = "select * from film where id in (select filmId from actorFilm where actorId in (select id from actor
-            where name = '".$actor."')) order by ".$order." desc";
-        } else {
-            $query = "select * from film where id in (select filmId from actorFilm where actorId in (select id from actor where name = '".$actor."'))";
-        }        
-        if ($result = $this->connection->query($query)){
-            // if results were returned
-            if ($result->num_rows !== 0){
-                while ($row = $result->fetch_assoc()){
-                    $returnedResult[] = $row;
-                }
-                return $returnedResult;
-            } else {
-                //echo "no results returned!";
-            }
-            // close query
-            $result->close();
-        } else {
-            echo "query error";
-        }
-    }
     function selectByGenreAndActor($actor, $genre, $order){
         // create genre view
         $genreView = "create or replace view genreSelection as select * from film where id in (select filmId from genreFilm where genreId in (select id from genre where genre = '".$genre."'))";

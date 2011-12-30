@@ -44,7 +44,7 @@
         $actor = urlencode($_POST['actor-search']);
         echo "<p class='search-by-information'> You searched by genre : ".urldecode($genre).". And by actor : ".urldecode($actor)."</p>";
        
-        if ($orderBy !== 'select'){
+        if ($orderBy !== 'select' && $orderBy !== ''){
             $queryResults = $databaseConnection->selectByGenreAndActor($actor, $genre, $orderBy);
         } else {
             $queryResults = $databaseConnection->selectByGenreAndActor($actor, $genre);
@@ -55,7 +55,7 @@
     } elseif ($_POST['genre-search'] !== 'select'){
         $genre = urlencode($_POST['genre-search']);
         echo "<p class='search-by-information'> You searched by genre : ".urldecode($genre)."</p>";
-        if ($orderBy !== 'select'){
+        if ($orderBy !== 'select' && $orderBy !== ''){
             $queryResults = $databaseConnection->selectByGenre($genre, $orderBy);
         } else {
             $queryResults = $databaseConnection->selectByGenre($genre);
@@ -66,10 +66,15 @@
     } elseif ($_POST['actor-search'] !== '') {
         $actor = urlencode($_POST['actor-search']);
         echo "<p class='search-by-information'> You searched by actor : ".urldecode($actor)."</p>";
-        if ($orderBy !== 'select'){
-            $queryResults = $databaseConnection->selectByActor($actor, $orderBy);
+        if ($orderBy !== 'select' && $orderBy !== ''){
+            echo "here";
+            $query = "select * from film where id in (select filmId from actorFilm where actorId in (select id from actor
+            where name = '".$actor."')) order by ".$orderBy." desc";
+            $queryResults = $databaseConnection->selectQuery($query);
         } else {
-            $queryResults = $databaseConnection->selectByActor($actor);
+            $query = "select * from film where id in (select filmId from actorFilm where actorId in (select id from actor
+            where name = '".$actor."'))";
+            $queryResults = $databaseConnection->selectQuery($query);
         }        
         $arrayLength = count($queryResults);
                
