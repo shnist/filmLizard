@@ -12,8 +12,9 @@
 
 <html>
 <head>
-    <title>Aaron's Film Collection</title>
-    <link href="/assets/styles/common.css" rel="stylesheet">
+    <?php
+        include '/htmlTemplates/blocks/b_0.0_head.html';
+    ?>
 </head>
 
 <body>

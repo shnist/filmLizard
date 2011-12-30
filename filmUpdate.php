@@ -10,8 +10,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Film Lizard</title>
-        <link href="/assets/styles/common.css" rel="stylesheet">
+        <?php
+            include '/htmlTemplates/blocks/b_0.0_head.html';
+        ?>
     </head>
     
     <body>

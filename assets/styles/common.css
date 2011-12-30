@@ -2,6 +2,7 @@
 
 /* Contents
     1.0 Common
+        1.1 Buttons
     2.0 Structure
     3.0 Ajax
     4.0 Navigation
@@ -49,7 +50,23 @@ li{
 h1, h2, h3, h4, h5{
     margin: 10px 0 10px 0;
 }
+input[type="text"], input[type="submit"]{
+    height: 30px;
+    padding: 0 5px 0 5px;
+}
 
+/* 1.1 Buttons */
+
+input[type="submit"]{
+    background-color: #B95315;
+    background-image: -moz-linear-gradient(center top , #FF8A00, #B95315);
+    border: none;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) inset;
+    color: #FFFFFF;
+    border-radius: 3px;
+    font-family: Armata, verdana, sans-serif;
+    font-weight: 500;    
+}
 
 /* 2.0 Structure */
 /*
@@ -132,6 +149,7 @@ h1, h2, h3, h4, h5{
 #primary-navigation ul{
     display: inline-block;
     vertical-align: top;
+    width: 500px;
 }
 
 
@@ -159,4 +177,13 @@ h1, h2, h3, h4, h5{
 #primary-search{
     display: inline-block;
     vertical-align: top;
+}
+#primary-search label{
+    display: none;
+}
+#primary-search input[type="submit"]{
+    margin: 0 0 0 5px;
+}
+#primary-search fieldset{
+    display: inline-block;
 }
