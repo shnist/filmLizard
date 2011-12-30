@@ -8,7 +8,8 @@ certificate varchar(5),
 releaseDate varchar(4),
 poster varchar(200),
 location varchar(20) not null,
-rating double) engine=InnoDB;
+rating double,
+constraint location check (location = 'home' || location = 'university')) engine=InnoDB;
 
 # tables for genres
 create table genre (id int(2) primary key not null auto_increment,

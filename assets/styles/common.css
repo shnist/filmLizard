@@ -18,6 +18,7 @@ body{
 }
 fieldset{
     margin: 10px 0 10px 0;
+    display: none;
 }
 label{
     width: 150px;
@@ -34,6 +35,7 @@ li{
 .hidden{
     display: none;
 }
+
 
 /* 2.0 Structure */
 /*
