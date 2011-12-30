@@ -13,6 +13,11 @@
         ?>
         <div id="content">
             <h1> Film Lizard</h1>
+            <p>
+                Keep track of your physical film collection online with Film Lizard. Let it
+                help you choose a film for that romantic night in, those lazy days and
+                for when you need to procrastinate!
+            </p>
             <form action="/assets/scripts/php/search.php" method="POST">
                 <fieldset>
                     <legend>Search for a film </legend>
@@ -25,17 +30,6 @@
                     <input type="submit" value="i'm feeling lucky" name="random">
                 </fieldset>
             </form>            
-            <h2> What is Film Lizard? </h2>
-            <p>
-                Film Lizard is a film library that enables you to keep a track of your movie collection
-                online.
-            </p>
-            <p>
-                Ever felt like watching a film, but weren't sure what to choose? Fancy watching a
-                film with Tom Hanks in, but unsure which one? With Film Lizard you effortlessly browse
-                through your collection by Genre and Actor. If you're not particularly fussed, why not
-                try the "I'm feeling lucky" option? This will select a random film from your collection.
-            </p>
             <h2> Categories </h2>
             <form action="/assets/scripts/php/categories.php" method="POST">
                 <fieldset>
