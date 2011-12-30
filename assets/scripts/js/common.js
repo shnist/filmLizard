@@ -1,4 +1,6 @@
-var api = window.api || {};
+var api = window.api || {},
+    common = window.common || {},
+    jquery = window.jquery || {};
 
 api = {
     searchFilms : function (search) {
@@ -24,8 +26,35 @@ api = {
     }
 };
 
+/* All functions that are common throughout the site */
+common = {
+    init : function (){
+        this.placeHolder();
+    },
+    /* add placeholder support */
+    placeHolder : function (){
+        if(!$.support.placeholder) {
+            alert('placeholder not supported');
+        }
+    }
+}
+
+/* Functions that augment the jquery object */
+jquery = {
+    init : function(){
+        this.placeHolder();
+    },
+    placeHolder : function (){
+        jQuery.support.placeholder = false;
+	var test = document.createElement('input');
+	if('placeholder' in test){
+            jQuery.support.placeholder = true;
+        } 
+    }
+}
 
 $(document).ready(function () {
-
+    jquery.init();
+    common.init();
 
 });

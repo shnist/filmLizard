@@ -3,6 +3,10 @@ To do:
 Immediate Goals
 - placeholder support for internet explorer
 - cross browser testing
+    - style updates for internet 9 - 7
+- browser support to readme and about page
+
+- make unstable branch for new features
 
 Future
 - Suggested films based on viewing habits
@@ -36,6 +40,13 @@ Rotten Tomatoes Application Details
 rotten tomatoes key - wje47anurr2v5f4kv9e3ppjy
 http://api.rottentomatoes.com/api/public/v1.0.json?apikey=wje47anurr2v5f4kv9e3ppjy - base url
 
+
+Browser Support
+Tested on the following browsers
+(Assume latest version unless specified otherwise:)
+Internet Explorer 7, 8, 9
+Google Chrome
+Mozilla Firefox
 
 List of films for testing
 Taken

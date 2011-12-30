@@ -32,6 +32,16 @@
                     My collection is also currently split between my parent's house and university. So it's useful
                     to keep a track of where the films are. 
                 </p>
+                <h2> Browser Support </h2>
+                <p>
+                    Currently this web application has been tested on the following browsers (assume latest version
+                    unless otherwise specified):
+                </p>
+                <ul>
+                    <li> Internet Explorer (7, 8, 9) </li>
+                    <li> Google Chrome (Windows) </li>
+                    <li> Firefox (Windows) </li>
+                </ul>
             </div>
         </div>
     </body>
