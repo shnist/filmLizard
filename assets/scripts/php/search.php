@@ -1,9 +1,9 @@
 <?php
     // include the database class
-    include '/classes/database.php';
+    include 'classes/database.php';
 
     // checks if the form has been submitted
-    $databaseConnection = new database("localhost", "root", "", "films");
+    $databaseConnection = new database("localhost", "aaronfa1_faberaa", "23!Arsakia1089",   "aaronfa1_films");
 
 ?>
 <!DOCTYPE html>
@@ -92,6 +92,10 @@
 ?>
             <a href="/index.php">Search for another film</a>   
         </div>
+<?php
+    $footer = $path.'/htmlTemplates/blocks/b_2.0_footer.html';
+    include_once($footer);
+?>         
     </div>
 <?php
     $scripts = $path.'/htmlTemplates/blocks/b_0.1_scripts.html';

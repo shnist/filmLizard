@@ -1,6 +1,6 @@
 <?php
     // include the database class
-    include '/assets/scripts/php/classes/database.php';
+    include 'assets/scripts/php/classes/database.php';
     
     // start a new connection to the database
     $databaseConnection = new database("localhost", "root", "", "films");
@@ -11,14 +11,14 @@
 <html>
     <head>
         <?php
-            include '/htmlTemplates/blocks/b_0.0_head.html';
+            include 'htmlTemplates/blocks/b_0.0_head.html';
         ?>
     </head>
     
     <body>
         <div id="page">
             <?php
-                include '/htmlTemplates/blocks/b_1.0_primary_navigation.html';
+                include 'htmlTemplates/blocks/b_1.0_primary_navigation.html';
             ?>
             <div id="content">
                 <h1>Add A Film To Your Collection</h1>
@@ -41,9 +41,12 @@
                     </fieldset>
                 </form>            
             </div>
+<?php
+    include 'htmlTemplates/blocks/b_2.0_footer.html';
+?>                 
         </div>
 <?php
-   include '/htmlTemplates/blocks/b_0.1_scripts.html';
+   include 'htmlTemplates/blocks/b_0.1_scripts.html';
 ?>           
     </body>
 </html>

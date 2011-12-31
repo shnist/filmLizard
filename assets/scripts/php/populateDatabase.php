@@ -21,7 +21,6 @@
     // include the database class
     include 'classes/database.php';
     
-
     if (isset($_POST['submitted'])){
         $databaseConnection = new database("localhost", "root", "", "films");
         // empty value checking for the most important data

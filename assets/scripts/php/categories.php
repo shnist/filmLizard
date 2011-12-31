@@ -1,11 +1,11 @@
 <?php
     // include the database class
-    include '/classes/database.php';
+    include 'classes/database.php';
     
     // checks if the form has been submitted
     if (isset($_POST['submitted'])) {
         // start a new connection to the database
-        $databaseConnection = new database("localhost", "root", "", "films");
+        $databaseConnection = new database("localhost", "aaronfa1_faberaa", "23!Arsakia1089",   "aaronfa1_films");
     }
 ?>
 
@@ -164,6 +164,10 @@
     }
 ?>
         </div>
+<?php
+    $footer = $path.'/htmlTemplates/blocks/b_2.0_footer.html';
+    include_once($footer);
+?>         
     </div>
 <?php
     $scripts = $path.'/htmlTemplates/blocks/b_0.1_scripts.html';

@@ -144,6 +144,10 @@ if (isset($_POST['submitted'])){
     
 ?>
             </div>
+<?php
+    $footer = $path.'/htmlTemplates/blocks/b_2.0_footer.html';
+    include_once($footer);
+?>             
         </div>
 <?php
     $scripts = $path.'/htmlTemplates/blocks/b_0.1_scripts.html';
