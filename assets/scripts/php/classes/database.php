@@ -87,7 +87,7 @@ class database {
     function insertGenres($genres){
         $length = count($genres);
         for ($i = 0; $i < $length; $i++){
-            $query = "insert into genre(genre) values ('".urlencode($genres[$i])."')"
+            $query = "insert into genre(genre) values ('".urlencode($genres[$i])."')";
             if ($this->connection->query($query) !== true){
                 return $query." = error";
             }
@@ -109,8 +109,9 @@ class database {
     function insertNewActors($actors){
         $actorLength = count($actors);
         for ($a = 0; $a < $actorLength; $a++){
-            if ($this->connection->query("insert into actor(name) values ('".urlencode($actors[$a])."')") !== true){
-                return "error";
+            $query = "insert into actor(name) values ('".urlencode($actors[$a])."')";
+            if ($this->connection->query($query) !== true){
+                return $query." = error";
             }
         }
     }

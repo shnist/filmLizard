@@ -2,13 +2,13 @@
 <html>
     <head>
         <?php
-            include '/htmlTemplates/blocks/b_0.0_head.html';
+            include 'htmlTemplates/blocks/b_0.0_head.html';
         ?>
     </head>
     <body>
         <div id="page">
             <?php
-                include '/htmlTemplates/blocks/b_1.0_primary_navigation.html';
+                include 'htmlTemplates/blocks/b_1.0_primary_navigation.html';
             ?>
             <div id="content">
                 <h1> About Film Lizard </h1>
@@ -43,6 +43,9 @@
                     <li> Firefox (Windows) </li>
                 </ul>
             </div>
+<?php
+    include 'htmlTemplates/blocks/b_2.0_footer.html';
+?>                 
         </div>
     </body>
 </html>
