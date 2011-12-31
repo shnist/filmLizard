@@ -67,14 +67,6 @@ class database {
             echo "query error";
         }
     }
-    function insertNewData ($id, $certificate, $date, $rating, $poster) {
-        $query = "insert into film values (certificate, date, )set certificate='".$certificate."', releaseDate='".$date."', rating='".$rating."', poster='".$poster."' where id =".$id;
-        if ($result = $this->connection->query($query)){
-            return "success";
-        } else {
-            return "error";
-        }  
-    }
     function searchByQuery ($query){
         if ($result = $this->connection->query($query)){
             // if results were returned
@@ -92,27 +84,12 @@ class database {
             echo "query error";
         }
     }
-    function selectAllGenres (){
-        $query = "select * from genre";
-        if ($result = $this->connection->query($query)){
-            // if results were returned
-            if ($result->num_rows !== 0){
-                while ($row = $result->fetch_assoc()){
-                    $returnedResult[] = urldecode($row['genre']);
-                }
-                return $returnedResult;
-            }
-            // close query
-            $result->close();
-        } else {
-            echo "query error";
-        }
-    }
     function insertGenres($genres){
         $length = count($genres);
         for ($i = 0; $i < $length; $i++){
-            if ($this->connection->query("insert into genre(genre) values ('".urlencode($genres[$i])."')") !== true){
-                return "error";
+            $query = "insert into genre(genre) values ('".urlencode($genres[$i])."')"
+            if ($this->connection->query($query) !== true){
+                return $query." = error";
             }
         }
     }
@@ -127,24 +104,6 @@ class database {
             if ($this->connection->query("insert into genrefilm (filmId, genreId) values ('".$filmId."','".$genreId->id."')") !== true){
                 return "error";
             } 
-        }
-    }
-    function selectAllActors(){
-        $query = "select * from actor";
-        if ($result = $this->connection->query($query)){
-            // if results were returned
-            if ($result->num_rows !== 0){
-                while ($row = $result->fetch_assoc()){
-                    $returnedResult[] = urldecode($row['name']);
-                }
-                return $returnedResult;
-            } else {
-               // echo "no results returned!";
-            }
-            // close query
-            $result->close();
-        } else {
-            echo "query error";
         }
     }
     function insertNewActors($actors){

@@ -1,10 +1,9 @@
 To do:
 
 Immediate Goals
+- refactor add to collection code and bug fix
 - refactor database class - a lot of repitition can probably be reduced
 - quick search - search by film title and by actor name?
-- cross browser testing
-    - style updates for internet 9 - 7
 
 - make unstable branch for new features
 
@@ -36,6 +35,7 @@ Even further
 - mysql injection prevention
 - feedback form
 - functionality specification
+- mobile version
 
 
 Rotten Tomatoes Application Details
