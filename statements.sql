@@ -3,7 +3,7 @@ use films;
 
 # table for films
 create table film (id int(3) primary key not null auto_increment,
-title varchar(40) not null,
+title varchar(100) not null,
 certificate varchar(5),
 releaseDate varchar(4),
 poster varchar(200),
