@@ -19,7 +19,7 @@
         <div id="content">
 <?php
     // include the database class
-    include '/classes/database.php';
+    include 'classes/database.php';
     
 
     if (isset($_POST['submitted'])){
@@ -62,19 +62,30 @@
                     $genreArray = explode(",", $genres);
                     
                     // get all the existing genres from the database
-                    $existingGenres = $databaseConnection->selectAllGenres();
+                    $selectGenres = "select genre from genre";
+                    $existingGenresResult = $databaseConnection->selectQuery($selectGenres);
+                    $existingGenres = array();
+                    
+                    // existing genres needs to processed so that the array difference can work
+                    for ($j = 0; $j < count($existingGenresResult); $j++){
+                        array_push($existingGenres, urldecode($existingGenresResult[$j]['genre']));
+                    }
                     
                     // the differences between the two arrays is compared and genres that do not exist
                     // in the database are assigned to the new genres variable
                     if ($existingGenres !== null){
                         // array_values resets the index of the returned array - known short coming of array_diff
                         $newGenres = array_values(array_diff($genreArray, $existingGenres));
+                        
                         // these are then inserted into the genre table
                         $insertGenres = $databaseConnection->insertGenres($newGenres);
-                        //echo "<p> new genres </p>";
-                        //var_dump($newGenres);
+                        echo "<p> existing genres </p>";
+                        var_dump($existingGenres);
+                        echo "<p> new genres </p>";
+                        var_dump($newGenres);
                     } else {
-                        //echo "first insert";
+                        echo "<p>first insert</p>";
+                        var_dump($genreArray);
                         $insertGenres = $databaseConnection->insertGenres($genreArray);  
                     }
                     if ($insertGenres === "error"){
@@ -91,16 +102,24 @@
                 // code to update the actors tables
                 if ($_POST['actors'] !== ''){
                     $actors = $_POST['actors'];
-                    //echo "<p> actors of film </p>";
-                    //var_dump($actors);
-            
+                
                     $actorArray = explode(",", $actors);
                     // get all the existing actors from the database
-                    $existingActors = $databaseConnection->selectAllActors();
+                    $query = "select name from actor";
+                    $existingActorsResult = $databaseConnection->selectQuery($query);
+                    $existingActors = array();
                     
-                    //echo "<p> existing actors </p>";
-                    //var_dump($existingActors);
-            
+                    // existing genres needs to processed so that the array difference can work
+                    for ($a = 0; $a < count($existingActorsResult); $a++){
+                        array_push($existingActors, urldecode($existingActorsResult[$a]['genre']));
+                    }
+                    
+                    echo "<p> actors from film </p>";
+                    var_dump($actorArray);
+                    
+                    echo "<p> existing actors </p>";
+                    var_dump($existingActors);
+                
                     if ($existingActors !== null){
                         // array_values resets the index of the returned array - known short coming of array_diff
                         $newActors = array_values(array_diff($actorArray, $existingActors));
@@ -131,6 +150,10 @@
     echo "<a href='/filmUpdate.php'>Add Another Film To Your Collection</a>";
 ?>
         </div>
+<?php
+    $footer = $path.'/htmlTemplates/blocks/b_2.0_footer.html';
+    include_once($footer);
+?>             
     </div>
 <?php
     $scripts = $path.'/htmlTemplates/blocks/b_0.1_scripts.html';

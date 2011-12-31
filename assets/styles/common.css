@@ -12,6 +12,7 @@
     6.0 Forms
         6.1 Primary Search
     7.0 Film Details
+    8.0 Footer
 */
 
 /* 1.0 Common */
@@ -291,4 +292,15 @@ input[type="submit"]:hover{
 }
 .film-details a{
     display: block;
+}
+
+/* 8.0 Footer */
+
+#footer{
+    width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+#footer p{
+    font-size: 14px;
 }
