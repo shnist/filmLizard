@@ -101,36 +101,35 @@
                     $existingActorsResult = $databaseConnection->selectQuery($query);
                     $existingActors = array();
                     
-                    echo "<p> existing actors query result </p>";
-                    var_dump($existingActorsResult);
-                    
                     // existing genres needs to processed so that the array difference can work
                     for ($a = 0; $a < count($existingActorsResult); $a++){
-                        array_push($existingActors, urldecode($existingActorsResult[$a]['genre']));
+                        array_push($existingActors, urldecode($existingActorsResult[$a]['name']));
                     }
                     
-                    echo "<p> actors from film </p>";
-                    var_dump($actorArray);
+                    //echo "<p> actors from film </p>";
+                    //var_dump($actorArray);
                     
-                    echo "<p> existing actors </p>";
-                    var_dump($existingActors);
+                    //echo "<p> existing actors </p>";
+                    //var_dump($existingActors);
                 
                     if ($existingActors !== null){
                         // array_values resets the index of the returned array - known short coming of array_diff
                         $newActors = array_values(array_diff($actorArray, $existingActors));
+                        //echo "<p> new actors </p>";
+                        //var_dump($newActors);
+                        
                         // these are then inserted into the genre table
-                        //$insertActors = $databaseConnection->insertNewActors($newActors);
-                    } else {
-                        //$insertActors = $databaseConnection->insertNewActors($actorArray);  
+                        $insertActors = $databaseConnection->insertNewActors($newActors);
+                        if ($insertActors === "error"){
+                            echo $insertActors;
+                        }                        
                     }
-                   // if ($insertActors === "error"){
-                      //  echo $insertActors;
-                   // }
+
                     // code to update the actorFilm table
-                   // $updateActorFilm = $databaseConnection->updateActorFilm($id, $actorArray);
-                   // if ($updateActorFilm === "error") {
-                   //     echo $updateActorFilm;
-                   // }             
+                    $updateActorFilm = $databaseConnection->updateActorFilm($id, $actorArray);
+                    if ($updateActorFilm === "error") {
+                        echo $updateActorFilm;
+                    }             
                 }   
             } else {
                 echo "<p> This film already exists in your collection </p>";
