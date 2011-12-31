@@ -20,13 +20,13 @@ Future
 - be able to update the location of the film
 - convert the certificates into english ones
 - possibility of trailers
-- add a hidden "submit" input element to each form to simulate isset functionality for all browsers
 
 Far future
 - look into php templating
 - facebook integration
 - twitter integration
 - aria labels for accessibility
+- pretty urls
 
 Even further
 - converting back end to node?
