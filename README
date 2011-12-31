@@ -1,7 +1,6 @@
 To do:
 
 Immediate Goals
-- refactor add to collection code and bug fix
 - refactor database class - a lot of repitition can probably be reduced
 - quick search - search by film title and by actor name?
 

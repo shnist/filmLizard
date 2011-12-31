@@ -93,19 +93,6 @@ class database {
             }
         }
     }
-    function updateGenreFilm($filmId, $genres){
-        $genresLength = count($genres);
-        for ($j = 0; $j < $genresLength; $j++){
-            $genreIdResult = $this->connection->query("select id from genre where genre='".urlencode($genres[$j])."'");
-            
-            if ($genreIdResult->num_rows !== 0){
-                $genreId = $genreIdResult->fetch_object();
-            }
-            if ($this->connection->query("insert into genrefilm (filmId, genreId) values ('".$filmId."','".$genreId->id."')") !== true){
-                return "error";
-            } 
-        }
-    }
     function insertNewActors($actors){
         $actorLength = count($actors);
         for ($a = 0; $a < $actorLength; $a++){
@@ -114,20 +101,44 @@ class database {
                 return $query." = error";
             }
         }
+    }    
+    function updateGenreFilm($filmId, $genres){
+        $genresLength = count($genres);
+        for ($j = 0; $j < $genresLength; $j++){
+            $genre = urlencode($genres[$j]);
+           // $idQuery = "select id from genre where genre='".$genre."'";
+           $idQuery = "select id from genre where genre='Drama'";
+            if ($genreIdResult = $this->connection->query($idQuery)){
+                if ($genreIdResult->num_rows !== 0){
+                    $genreId = $genreIdResult->fetch_object();
+                }
+                $genreFilmInsert = "insert into genreFilm(filmId, genreId) values('".$filmId."','".$genreId->id."')";
+                if ($this->connection->query($genreFilmInsert) !== true){
+                    echo "<p>".$genreFilmInsert." = error</p>";
+                } 
+            } else {
+                echo "<p>".$idQuery." = error</p>";
+            }
+        }
     }
     function updateActorFilm($filmId, $actors){
         $actorsLength = count($actors);
         for ($b = 0; $b < $actorsLength; $b++){
-            $actorIdResult = $this->connection->query("select id from actor where name='".urlencode($actors[$b])."'");
-            
-            if ($actorIdResult->num_rows !== 0){
-                $actorId = $actorIdResult->fetch_object();
+            $actor = urlencode($actors[$b]);
+            $actorIdQuery = "select id from actor where name='".$actor."'";
+            if ($actorIdResult = $this->connection->query($actorIdQuery)){
+                if ($actorIdResult->num_rows !== 0){
+                    $actorId = $actorIdResult->fetch_object();
+                }
+                $actorFilmInsert = "insert into actorFilm(filmId, actorId) values('".$filmId."','".$actorId->id."')";
+                if ($this->connection->query($actorFilmInsert) !== true){
+                    echo "<p>".$actorFilmInsert." = error </p>";
+                }
+            } else {
+                echo "<p>".$actorIdQuery." = error</p>";
             }
-            if ($this->connection->query("insert into actorfilm (filmId, actorId) values ('".$filmId."','".$actorId->id."')") !== true){
-                return "error";
-            } 
         }
-    }
+    }    
     function selectByGenreAndActor($actor, $genre, $order){
         // create genre view
         $genreView = "create or replace view genreSelection as select * from film where id in (select filmId from genreFilm where genreId in (select id from genre where genre = '".$genre."'))";

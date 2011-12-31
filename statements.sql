@@ -16,7 +16,7 @@ create table genre (id int(2) primary key not null auto_increment,
 genre varchar(30)) character set utf8 collate utf8_general_ci engine=InnoDB;
 
 # table for actors
-create table actor (id int(2) primary key not null auto_increment,
+create table actor (id int(4) primary key not null auto_increment,
 name varchar(30)) character set utf8 collate utf8_general_ci engine=InnoDB;
 
 # associative table between genre and films
@@ -26,7 +26,7 @@ foreign key (genreId) references genre(id),
 foreign key (filmId) references film(id)) character set utf8 collate utf8_general_ci engine=InnoDB;
 
 # creating an associative table between actors and films
-create table actorFilm (actorId int(2),
+create table actorFilm (actorId int(4),
 filmId int(2),
 foreign key (actorId) references actor(id),
 foreign key (filmId) references film(id)) character set utf8 collate utf8_general_ci engine=InnoDB;
