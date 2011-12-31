@@ -106,8 +106,7 @@ class database {
         $genresLength = count($genres);
         for ($j = 0; $j < $genresLength; $j++){
             $genre = urlencode($genres[$j]);
-           // $idQuery = "select id from genre where genre='".$genre."'";
-           $idQuery = "select id from genre where genre='Drama'";
+            $idQuery = "select id from genre where genre='".$genre."'";
             if ($genreIdResult = $this->connection->query($idQuery)){
                 if ($genreIdResult->num_rows !== 0){
                     $genreId = $genreIdResult->fetch_object();
