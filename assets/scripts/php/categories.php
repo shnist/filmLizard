@@ -82,7 +82,6 @@
         $actor = urlencode($_POST['actor-search']);
         echo "<p class='search-by-information'> You searched by actor : ".urldecode($actor)."</p>";
         if ($orderBy !== 'select' && $orderBy !== ''){
-            echo "here";
             $query = "select * from film where id in (select filmId from actorFilm where actorId in (select id from actor
             where name like '%".$actor."%')) order by ".$orderBy." desc";
             $queryResults = $databaseConnection->selectQuery($query);
