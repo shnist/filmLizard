@@ -3,7 +3,7 @@
     include 'classes/database.php';
 
     // checks if the form has been submitted
-    $databaseConnection = new database("localhost", "aaronfa1_faberaa", "23!Arsakia1089",   "aaronfa1_films");
+    $databaseConnection = new database("localhost", "root", "", "films");
 
 ?>
 <!DOCTYPE html>
@@ -28,6 +28,7 @@
         <div id="content">
             <h1 class="hidden">Film Details</h1> 
 <?php
+
     if(isset($_POST['film-search'])){
         if($_POST['film-search'] !== ''){
             $film = $_POST['film-search'];        
@@ -41,7 +42,6 @@
             $result = $databaseConnection->selectQuery($filmQuery);
         }
     } elseif (isset($_POST['random'])){
-        // random film
         $filmQuery = "select * from film where id >= RAND() * (select max(id) from film) limit 1";
         $result = $databaseConnection->selectQuery($filmQuery);
     } else {

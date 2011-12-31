@@ -5,7 +5,7 @@
     // checks if the form has been submitted
     if (isset($_POST['submitted'])) {
         // start a new connection to the database
-        $databaseConnection = new database("localhost", "aaronfa1_faberaa", "23!Arsakia1089",   "aaronfa1_films");
+        $databaseConnection = new database("localhost", "root", "", "films");
     }
 ?>
 
