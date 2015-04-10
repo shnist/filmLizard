@@ -1,0 +1,26 @@
+{
+  "name": "FilmLizard",
+  "version": "0.0.1",
+  "description": "Personal movie collection",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shnist/filmLizard.git"
+  },
+  "keywords": [
+    "film",
+    "lizard",
+    "movie",
+    "collection",
+    "personal"
+  ],
+  "author": "Aaron Faber",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shnist/filmLizard/issues"
+  },
+  "homepage": "https://github.com/shnist/filmLizard"
+}
